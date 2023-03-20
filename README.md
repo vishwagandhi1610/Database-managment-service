@@ -1,4 +1,4 @@
-# Wolfmedia streaming service
+# WOLFMEDIA STREAMING SERVICE
 
 This project involves designing and building a database management system for WolfMedia, an audio and media streaming service similar to Spotify and Apple Music. The system will be used by administrators and management to maintain information on songs, artists, record labels, albums, podcasts, and podcast hosts. Additionally, the system will track monthly listeners, total subscribers, and payments made to artists, record labels, and podcast hosts.
 
