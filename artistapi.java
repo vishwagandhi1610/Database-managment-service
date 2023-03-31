@@ -71,4 +71,23 @@ public class artistapi {
 			}
 		}
 	}
+   // method to close ResultSet
+	static void close(ResultSet result) {
+		if (result != null) {
+			try {
+				result.close();
+			} catch (Throwable whatever) {
+			}
+		}
+	}
+
+    // method to Statement.
+	static void close(Statement statement) {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (Throwable whatever) {
+			}
+		}
+	}
 }
