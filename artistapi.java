@@ -52,6 +52,65 @@ public class artistapi {
 			close(connection);
 		}
 	}
+
+
+	/*
+	 * API to update artist first name in creators table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param cf_name: Artist first name
+	 */
+	public static void updateArtistFirstName(String creators_id, String cf_name) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update PUB_TITLE for the given publication id.
+			String updateSql = "UPDATE CREATORS SET cf_name = '" + cf_name + "' WHERE creators_id = " + creators_id;
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist first name updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	/*
+	 * API to update artist last name in creators table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param cl_name: Artist last name
+	 */
+	public static void updateArtistLabelName(String creators_id, String cl_name) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update PUB_TITLE for the given publication id.
+			String updateSql = "UPDATE CREATORS SET cl_name = '" + cl_name + "' WHERE creators_id = " + creators_id;
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist last name updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+
     	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
@@ -91,3 +150,4 @@ public class artistapi {
 		}
 	}
 }
+
