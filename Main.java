@@ -34,7 +34,119 @@ public class Main {
 						System.out.print("Enter the country where the artist belong");
 						String a_country = scanner.nextLine();
 						artistapi.insertArtist(creatorsid,cf_name,cl_name,labelname,a_status,type,primary_genre,a_country);
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
 					break;
+
+					case "A2":
+					int ch = -1;
+					while (ch != 0) {
+						System.out.println("1. Update artist first name");
+						System.out.println("2. Update artist last name");
+						System.out.println("3. Update labelname for the artist");
+						System.out.println("4. Update artist status (active/retired)");
+						System.out.println("5. Update artist type");
+						System.out.println("6. Update primary genre of artist");
+						System.out.println("7. Update the country for the artist");
+						System.out.println("8. Update the monthly listeners for the artist");
+						System.out.println("0. Go Back");
+						System.out.print("Enter your choice:");
+						ch = Integer.parseInt(scanner.nextLine());
+						switch (ch) {
+						case 1:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter Artist first name:");
+							cf_name = scanner.nextLine();
+							artistapi.updateArtistFirstName(creators_id, cf_name);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+						case 2:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter Artist last name:");
+							cl_name = scanner.nextLine();
+							artistapi.updateArtistLastName(creators_id, cl_name);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 3:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter labelname for the artist :");
+							labelname = scanner.nextLine();
+							artistapi.updateArtistLabelName(creators_id, labelname);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 4:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter status of the artist :");
+							a_status = scanner.nextLine();
+							artistapi.updateArtistStatus(creators_id, a_status);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 5:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter the type for the artist :");
+							type = scanner.nextLine();
+							artistapi.updateArtistType(creators_id, type);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 6:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter the primary genre for the artist :");
+							primary_genre = scanner.nextLine();
+							artistapi.updateArtistPrimaryGenre(creators_id, primary_genre);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 7:
+							System.out.print("Enter Artist Id:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter the country for the artist :");
+							a_country = scanner.nextLine();
+							artistapi.updateArtistCountry(creators_id, a_country);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 8:
+							System.out.print("Enter Artist Id for which the monthly listeners needs to be updated:");
+							creators_id = Integer.parseInt(scanner.nextLine());
+							// System.out.print("Enter the monthly listeners for the artist :");
+							// monthly_listeners = scanner.nextLine();
+							artistapi.updateArtistMonthlyListeners(creators_id);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 0:
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						default:
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+						}
+					}
+					System.out.print("Press Enter key to continue...");
+					key = scanner.nextLine();
+					break;
+
 
 
 			case "0":
@@ -65,7 +177,7 @@ public class Main {
 	static String displayManagmentMenu(Scanner scanner) {
 		System.out.println("--------------Artist Information--------------");
 		System.out.println("A1. Enter information for a new artist");
-		// System.out.println("A2. Update Information of a artist");
+		System.out.println("A2. Update Information of a artist");
 		// System.out.println("A3. Delete information of a artist");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
