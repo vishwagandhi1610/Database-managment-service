@@ -56,7 +56,7 @@ public class podcasthostapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update type of artist for the given creators id.
+			// update statement to update first name of Podcasy Host for the given creators id.
 			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -77,7 +77,7 @@ public class podcasthostapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update type of artist for the given creators id.
+			// update statement to update last name of Podcast Host for the given creators id.
 			String updateSql = "UPDATE Creators SET cl_name = '" + cl_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -98,7 +98,7 @@ public class podcasthostapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update type of artist for the given creators id.
+			// update statement to update email of Podcast Host for the given creators id.
 			String updateSql = "UPDATE podcastHost SET email = '" + email + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -119,7 +119,7 @@ public class podcasthostapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update type of artist for the given creators id.
+			// update statement to update city of Podcast Host for the given creators id.
 			String updateSql = "UPDATE podcastHost SET city = '" + city + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -140,7 +140,7 @@ public class podcasthostapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update type of artist for the given creators id.
+			// update statement to update phone of Podcast Host for the given creators id.
 			String updateSql = "UPDATE podcastHost SET phone = '" + phone + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
