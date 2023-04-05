@@ -430,6 +430,31 @@ public class Main {
 					key = scanner.nextLine();
 					break;
 
+				case "U1":
+					System.out.print("Enter User's Phone Number:");
+					String uphone = scanner.nextLine();
+					System.out.print("Enter User's Join Date:");
+					String joinDate = scanner.nextLine();
+					System.out.print("Enter User's End Date:");
+					String endDate = scanner.nextLine();
+					System.out.print("Enter User's First name:");
+					String ufName = scanner.nextLine();
+					System.out.print("Enter User's Last name:");
+					String ulName = scanner.nextLine();
+					System.out.print("Enter User's E-Mail ID:");
+					String uEmail = scanner.nextLine();
+					System.out.print("Enter User's status (Active/Inactive):");
+					String uStatus = scanner.nextLine();
+					
+					System.out.print("Enter User's Subscription Fee:");
+					int subFee = scanner.nextInt();
+					
+					userapi.insertUser(uphone, joinDate, endDate, ufName, ulName, uEmail, uStatus, subFee);
+					
+					System.out.print("Press Enter key to continue...");
+					key = scanner.nextLine();
+				break;
+
 			case "0":
 					System.out.println("Thank you for using the system!");
 					break;
@@ -469,6 +494,8 @@ public class Main {
 		System.out.println("S1. Enter information for a new song ");
 		System.out.println("S2. Update Information of a song");
 		System.out.println("S3. Delete information of a song");
+		System.out.println("--------------User Information--------------");
+		System.out.println("U1. Enter information for a new user");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
