@@ -87,7 +87,7 @@ public class Main {
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
 							break;
-/*
+
 						case 4:
 							System.out.print("Enter Artist Id:");
 							creators_id = scanner.nextLine();
@@ -120,7 +120,7 @@ public class Main {
 
 						case 7:
 							System.out.print("Enter Artist Id:");
-							creators_id = Integer.parseInt(scanner.nextLine());
+							creators_id = scanner.nextLine();
 							System.out.print("Enter the country for the artist :");
 							a_country = scanner.nextLine();
 							artistapi.updateArtistCountry(creators_id, a_country);
@@ -130,14 +130,14 @@ public class Main {
 
 						case 8:
 							System.out.print("Enter Artist Id for which the monthly listeners needs to be updated:");
-							int creators_id = Integer.parseInt(scanner.nextLine());
-							// System.out.print("Enter the monthly listeners for the artist :");
-							// monthly_listeners = scanner.nextLine();
-							artistapi.updateArtistMonthlyListeners(creators_id);
+							creators_id = scanner.nextLine();
+							System.out.print("Enter the monthly listeners for the artist :");
+							 monthly_listeners = scanner.nextLine();
+							artistapi.updateArtistMonthlyListeners(creators_id,monthly_listeners);
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
 							break;
-*/
+
 						case 0:
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
