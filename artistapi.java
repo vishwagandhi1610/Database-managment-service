@@ -133,14 +133,24 @@ public class artistapi {
 		}
 	}
 
-
-    	// method to close PreparedStatement.
-	static void close(PreparedStatement statement) {
-		if (statement != null) {
-			try {
-				statement.close();
-			} catch (Throwable whatever) {
-			}
+	public static void updateArtistStatus(String creators_id, String a_status) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update artist_status for the given creators id.
+			String updateSql = "UPDATE Creators SET a_status = '" + a_status + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist ID updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
 		}
 	}
 
