@@ -259,6 +259,14 @@ public class Main {
 						key = scanner.nextLine();
 						break;
 
+					case "PH3":
+						System.out.print("Enter Podcast Host Id:");
+						creators_id = scanner.nextLine();
+						podcasthostapi.deletePodcastHost(creators_id);
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+						break;
+
 					case "S1":
 						String mediaid;
 						System.out.print("Enter Song Id:");
@@ -448,7 +456,7 @@ public class Main {
 		System.out.println("--------------Podcast Host Information--------------");
 		System.out.println("PH1. Enter information for a new podcast host");
 		System.out.println("PH2. Update Information of a podcast host");
-		// System.out.println("A3. Delete information of a artist");
+		System.out.println("PH3. Delete information of a podcast host");
 		System.out.println("--------------Song Information--------------");
 		System.out.println("S1. Enter information for a new song ");
 		System.out.println("S2. Update Information of a song");

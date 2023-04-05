@@ -155,6 +155,33 @@ public class podcasthostapi {
 			close(connection);
 		}
 	}
+
+    public static void deletePodcastHost(String creators_id) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// set the PUB_ID field in ORDERS table to -1 for the publication that is being deleted.
+			// String updateOrdersQuery = "UPDATE ARTIST SET PUB_ID = -1 WHERE PUB_ID = " + creators_id;
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute the update query using Statement Object.
+			// stmt.executeUpdate(updateOrdersQuery);
+			// delete statement to delete the publication with given PUB_ID.
+			String deletePubQuery = "DELETE FROM Creators WHERE creatorsid = '" + creators_id+ "'";
+			// execute the delete query using the Statement object.
+			stmt.executeUpdate(deletePubQuery);
+			System.out.println("PodcastHost deleted.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+
         	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
