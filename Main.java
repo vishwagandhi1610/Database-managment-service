@@ -153,7 +153,7 @@ public class Main {
 					key = scanner.nextLine();
 					break;
 
-					case "EP8":
+					case "A3":
 						System.out.print("Enter Creators Id:");
 						String creators_id = scanner.nextLine();
 						artistapi.deleteArtist(creators_id);
@@ -190,7 +190,7 @@ public class Main {
 							System.out.println("0. Go Back");
 							System.out.print("Enter your choice:");
 							ch = Integer.parseInt(scanner.nextLine());
-							String creators_id;
+							//String creators_id;
 							switch (ch) {
 							case 1:
 								System.out.print("Enter podcast host Id:");
@@ -259,7 +259,7 @@ public class Main {
 						key = scanner.nextLine();
 						break;
 
-						case "S1":
+					case "S1":
 						String mediaid;
 						System.out.print("Enter Song Id:");
 							mediaid = scanner.nextLine();
