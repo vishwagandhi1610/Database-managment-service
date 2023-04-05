@@ -57,7 +57,7 @@ public class podcasthostapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update type of artist for the given creators id.
-			String updateSql = "UPDATE Creators SET first name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.

@@ -172,7 +172,7 @@ public class Main {
 					break;
 
 					case "PH2":
-						int ch = -1;
+						ch = -1;
 						while (ch != 0) {
 							System.out.println("1. Update podcast host first name");
 							System.out.println("2. Update podcast host last name");
@@ -194,7 +194,8 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
-
+							}
+					    }
 
 			case "0":
 					System.out.println("Thank you for using the system!");
@@ -208,6 +209,7 @@ public class Main {
 			scanner.close();
 	}
 	}
+			
 	}
 	// /*
 	// * Method to display Roles menu and accept user choice.
@@ -238,3 +240,5 @@ public class Main {
 	}
 
 }
+
+
