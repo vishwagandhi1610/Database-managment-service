@@ -15,7 +15,7 @@ public class userapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
-    public static void insertUser(String uphone, String joinDate, String endDate, String ufName, String ulName, String uEmail, String uStatus, int subFee) {
+    public static void insertUser(int uphone, String joinDate, String endDate, String ufName, String ulName, String uEmail, String uStatus, int subFee) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -25,7 +25,7 @@ public class userapi {
 			// Assigning values to the prepared statement
             s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
-            s2.setString(1, uphone);
+            s2.setInt(1, uphone);
             s2.setString(2, joinDate);
             s2.setString(3, endDate);
             s2.setString(4, ufName);
@@ -55,12 +55,12 @@ public class userapi {
 	 * 
 	 * @param ufName: User's first name
 	 */
-    public static void updateUserFirstName(String uphone, String ufName) {
+    public static void updateUserFirstName(int uphone, String ufName) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update uf_name for the given user.
+			// update statement to update uf_name for the given uphone.
 			System.out.print(uphone);
 			String updateSql = "UPDATE user SET uf_name = '" + ufName + "' WHERE uphone = '" + uphone+ "'";
 			// Create Statement Object.
@@ -84,12 +84,12 @@ public class userapi {
 	 * 
 	 * @param ulName: User's last name
 	 */
-	public static void updateUserLastName(String uphone, String ulName) {
+	public static void updateUserLastName(int uphone, String ulName) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update ul_name for the given user.
+			// update statement to update ul_name for the given uphone.
 			String updateSql = "UPDATE user SET ul_name = '" + ulName + "' WHERE uphone = '" + uphone+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -104,19 +104,26 @@ public class userapi {
 			close(connection);
 		}
 	}
-	
-	public static void updateUserJoinDateName(String uphone, String joinDate) {
+
+    /*
+	 * API to update user join date in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 * 
+	 * @param joinDate: User's join date
+	 */
+	public static void updateUserJoinDate(int uphone, String joinDate) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
+			// update statement to update join_date for the given uphone.
 			String updateSql = "UPDATE user SET join_date = '" + joinDate + "' WHERE uphone = '"+ uphone + "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist label name name updated.");
+			System.out.println("User's join date updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -126,18 +133,25 @@ public class userapi {
 		}
 	}
 
-	public static void updateArtistStatus(String creators_id, String a_status) {
+    /*
+	 * API to update user end date in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 * 
+	 * @param endDate: User's end date
+	 */
+	public static void updateUserEndDate(int uphone, String endDate) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update artist_status for the given creators id.
-			String updateSql = "UPDATE Artist SET a_status = '" + a_status + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update end_date for the given uphone.
+			String updateSql = "UPDATE user SET end_date = '" + endDate + "' WHERE uphone = '"+ uphone + "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist Status updated.");
+			System.out.println("User's end date updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -147,18 +161,25 @@ public class userapi {
 		}
 	}
 
-	public static void updateArtistType(String creators_id, String type) {
+	/*
+	 * API to update user email id in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 * 
+	 * @param uEmail: User's email id
+	 */
+	public static void updateUserEmail(int uphone, String uEmail) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update type of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET type = '" + type + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update uemail for the given uphone.
+			String updateSql = "UPDATE user SET uemail = '" + uEmail + "' WHERE uphone = '"+ uphone + "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist Type updated.");
+			System.out.println("User's Email ID updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -168,18 +189,25 @@ public class userapi {
 		}
 	}
 
-	public static void updateArtistPrimaryGenre(String creators_id, String primary_genre) {
+	/*
+	 * API to update user email id in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 * 
+	 * @param uStatus: User's status
+	 */
+	public static void updateUserStatus(int uphone, String uStatus) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update primary genre of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET primary_genre = '" + primary_genre + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update u_status for the given uphone.
+			String updateSql = "UPDATE user SET u_status = '" + uStatus + "' WHERE uphone = '"+ uphone + "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist's primary genre updated.");
+			System.out.println("User's Status updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -189,18 +217,25 @@ public class userapi {
 		}
 	}
 
-	public static void updateArtistCountry(String creators_id, String a_country) {
+    /*
+	 * API to update user email id in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 * 
+	 * @param subFee: User's subscription fee
+	 */
+	public static void updateUserSubFee(int uphone, int subFee) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update country of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET a_country = '" + a_country + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update subscription fee of user for the given uphone.
+			String updateSql = "UPDATE user SET sub_fee = '" + subFee + "' WHERE uphone = '"+ uphone + "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist's country updated.");
+			System.out.println("User's subscription fee updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -210,43 +245,23 @@ public class userapi {
 		}
 	}
 
-	public static void updateArtistMonthlyListeners(String creators_id, int monthly_listeners) {
+    /*
+	 * API to update user email id in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 */
+	public static void deleteUser(int uphone) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update number of monthly listeners of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET monthly_listeners = '" + monthly_listeners + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			// execute update statement using Statement object.
-			stmt.execute(updateSql);
-			System.out.println("Artist's monthly listeners updated.");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// Close PreparedStatement and Connection Objects.
-			close(stmt);
-			close(connection);
-		}
-	}
-
-	public static void deleteArtist(String creators_id) {
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
-			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// set the PUB_ID field in ORDERS table to -1 for the publication that is being deleted.
-			// String updateOrdersQuery = "UPDATE ARTIST SET PUB_ID = -1 WHERE PUB_ID = " + creators_id;
-			// Create Statement Object.
-			stmt = connection.createStatement();
-			// execute the update query using Statement Object.
-			// stmt.executeUpdate(updateOrdersQuery);
-			// delete statement to delete the publication with given PUB_ID.
-			String deletePubQuery = "DELETE FROM Creators WHERE creatorsid = '" + creators_id+ "'";
+			// delete statement to delete the user with given uphone.
+			String deletePubQuery = "DELETE FROM user WHERE uphone = '" + uphone+ "'";
 			// execute the delete query using the Statement object.
 			stmt.executeUpdate(deletePubQuery);
-			System.out.println("Artist deleted.");
+			System.out.println("User deleted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -259,7 +274,7 @@ public class userapi {
 
 
 
-    
+
     // method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
