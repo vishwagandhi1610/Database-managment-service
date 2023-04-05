@@ -4,51 +4,44 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class artistapi {
+public class userapi {
     // MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
 	private static final String user = "hsangha";
 	private static final String password = "200473048";
 
 	public static Connection connection = null;
-	public static PreparedStatement s1 = null;
     public static PreparedStatement s2 = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
-    public static void insertArtist(String creatorsid, String cf_name, String cl_name, String labelname, String a_status, String type, String primary_genre, int monthly_listeners,String a_country ) {
+    public static void insertUser(String uphone, String joinDate, String endDate, String ufName, String ulName, String uEmail, String uStatus, int subFee) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-            String s4 = "INSERT INTO Creators VALUES (?,?,?)";
-			// Assigning values to the prepared statement
-            s1 = connection.prepareStatement(s4);
-			s1.setString(1, creatorsid);
-			s1.setString(2, cf_name);
-			s1.setString(3, cl_name);
-
-            String s3= "INSERT INTO Artist VALUES (?,?,?,?,?,?,?)";
+            String s3 = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?)";
 			// Assigning values to the prepared statement
             s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
-            s2.setString(1, creatorsid);
-            s2.setString(2, labelname);
-            s2.setString(3, a_status);
-            s2.setString(4, type);
-            s2.setString(5, primary_genre);
-            s2.setInt(6, monthly_listeners);
-            s2.setString(7, a_country);
-			// execute insert query using PreparedStatement object.
-			s1.executeUpdate();
+            s2.setString(1, uphone);
+            s2.setString(2, joinDate);
+            s2.setString(3, endDate);
+            s2.setString(4, ufName);
+            s2.setString(5, ulName);
+            s2.setString(6, uEmail);
+            s2.setString(7, uStatus);
+            s2.setInt(8, subFee);
+			
+            // execute insert query using PreparedStatement object.
             s2.executeUpdate();
+
 			System.out.println("Artist record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			// Close PreparedStatement and Connection Objects.
-			close(s1);
             close(s2);
 			close(connection);
 		}
@@ -56,25 +49,25 @@ public class artistapi {
 
 
 	/*
-	 * API to update artist first name in creators table.
+	 * API to update user first name in users table.
 	 * 
-	 * @param creators_id: Artist Id
+	 * @param uphone: User's phone number
 	 * 
-	 * @param cf_name: Artist first name
+	 * @param ufName: User's first name
 	 */
-	public static void updateArtistFirstName(String creators_id, String cf_name) {
+    public static void updateUserFirstName(String uphone, String ufName) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
-			System.out.print(creators_id);
-			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update uf_name for the given user.
+			System.out.print(uphone);
+			String updateSql = "UPDATE user SET uf_name = '" + ufName + "' WHERE uphone = '" + uphone+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist first name updated.");
+			System.out.println("User's First name updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -85,24 +78,24 @@ public class artistapi {
 	}
 
 	/*
-	 * API to update artist last name in creators table.
+	 * API to update user last name in users table.
 	 * 
-	 * @param creators_id: Artist Id
+	 * @param uphone: User's phone number
 	 * 
-	 * @param cl_name: Artist last name
+	 * @param ulName: User's last name
 	 */
-	public static void updateArtistLastName(String creators_id, String cl_name) {
+	public static void updateUserLastName(String uphone, String ulName) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Creators SET cl_name = '" + cl_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update ul_name for the given user.
+			String updateSql = "UPDATE user SET ul_name = '" + ulName + "' WHERE uphone = '" + uphone+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist last name updated.");
+			System.out.println("User's Last name updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -112,13 +105,13 @@ public class artistapi {
 		}
 	}
 	
-	public static void updateArtistLabelName(String creators_id, String labelname) {
+	public static void updateUserJoinDateName(String uphone, String joinDate) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Artist SET labelname = '" + labelname + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE user SET join_date = '" + joinDate + "' WHERE uphone = '"+ uphone + "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -263,7 +256,11 @@ public class artistapi {
 		}
 	}
 
-	// method to close PreparedStatement.
+
+
+
+    
+    // method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -272,28 +269,28 @@ public class artistapi {
 			}
 		}
 	}
-
-	// method to close connection
+	
+	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
 				connection.close();
 			} catch (Throwable whatever) {
-			}	
+			}
 		}
-	}	
+	}
 
 	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {
-				result.close();
+		    		result.close();
 			} catch (Throwable whatever) {
 			}
-		}		
-	} 
-
-	// method to statement		
+		}
+	}
+	
+	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -303,4 +300,3 @@ public class artistapi {
 		}
 	}
 }
-
