@@ -145,6 +145,163 @@ public class songapi {
  		}
  	}
 
+     public static void updateMediaDuration(String mediaid, int duration) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            // Get connection object
+            connection = DriverManager.getConnection(jdbcURL, user, password);
+            // update statement to update PUB_TITLE for the given publication id.
+            System.out.print(mediaid);
+            String updateSql = "UPDATE Song SET duration = '" + duration + "' WHERE mediaid = '"+ mediaid+ "'"; 
+            // Create Statement Object.
+            stmt = connection.createStatement();
+            // execute update statement using Statement object.
+            stmt.execute(updateSql);
+            System.out.println("Media Duration updated.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close PreparedStatement and Connection Objects.
+            close(stmt);
+            close(connection);
+        }
+    }
+
+    public static void updateMediaDate(String mediaid, String s_release_date) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            // Get connection object
+            connection = DriverManager.getConnection(jdbcURL, user, password);
+            // update statement to update PUB_TITLE for the given publication id.
+            System.out.print(mediaid);
+            String updateSql = "UPDATE Song SET s_release_date = '" + s_release_date + "' WHERE mediaid = '"+ mediaid+ "'"; 
+            // Create Statement Object.
+            stmt = connection.createStatement();
+            // execute update statement using Statement object.
+            stmt.execute(updateSql);
+            System.out.println("Media Date updated.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close PreparedStatement and Connection Objects.
+            close(stmt);
+            close(connection);
+        }
+    }
+
+    public static void updateMediaRate(String mediaid, int royalty_rate) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            // Get connection object
+            connection = DriverManager.getConnection(jdbcURL, user, password);
+            // update statement to update PUB_TITLE for the given publication id.
+            System.out.print(mediaid);
+            String updateSql = "UPDATE Song SET royalty_rate = '" + royalty_rate + "' WHERE mediaid = '"+ mediaid+ "'"; 
+            // Create Statement Object.
+            stmt = connection.createStatement();
+            // execute update statement using Statement object.
+            stmt.execute(updateSql);
+            System.out.println("Media Royalty rate updated.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close PreparedStatement and Connection Objects.
+            close(stmt);
+            close(connection);
+        }
+    }
+
+    public static void updateMediaPaid(String mediaid, int royalty_paid) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            // Get connection object
+            connection = DriverManager.getConnection(jdbcURL, user, password);
+            // update statement to update PUB_TITLE for the given publication id.
+            System.out.print(mediaid);
+            String updateSql = "UPDATE Song SET royalty_paid = '" + royalty_paid + "' WHERE mediaid = '"+ mediaid+ "'"; 
+            // Create Statement Object.
+            stmt = connection.createStatement();
+            // execute update statement using Statement object.
+            stmt.execute(updateSql);
+            System.out.println("Media Royalty paid updated.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close PreparedStatement and Connection Objects.
+            close(stmt);
+            close(connection);
+        }
+    }
+
+    public static void updateMediaAlbum(String mediaid, String albumid) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            // Get connection object
+            connection = DriverManager.getConnection(jdbcURL, user, password);
+            // update statement to update PUB_TITLE for the given publication id.
+            System.out.print(mediaid);
+            String updateSql = "UPDATE Song SET albumid = '" + albumid + "' WHERE mediaid = '"+ mediaid+ "'"; 
+            // Create Statement Object.
+            stmt = connection.createStatement();
+            // execute update statement using Statement object.
+            stmt.execute(updateSql);
+            System.out.println("Media Album ID  updated.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close PreparedStatement and Connection Objects.
+            close(stmt);
+            close(connection);
+        }
+    }
+
+    public static void updateMediaTrack(String mediaid, int track_no) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            // Get connection object
+            connection = DriverManager.getConnection(jdbcURL, user, password);
+            // update statement to update PUB_TITLE for the given publication id.
+            System.out.print(mediaid);
+            String updateSql = "UPDATE Song SET track_no = '" + track_no + "' WHERE mediaid = '"+ mediaid+ "'"; 
+            // Create Statement Object.
+            stmt = connection.createStatement();
+            // execute update statement using Statement object.
+            stmt.execute(updateSql);
+            System.out.println("Media Track number updated.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close PreparedStatement and Connection Objects.
+            close(stmt);
+            close(connection);
+        }
+    }
+    
+    public static void deleteSong(String mediaid) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// set the PUB_ID field in ORDERS table to -1 for the publication that is being deleted.
+			// String updateOrdersQuery = "UPDATE ARTIST SET PUB_ID = -1 WHERE PUB_ID = " + creators_id;
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute the update query using Statement Object.
+			// stmt.executeUpdate(updateOrdersQuery);
+			// delete statement to delete the publication with given PUB_ID.
+			String deletePubQuery = "DELETE FROM Media WHERE mediaid = '" + mediaid+ "'";
+			// execute the delete query using the Statement object.
+			stmt.executeUpdate(deletePubQuery);
+			System.out.println("Song deleted.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
 
 
 
