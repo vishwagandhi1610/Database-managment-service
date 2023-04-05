@@ -192,37 +192,80 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
+							
+							case 2:
+								System.out.print("Enter podcast host Id:");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast host last name:");
+								cl_name = scanner.nextLine();
+								podcasthostapi.updatePodcastHostLastName(creators_id, cl_name);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case 3:
+								System.out.print("Enter podcast host Id:");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast host email:");
+								email = scanner.nextLine();
+								podcasthostapi.updatePodcastHostEmail(creators_id, email);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							
+							case 4:
+								System.out.print("Enter podcast host Id:");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast host city:");
+								city = scanner.nextLine();
+								podcasthostapi.updatePodcastHostCity(creators_id, city);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case 5:
+								System.out.print("Enter podcast host Id:");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast host phone:");
+								phone = Integer.parseInt(scanner.nextLine());
+								podcasthostapi.updatePodcastHostPhone(creators_id, phone);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+							
 
 							}
 					    }
 						case "S1":
+						String mediaid;
 						System.out.print("Enter Song Id:");
-						mediaid = scanner.nextLine();
-						System.out.print("Enter Song Name:");
-						string media_name = scanner.nextLine();
-						System.out.print("Enter Song genre");
-						string genre = scanner.nextLine();
-						System.out.print("Enter Song language:");
-						String language = scanner.nextLine();
-						System.out.print("Enter Song country");
-						String m_country = scanner.nextLine();
-						System.out.print("Enter Song duration");
-						int duration = Integer.parseInt(scanner.nextLine());
-						System.out.print("Enter Song release date");
-						String s_release_date = scanner.nextLine();
-						System.out.print("Enter Song royalty_rate");
-						int royalty_rate = Integer.parseInt(scanner.nextLine());
-						System.out.print("Enter Song royalty_paid");
-						int royalty_paid = Integer.parseInt(scanner.nextLine());
-						System.out.print("Enter Song Album ID");
-						String albumid = scanner.nextLine();
-						System.out.print("Enter Song Track number");
-						int track_no = Integer.parseInt(scanner.nextLine());
+							mediaid = scanner.nextLine();
+							System.out.print("Enter Song Name:");
+						 	String media_name = scanner.nextLine();
+							System.out.print("Enter Song genre");
+							String genre = scanner.nextLine();
+							System.out.print("Enter Song language:");
+							String language = scanner.nextLine();
+							System.out.print("Enter Song country");
+							String m_country = scanner.nextLine();
+							System.out.print("Enter Song duration");
+							int duration = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter Song release date");
+							String s_release_date = scanner.nextLine();
+							System.out.print("Enter Song royalty_rate");
+							int royalty_rate = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter Song royalty_paid");
+							int royalty_paid = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter Song Album ID");
+							String albumid = scanner.nextLine();
+							System.out.print("Enter Song Track number");
+							int track_no = Integer.parseInt(scanner.nextLine());
 
-						songapi.insertSong(mediaid,media_name, genre, language, m_country, duration, s_release_date, royalty_rate,royalty_paid, albumid ,track_no);
-						System.out.print("Press Enter key to continue...");
-						key = scanner.nextLine();
-					break;
+							songapi.insertSong(mediaid,media_name, genre, language, m_country, duration, s_release_date, royalty_rate,royalty_paid, albumid ,track_no);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+						break;
 
 					case "S2":
 						ch = -1;
@@ -240,7 +283,6 @@ public class Main {
 							System.out.println("0. Go Back");
 							System.out.print("Enter your choice:");
 							ch = Integer.parseInt(scanner.nextLine());
-							String mediaid;
 							switch (ch) {
 							case 1:
 								System.out.print("Enter Song Id:");

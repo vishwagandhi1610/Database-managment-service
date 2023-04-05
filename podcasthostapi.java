@@ -71,6 +71,90 @@ public class podcasthostapi {
 			close(connection);
 		}
 	}
+
+    public static void updatePodcastHostLastName(String creators_id, String cl_name) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update type of artist for the given creators id.
+			String updateSql = "UPDATE Creators SET cl_name = '" + cl_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Podcast Host last name updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+    public static void updatePodcastHostEmail(String creators_id, String email) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update type of artist for the given creators id.
+			String updateSql = "UPDATE podcastHost SET email = '" + email + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Podcast Host last name updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+    public static void updatePodcastHostCity(String creators_id, String city) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update type of artist for the given creators id.
+			String updateSql = "UPDATE podcastHost SET city = '" + city + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Podcast Host last name updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+    public static void updatePodcastHostPhone(String creators_id, int phone) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update type of artist for the given creators id.
+			String updateSql = "UPDATE podcastHost SET phone = '" + phone + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Podcast Host last name updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
         	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
