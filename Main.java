@@ -77,7 +77,7 @@ public class Main {
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
 							break;
-/*
+
 						case 3:
 							System.out.print("Enter Artist Id:");
 							creators_id = scanner.nextLine();
@@ -87,7 +87,7 @@ public class Main {
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
 							break;
-
+/*
 						case 4:
 							System.out.print("Enter Artist Id:");
 							creators_id = scanner.nextLine();
@@ -194,4 +194,5 @@ public class Main {
 	}
 
 }
+
 
