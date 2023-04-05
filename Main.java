@@ -153,6 +153,24 @@ public class Main {
 					key = scanner.nextLine();
 					break;
 
+					case "PH1":
+						System.out.print("Enter Podcast Host Id:");
+						creatorsid = scanner.nextLine();
+						System.out.print("Enter Podcast Host First Name:");
+						cf_name = scanner.nextLine();
+						System.out.print("Enter Podcast Host last Name:");
+						cl_name = scanner.nextLine();
+						System.out.print("Enter Podcast Host email:");
+						String email = scanner.nextLine();
+						System.out.print("Enter Podcast Host city");
+						String city = scanner.nextLine();
+						System.out.print("Enter Podcast Host phone");
+						int phone = scanner.nextInt();
+						podcasthostapi.insertPodcastHost(creatorsid,cf_name,cl_name,email,phone,city);
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+					break;
+
 
 
 			case "0":
@@ -184,6 +202,9 @@ public class Main {
 		System.out.println("--------------Artist Information--------------");
 		System.out.println("A1. Enter information for a new artist");
 		System.out.println("A2. Update Information of a artist");
+		System.out.println("--------------Podcast Host Information--------------");
+		System.out.println("PH1. Enter information for a new podcast host");
+		// System.out.println("PH2. Update Information of a podcast host");
 		// System.out.println("A3. Delete information of a artist");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
