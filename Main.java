@@ -171,6 +171,29 @@ public class Main {
 						key = scanner.nextLine();
 					break;
 
+					case "PH2":
+						int ch = -1;
+						while (ch != 0) {
+							System.out.println("1. Update podcast host first name");
+							System.out.println("2. Update podcast host last name");
+							System.out.println("3. Update email for podcast host");
+							System.out.println("4. Update phone for podcast host");
+							System.out.println("5. Update city for podcast host");
+							System.out.println("0. Go Back");
+							System.out.print("Enter your choice:");
+							ch = Integer.parseInt(scanner.nextLine());
+							String creators_id;
+							switch (ch) {
+							case 1:
+								System.out.print("Enter podcast host Id:");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast host first name:");
+								cf_name = scanner.nextLine();
+								podcasthostapi.updatePodcastHostFirstName(creators_id, cf_name);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 
 
 			case "0":
@@ -204,7 +227,7 @@ public class Main {
 		System.out.println("A2. Update Information of a artist");
 		System.out.println("--------------Podcast Host Information--------------");
 		System.out.println("PH1. Enter information for a new podcast host");
-		// System.out.println("PH2. Update Information of a podcast host");
+		System.out.println("PH2. Update Information of a podcast host");
 		// System.out.println("A3. Delete information of a artist");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
