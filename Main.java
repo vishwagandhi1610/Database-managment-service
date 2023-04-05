@@ -153,7 +153,13 @@ public class Main {
 					key = scanner.nextLine();
 					break;
 
-
+					case "EP8":
+						System.out.print("Enter Creators Id:");
+						String creators_id = scanner.nextLine();
+						artistapi.deleteArtist(creators_id);
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+						break;
 
 					case "PH1":
 						System.out.print("Enter Podcast Host Id:");
