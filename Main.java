@@ -422,6 +422,14 @@ public class Main {
 					key = scanner.nextLine();
 					break;
 
+				case "S3":
+					System.out.print("Enter Song Id:");
+					mediaid = scanner.nextLine();
+					songapi.deleteSong(mediaid);
+					System.out.print("Press Enter key to continue...");
+					key = scanner.nextLine();
+					break;
+
 			case "0":
 					System.out.println("Thank you for using the system!");
 					break;
@@ -460,6 +468,7 @@ public class Main {
 		System.out.println("--------------Song Information--------------");
 		System.out.println("S1. Enter information for a new song ");
 		System.out.println("S2. Update Information of a song");
+		System.out.println("S3. Delete information of a song");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
