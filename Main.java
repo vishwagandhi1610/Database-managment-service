@@ -375,6 +375,15 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
+							case 0:
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+	
+							default:
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
 
 							}
 						}
