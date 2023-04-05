@@ -154,26 +154,121 @@ public class artistapi {
 		}
 	}
 
-    	// method to close Connection.
+	public static void updateArtistType(String creators_id, String type) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update type of artist for the given creators id.
+			String updateSql = "UPDATE Creators SET type = '" + type + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist Type updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	public static void updateArtistPrimaryGenre(String creators_id, String primary_genre) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update primary genre of artist for the given creators id.
+			String updateSql = "UPDATE Creators SET primary_genre = '" + primary_genre + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist's primary genre updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	public static void updateArtistCountry(String creators_id, String a_country) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update country of artist for the given creators id.
+			String updateSql = "UPDATE Creators SET a_country = '" + a_country + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist's country updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	public static void updateArtistMonthlyListeners(String creators_id, int monthly_listeners) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update number of monthly listeners of artist for the given creators id.
+			String updateSql = "UPDATE Creators SET monthly_listeners = '" + monthly_listeners + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Artist's monthly listeners updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	// method to close PreparedStatement.
+	static void close(PreparedStatement statement) {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (Throwable whatever) {
+			}
+		}
+	}
+
+	// method to close connection
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
 				connection.close();
 			} catch (Throwable whatever) {
-			}
+			}	
 		}
-	}
-   // method to close ResultSet
+	}	
+
+	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {
 				result.close();
 			} catch (Throwable whatever) {
 			}
-		}
-	}
-
-    // method to Statement.
+		}		
+	} 
+	
+	// method to statement		
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
