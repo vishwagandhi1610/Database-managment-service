@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ public class artistapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
-    public static void insertArtist(String creatorsid, String cf_name, String cl_name, String labelname, String a_status, String type, String primary_genre, String a_country ) {
+    public static void insertArtist(String creatorsid, String cf_name, String cl_name, String labelname, String a_status, String type, String primary_genre, int monthly_listeners,String a_country ) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -38,6 +39,7 @@ public class artistapi {
             s2.setString(3, a_status);
             s2.setString(4, type);
             s2.setString(5, primary_genre);
+            s2.setInt(6, monthly_listeners);
             s2.setString(7, a_country);
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
@@ -67,7 +69,8 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE CREATORS SET cf_name = '" + cf_name + "' WHERE creators_id = " + creators_id;
+			System.out.print(creators_id);
+			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -89,13 +92,13 @@ public class artistapi {
 	 * 
 	 * @param cl_name: Artist last name
 	 */
-	public static void updateArtistLabelName(String creators_id, String cl_name) {
+	public static void updateArtistLastName(String creators_id, String cl_name) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE CREATORS SET cl_name = '" + cl_name + "' WHERE creators_id = " + creators_id;
+			String updateSql = "UPDATE Creators SET cl_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
