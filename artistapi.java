@@ -98,7 +98,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Creators SET cl_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Creators SET cl_name = '" + cl_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
