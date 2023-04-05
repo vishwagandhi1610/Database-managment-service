@@ -132,7 +132,7 @@ public class Main {
 							System.out.print("Enter Artist Id for which the monthly listeners needs to be updated:");
 							creators_id = scanner.nextLine();
 							System.out.print("Enter the monthly listeners for the artist :");
-							 monthly_listeners = scanner.nextLine();
+							 monthly_listeners = scanner.nextInt();
 							artistapi.updateArtistMonthlyListeners(creators_id,monthly_listeners);
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
