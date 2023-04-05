@@ -29,7 +29,7 @@ public class podcasthostapi {
 			s1.setString(2, cf_name);
 			s1.setString(3, cl_name);
 
-            String s3= "INSERT INTO Artist VALUES (?,?,?,?)";
+            String s3= "INSERT INTO podcastHost VALUES (?,?,?,?)";
 			// Assigning values to the prepared statement
             s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement

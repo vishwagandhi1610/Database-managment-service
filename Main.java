@@ -87,7 +87,7 @@ public class Main {
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
 							break;
-
+/*
 						case 4:
 							System.out.print("Enter Artist Id:");
 							creators_id = scanner.nextLine();
@@ -137,7 +137,7 @@ public class Main {
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
 							break;
-
+*/
 						case 0:
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
@@ -165,7 +165,7 @@ public class Main {
 						System.out.print("Enter Podcast Host city");
 						String city = scanner.nextLine();
 						System.out.print("Enter Podcast Host phone");
-						int phone = scanner.nextInt();
+						int phone = Integer.parseInt(scanner.nextLine());
 						podcasthostapi.insertPodcastHost(creatorsid,cf_name,cl_name,email,phone,city);
 						System.out.print("Press Enter key to continue...");
 						key = scanner.nextLine();
@@ -215,5 +215,3 @@ public class Main {
 	}
 
 }
-
-
