@@ -123,7 +123,7 @@ public class artistapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist last name updated.");
+			System.out.println("Artist label name name updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -144,7 +144,7 @@ public class artistapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist ID updated.");
+			System.out.println("Artist Status updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
