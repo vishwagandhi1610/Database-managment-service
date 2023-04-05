@@ -147,10 +147,13 @@ public class Main {
 							key = scanner.nextLine();
 							break;
 						}
+
 					}
 					System.out.print("Press Enter key to continue...");
 					key = scanner.nextLine();
 					break;
+
+
 
 					case "PH1":
 						System.out.print("Enter Podcast Host Id:");
@@ -233,10 +236,23 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-							
 
+							case 0:
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+	
+							default:
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
 							}
-					    }
+	
+						}
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+						break;
+
 						case "S1":
 						String mediaid;
 						System.out.print("Enter Song Id:");
@@ -261,7 +277,6 @@ public class Main {
 							String albumid = scanner.nextLine();
 							System.out.print("Enter Song Track number");
 							int track_no = Integer.parseInt(scanner.nextLine());
-
 							songapi.insertSong(mediaid,media_name, genre, language, m_country, duration, s_release_date, royalty_rate,royalty_paid, albumid ,track_no);
 							System.out.print("Press Enter key to continue...");
 							key = scanner.nextLine();
@@ -389,6 +404,9 @@ public class Main {
 
 							}
 						}
+					System.out.print("Press Enter key to continue...");
+					key = scanner.nextLine();
+					break;
 
 			case "0":
 					System.out.println("Thank you for using the system!");
@@ -420,6 +438,7 @@ public class Main {
 		System.out.println("--------------Artist Information--------------");
 		System.out.println("A1. Enter information for a new artist");
 		System.out.println("A2. Update Information of a artist");
+		System.out.println("A3. Delete Information of a artist");
 		System.out.println("--------------Podcast Host Information--------------");
 		System.out.println("PH1. Enter information for a new podcast host");
 		System.out.println("PH2. Update Information of a podcast host");
