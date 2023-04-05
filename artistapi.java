@@ -118,7 +118,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Creators SET labelname = '" + labelname + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET labelname = '" + labelname + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -139,7 +139,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update artist_status for the given creators id.
-			String updateSql = "UPDATE Creators SET a_status = '" + a_status + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET a_status = '" + a_status + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -160,7 +160,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update type of artist for the given creators id.
-			String updateSql = "UPDATE Creators SET type = '" + type + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET type = '" + type + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -181,7 +181,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update primary genre of artist for the given creators id.
-			String updateSql = "UPDATE Creators SET primary_genre = '" + primary_genre + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET primary_genre = '" + primary_genre + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -202,7 +202,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update country of artist for the given creators id.
-			String updateSql = "UPDATE Creators SET a_country = '" + a_country + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET a_country = '" + a_country + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -223,7 +223,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update number of monthly listeners of artist for the given creators id.
-			String updateSql = "UPDATE Creators SET monthly_listeners = '" + monthly_listeners + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET monthly_listeners = '" + monthly_listeners + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -267,7 +267,7 @@ public class artistapi {
 			}
 		}		
 	} 
-	
+
 	// method to statement		
 	static void close(Statement statement) {
 		if (statement != null) {
