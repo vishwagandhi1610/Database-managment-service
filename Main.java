@@ -176,8 +176,8 @@ public class Main {
 							System.out.println("1. Update podcast host first name");
 							System.out.println("2. Update podcast host last name");
 							System.out.println("3. Update email for podcast host");
-							System.out.println("4. Update phone for podcast host");
-							System.out.println("5. Update city for podcast host");
+							System.out.println("4. Update city for podcast host");
+							System.out.println("5. Update phone for podcast host");
 							System.out.println("0. Go Back");
 							System.out.print("Enter your choice:");
 							ch = Integer.parseInt(scanner.nextLine());
