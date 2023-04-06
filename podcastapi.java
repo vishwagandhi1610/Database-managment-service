@@ -46,7 +46,7 @@ public class podcastapi {
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
             s2.executeUpdate();
-			System.out.println("Song record has been inserted.");
+			System.out.println("Podcast record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
