@@ -59,7 +59,7 @@ public class userapi {
                 s2.setNull(6, Types.NULL);
             }
             else{
-                s2.setString(3, uEmail);
+                s2.setString(6, uEmail);
             }
             if (uStatus == "") {
                 s2.setNull(7, Types.NULL);
