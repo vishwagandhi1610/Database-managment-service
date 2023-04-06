@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 
 public class albumapi {
     // MariaDB Credentials
@@ -41,8 +42,18 @@ public class albumapi {
             s2.setString(1, albumid);
             s2.setString(2, albumName);
             s2.setInt(3, aReleaseYear);
-            s2.setString(4, edition);
-            s2.setString(5, artistid);
+            if (edition == "") {
+                s2.setNull(4, Types.NULL);
+            }
+            else{
+                s2.setString(4, edition);
+            }
+            if (artistid == "") {
+                s2.setNull(5, Types.NULL);
+            }
+            else{
+                s2.setString(5, artistid);
+            }
 			
             // execute insert query using PreparedStatement object.
             s2.executeUpdate();
