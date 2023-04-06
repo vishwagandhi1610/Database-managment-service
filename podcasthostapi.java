@@ -56,7 +56,7 @@ public class podcasthostapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update first name of Podcasy Host for the given creators id.
+			// update statement to update first name of Podcast Host for the given creators id.
 			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -104,7 +104,7 @@ public class podcasthostapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Podcast Host last name updated.");
+			System.out.println("Podcast Host email updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -125,7 +125,7 @@ public class podcasthostapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Podcast Host last name updated.");
+			System.out.println("Podcast Host city updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -146,7 +146,7 @@ public class podcasthostapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Podcast Host last name updated.");
+			System.out.println("Podcast Host phone updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -165,9 +165,7 @@ public class podcasthostapi {
 			// String updateOrdersQuery = "UPDATE ARTIST SET PUB_ID = -1 WHERE PUB_ID = " + creators_id;
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			// execute the update query using Statement Object.
-			// stmt.executeUpdate(updateOrdersQuery);
-			// delete statement to delete the publication with given PUB_ID.
+			// delete statement to delete the Podcast Host with given creators_id.
 			String deletePubQuery = "DELETE FROM Creators WHERE creatorsid = '" + creators_id+ "'";
 			// execute the delete query using the Statement object.
 			stmt.executeUpdate(deletePubQuery);

@@ -61,7 +61,7 @@ public class songapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
+			// update statement to update media name for the given mediaid.
 			System.out.print(mediaid);
 			String updateSql = "UPDATE Media SET media_name = '" + media_name + "' WHERE mediaid = '"+ mediaid+ "'"; 
 			// Create Statement Object.
@@ -83,7 +83,7 @@ public class songapi {
  			Class.forName("org.mariadb.jdbc.Driver");
  			// Get connection object
  			connection = DriverManager.getConnection(jdbcURL, user, password);
- 			// update statement to update PUB_TITLE for the given publication id.
+ 			// update statement to update genre of a song for the given mediaid.
  			System.out.print(mediaid);
  			String updateSql = "UPDATE Media SET genre = '" + genre + "' WHERE mediaid = '"+ mediaid+ "'"; 
  			// Create Statement Object.
@@ -105,7 +105,7 @@ public class songapi {
  			Class.forName("org.mariadb.jdbc.Driver");
  			// Get connection object
  			connection = DriverManager.getConnection(jdbcURL, user, password);
- 			// update statement to update PUB_TITLE for the given publication id.
+ 			// update statement to update language of a song for the given mediaid.
  			System.out.print(mediaid);
  			String updateSql = "UPDATE Media SET language = '" + language + "' WHERE mediaid = '"+ mediaid+ "'"; 
  			// Create Statement Object.
@@ -128,7 +128,7 @@ public class songapi {
  			Class.forName("org.mariadb.jdbc.Driver");
  			// Get connection object
  			connection = DriverManager.getConnection(jdbcURL, user, password);
- 			// update statement to update PUB_TITLE for the given publication id.
+ 			// update statement to update country the song belongs to for the given mediaid.
  			System.out.print(mediaid);
  			String updateSql = "UPDATE Media SET m_country = '" + m_country + "' WHERE mediaid = '"+ mediaid+ "'"; 
  			// Create Statement Object.
@@ -150,7 +150,7 @@ public class songapi {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            // update statement to update PUB_TITLE for the given publication id.
+            // update statement to update duration of a song for the given mediaid.
             System.out.print(mediaid);
             String updateSql = "UPDATE Song SET duration = '" + duration + "' WHERE mediaid = '"+ mediaid+ "'"; 
             // Create Statement Object.
@@ -172,14 +172,14 @@ public class songapi {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            // update statement to update PUB_TITLE for the given publication id.
+            // update statement to update release date of a song for the given mediaid.
             System.out.print(mediaid);
             String updateSql = "UPDATE Song SET s_release_date = '" + s_release_date + "' WHERE mediaid = '"+ mediaid+ "'"; 
             // Create Statement Object.
             stmt = connection.createStatement();
             // execute update statement using Statement object.
             stmt.execute(updateSql);
-            System.out.println("Media Date updated.");
+            System.out.println("Media Release Date updated.");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -194,7 +194,7 @@ public class songapi {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            // update statement to update PUB_TITLE for the given publication id.
+            // update statement to update royalty rate of a song for the given mediaid.
             System.out.print(mediaid);
             String updateSql = "UPDATE Song SET royalty_rate = '" + royalty_rate + "' WHERE mediaid = '"+ mediaid+ "'"; 
             // Create Statement Object.
@@ -216,7 +216,7 @@ public class songapi {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            // update statement to update PUB_TITLE for the given publication id.
+            // update statement to update royalty to be paid for a song for the given mediaid.
             System.out.print(mediaid);
             String updateSql = "UPDATE Song SET royalty_paid = '" + royalty_paid + "' WHERE mediaid = '"+ mediaid+ "'"; 
             // Create Statement Object.
@@ -238,7 +238,7 @@ public class songapi {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            // update statement to update PUB_TITLE for the given publication id.
+            // update statement to update album the song belongs to for the given mediaid.
             System.out.print(mediaid);
             String updateSql = "UPDATE Song SET albumid = '" + albumid + "' WHERE mediaid = '"+ mediaid+ "'"; 
             // Create Statement Object.
@@ -260,7 +260,7 @@ public class songapi {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            // update statement to update PUB_TITLE for the given publication id.
+            // update statement to update track number of a song for the given mediaid.
             System.out.print(mediaid);
             String updateSql = "UPDATE Song SET track_no = '" + track_no + "' WHERE mediaid = '"+ mediaid+ "'"; 
             // Create Statement Object.
@@ -288,7 +288,7 @@ public class songapi {
 			stmt = connection.createStatement();
 			// execute the update query using Statement Object.
 			// stmt.executeUpdate(updateOrdersQuery);
-			// delete statement to delete the publication with given PUB_ID.
+			// delete statement to delete the song with given mediaid.
 			String deletePubQuery = "DELETE FROM Media WHERE mediaid = '" + mediaid+ "'";
 			// execute the delete query using the Statement object.
 			stmt.executeUpdate(deletePubQuery);
@@ -301,9 +301,6 @@ public class songapi {
 			close(connection);
 		}
 	}
-
-
-
 
 
     	// method to close PreparedStatement.
