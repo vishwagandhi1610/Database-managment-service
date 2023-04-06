@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 
 public class userapi {
     // MariaDB Credentials
@@ -46,11 +47,26 @@ public class userapi {
 			// Assigning values to the prepared statement
             s2.setInt(1, uphone);
             s2.setString(2, joinDate);
-            s2.setString(3, endDate);
+            if (endDate == "") {
+                s2.setNull(3, Types.NULL);
+            }
+            else{
+                s2.setString(3, endDate);
+            }
             s2.setString(4, ufName);
             s2.setString(5, ulName);
-            s2.setString(6, uEmail);
-            s2.setString(7, uStatus);
+            if (uEmail == "") {
+                s2.setNull(6, Types.NULL);
+            }
+            else{
+                s2.setString(6, uEmail);
+            }
+            if (uStatus == "") {
+                s2.setNull(7, Types.NULL);
+            }
+            else{
+                s2.setString(7, uStatus);
+            }
             s2.setInt(8, subFee);
 			
             // execute insert query using PreparedStatement object.
