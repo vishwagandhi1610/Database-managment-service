@@ -15,6 +15,25 @@ public class userapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
+    /*
+	 * API to insert user record in users table.
+	 * 
+	 * @param uphone: User's phone number
+	 * 
+     * @param joinDate: User's join date
+     * 
+     * @param endDate: User's end date
+     * 
+	 * @param ufName: User's first name
+     * 
+     * @param ulName: User's last name
+     * 
+     * @param uEmail: User's email ID
+     * 
+     * @param uStatus: User's status whether active or inactive
+     * 
+     * @param subFee: User's subscription fee
+	 */
     public static void insertUser(int uphone, String joinDate, String endDate, String ufName, String ulName, String uEmail, String uStatus, int subFee) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -37,7 +56,7 @@ public class userapi {
             // execute insert query using PreparedStatement object.
             s2.executeUpdate();
 
-			System.out.println("Artist record has been inserted.");
+			System.out.println("User record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -246,7 +265,7 @@ public class userapi {
 	}
 
     /*
-	 * API to update user email id in users table.
+	 * API to delete user record from users table.
 	 * 
 	 * @param uphone: User's phone number
 	 */
@@ -257,7 +276,7 @@ public class userapi {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			// delete statement to delete the user with given uphone.
+			// delete statement to delete the user record with given uphone.
 			String deletePubQuery = "DELETE FROM user WHERE uphone = '" + uphone+ "'";
 			// execute the delete query using the Statement object.
 			stmt.executeUpdate(deletePubQuery);

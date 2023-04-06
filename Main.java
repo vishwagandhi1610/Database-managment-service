@@ -430,6 +430,101 @@ public class Main {
 						key = scanner.nextLine();
 						break;
 
+					
+					case "AM1":
+						System.out.print("Enter Album ID:");
+						String albumid2 = scanner.nextLine();
+						System.out.print("Enter Album Name:");
+						String albumName = scanner.nextLine();
+						System.out.print("Enter Album's Release Year:");
+						int aReleaseYear = Integer.parseInt(scanner.nextLine());
+						System.out.print("Enter Album's edition (special/limited/collector's edition):");
+						String edition = scanner.nextLine();
+						System.out.print("Enter Artist's ID associated to the respective album:");
+						String artistid = scanner.nextLine();
+						
+						albumapi.insertAlbum(albumid2, albumName, aReleaseYear, edition, artistid);
+						
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+					break;
+					
+					case "AM2":
+					ch = -1;
+					while (ch != 0) {
+						System.out.println("1. Update Album's name");
+						System.out.println("2. Update Album's Release Year");
+						System.out.println("3. Update Album's edition");
+						System.out.println("4. Update Artist's ID associated to the respective album");
+						System.out.println("0. Go Back");
+						System.out.print("Enter your choice:");
+						ch = Integer.parseInt(scanner.nextLine());
+						switch (ch) {
+						case 1:
+							System.out.print("Enter Album ID: ");
+							albumid2 = scanner.nextLine();
+							System.out.print("Enter Album's name: ");
+							albumName = scanner.nextLine();
+							albumapi.updateAlbumName(albumid2, albumName);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 2:
+							System.out.print("Enter Album ID: ");
+							albumid2 = scanner.nextLine();
+							System.out.print("Enter Album's Release Year: ");
+							aReleaseYear = Integer.parseInt(scanner.nextLine());
+							albumapi.updateAlbumReleaseYear(albumid2, aReleaseYear);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 3:
+							System.out.print("Enter Album ID: ");
+							albumid2 = scanner.nextLine();
+							System.out.print("Enter Album's edition: ");
+							edition = scanner.nextLine();
+							albumapi.updateAlbumEdition(albumid2, edition);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 4:
+							System.out.print("Enter Album ID: ");
+							albumid2 = scanner.nextLine();
+							System.out.print("Enter Artist's ID associated to the respective album: ");
+							artistid = scanner.nextLine();
+							albumapi.updateAlbumArtistID(albumid2, artistid);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						case 0:
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+
+						default:
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+							break;
+						}
+
+					}
+					System.out.print("Press Enter key to continue...");
+					key = scanner.nextLine();
+					break;
+
+					case "AM3":
+						System.out.print("Enter Album ID: ");
+						albumid2 = scanner.nextLine();
+						albumapi.deleteAlbum(albumid2);
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+						break;
+					
+
 					case "U1":
 						System.out.print("Enter User's Phone Number:");
 						int uphone = Integer.parseInt(scanner.nextLine());
@@ -601,6 +696,10 @@ public class Main {
 		System.out.println("S1. Enter information for a new song ");
 		System.out.println("S2. Update Information of a song");
 		System.out.println("S3. Delete information of a song");
+		System.out.println("--------------Album Information--------------");
+		System.out.println("AM1. Enter information for a new album");
+		System.out.println("AM2. Update Information of a album");
+		System.out.println("AM3. Delete Information of a album");
 		System.out.println("--------------User Information--------------");
 		System.out.println("U1. Enter information for a new user");
 		System.out.println("U2. Update Information of a user");
