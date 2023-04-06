@@ -54,13 +54,13 @@ public class podcastEpisode_listeningapi {
 	 * 
 	 * @param episode_count: Episode Count 
 	 */
-    public static void updatePodcastEpCount(String podcastid, int listening_count) {
+    public static void updatePodcastEpCount(String podcastid,int episodeno, String pel_date,int listening_count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE podcastEpisode_listening SET listening_count = '" + listening_count + "' WHERE podcastid = '"+ podcastid+ "'"; 
+			String updateSql = "UPDATE podcastEpisode_listening SET listening_count = '" + listening_count + "' WHERE podcastid = '"+ podcastid+ "' AND episodeno = '"+ episodeno+ "'AND pel_date = '"+ pel_date+ "' "; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.

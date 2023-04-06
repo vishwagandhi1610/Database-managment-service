@@ -566,12 +566,7 @@ public class Main {
 					case "PEL2":
 						ch = -1;
 						while (ch != 0) {
-							System.out.println("1. Update Podcast name");
-							System.out.println("2. Update Podcast genre");
-							System.out.println("3. Update Podcast language");
-							System.out.println("4. Update Podcast country");
-							System.out.println("5. Update Podcast Episode Count");
-							System.out.println("6. Update Podcast Host ID");
+							System.out.println("1. Update Podcast Episode Listening Count");
 							System.out.println("0. Go Back");
 							System.out.print("Enter your choice:");
 							ch = Integer.parseInt(scanner.nextLine());
@@ -579,9 +574,14 @@ public class Main {
 							case 1:
 								System.out.print("Enter Podcast Id:");
 								mediaid = scanner.nextLine();
-								System.out.print("Enter Podcast Episode Listening Count:");
+								System.out.print("Enter Podcast Episode number");
 								episodeno = Integer.parseInt(scanner.nextLine());
-								podcastEpisode_listeningapi.updatePodcastEpCount(mediaid, episodeno);
+								System.out.print("Enter Podcast Episode Listening Date :");
+						 		pel_date = scanner.nextLine();
+
+								System.out.print("Enter Podcast Episode Listening Count:");
+								listening_count = Integer.parseInt(scanner.nextLine());
+								podcastEpisode_listeningapi.updatePodcastEpCount(mediaid,episodeno,pel_date , listening_count);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -874,7 +874,6 @@ public class Main {
 		System.out.println("--------------Podcast Episode Listening Information--------------");
 		System.out.println("PEL1. Enter information for a new podcast episode listening ");
 		System.out.println("PEL2. Update Information of a podcast episode listening");
-		System.out.println("PEL3. Delete information of a podcast episode listening");
 		System.out.println("--------------Album Information--------------");
 		System.out.println("AM1. Enter information for a new album");
 		System.out.println("AM2. Update Information of a album");
