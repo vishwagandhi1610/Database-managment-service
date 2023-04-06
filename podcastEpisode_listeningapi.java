@@ -20,7 +20,7 @@ public class podcastEpisode_listeningapi {
 	 * 
 	 */
 
-    public static void insertPodcast(String podcastid,int episodeno,String pel_date,int listening_count ) {
+    public static void insertPodcastEpL(String podcastid,int episodeno,String pel_date,int listening_count ) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -75,13 +75,6 @@ public class podcastEpisode_listeningapi {
 		}
 	}
 
-	
-
-	/*
-	 * API For updating rest all values are already present in songapi.java
-	 * API For delete Podcast is already present in songapi.java
-	
-	 */
 
     	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
