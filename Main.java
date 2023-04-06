@@ -872,9 +872,9 @@ public class Main {
 		System.out.println("P2. Update Information of a podcast");
 		System.out.println("P3. Delete information of a podcast");
 		System.out.println("--------------Podcast Episode Listening Information--------------");
-		System.out.println("P1. Enter information for a new podcast episode listening ");
-		System.out.println("P2. Update Information of a podcast episode listening");
-		System.out.println("P3. Delete information of a podcast episode listening");
+		System.out.println("PEL1. Enter information for a new podcast episode listening ");
+		System.out.println("PEL2. Update Information of a podcast episode listening");
+		System.out.println("PEL3. Delete information of a podcast episode listening");
 		System.out.println("--------------Album Information--------------");
 		System.out.println("AM1. Enter information for a new album");
 		System.out.println("AM2. Update Information of a album");
