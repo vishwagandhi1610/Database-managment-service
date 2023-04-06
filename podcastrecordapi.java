@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class podcastEpisode_listeningapi {
+public class podcastrecordapi {
     // MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
 	private static final String user = "hsangha";
@@ -12,32 +12,33 @@ public class podcastEpisode_listeningapi {
 
 	public static Connection connection = null;
 	public static PreparedStatement s1 = null;
+    public static PreparedStatement s2 = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
 	/*
-	 * API to enter Podcast Episode Listening details in podcastEpisode_listening table.
+	 * API to enter Podcast details in Media and Podcast table.
 	 * 
 	 */
 
-    public static void insertPodcastEpL(String podcastid,int episodeno,String pel_date,int listening_count ) {
+    public static void insertPodcastRecord(String podcastid,String pd_date, int rating,int total_subscribers ) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-            String s4 = "INSERT INTO podcastEpisode_listening VALUES (?,?,?,?)";
+            String s4 = "INSERT INTO podcast_record VALUES (?,?,?,?)";
 			// Assigning values to the prepared statement
             s1 = connection.prepareStatement(s4);
 			s1.setString(1, podcastid);
-			s1.setInt(2, episodeno);
-			s1.setString(3, pel_date);
-			s1.setInt(4, listening_count);
+			s1.setString(2, pd_date);
+			s1.setInt(3, rating);
+			s1.setInt(4, total_subscribers);
 
             
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
-			System.out.println("Podcast Episode Listening record has been inserted.");
+			System.out.println("Podcast Record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -48,29 +49,46 @@ public class podcastEpisode_listeningapi {
 	}
     
 	/*
-	 * API to update Podcast Episode count in Podcast table.
+	 * API to update Podcast Record in Podcast Record table.
 	 * Input:
 	 * @param podcastid: Podcast ID  
-	 * @param episode_count: Episode Count 
-     * @param pel_date: Podcast Episode  
-	 * 
-	 * Update:
-	 * @param episode_count: Episode Count 
-	 * 
-	 * Output : Message
+	 * @param pd_date: Episode Count 
+     * @param rating: Podcast Episode  
+     * @param total_subscribers: Episode Count 
 	 */
-    public static void updatePodcastEpCount(String podcastid,int episodeno, String pel_date,int listening_count) {
+    public static void updatePodcastRating(String podcastid,String pd_date, int rating) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE podcastEpisode_listening SET listening_count = '" + listening_count + "' WHERE podcastid = '"+ podcastid+ "' AND episodeno = '"+ episodeno+ "'AND pel_date = '"+ pel_date+ "' "; 
+			String updateSql = "UPDATE podcast_record SET rating = '" + rating + "' WHERE podcastid = '"+ podcastid+ "' AND pd_date = '"+ pd_date+ "' "; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Podcast Episode listening count  updated.");
+			System.out.println("Podcast Record Rating has been updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+    public static void updatePodcastSub(String podcastid,String pd_date, int total_subscribers) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update PUB_TITLE for the given publication id.
+			String updateSql = "UPDATE podcast_record SET total_subscribers = '" + total_subscribers + "' WHERE podcastid = '"+ podcastid+ "' AND pd_date = '"+ pd_date+ "' "; 
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Podcast Record total subscribers has been updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
