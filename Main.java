@@ -430,6 +430,120 @@ public class Main {
 						key = scanner.nextLine();
 						break;
 
+					case "P1":
+						System.out.print("Enter Podcast Id:");
+							mediaid = scanner.nextLine();
+							System.out.print("Enter Podcast Name:");
+						 	media_name = scanner.nextLine();
+							System.out.print("Enter Podcast genre");
+							genre = scanner.nextLine();
+							System.out.print("Enter Podcast language:");
+							language = scanner.nextLine();
+							System.out.print("Enter Podcast country");
+							m_country = scanner.nextLine();
+							System.out.print("Enter Podcast Episode count");
+							int episode_count = Integer.parseInt(scanner.nextLine());
+							System.out.print("Enter Podcast Host ID ");
+							String hostid = scanner.nextLine();
+							
+							podcastapi.insertPodcast(mediaid,media_name, genre, language, m_country, episode_count, hostid);
+							System.out.print("Press Enter key to continue...");
+							key = scanner.nextLine();
+						break;
+
+					case "P2":
+						ch = -1;
+						while (ch != 0) {
+							System.out.println("1. Update Podcast name");
+							System.out.println("2. Update Podcast genre");
+							System.out.println("3. Update Podcast language");
+							System.out.println("4. Update Podcast country");
+							System.out.println("5. Update Podcast Episode Count");
+							System.out.println("6. Update Podcast Host ID");
+							System.out.println("0. Go Back");
+							System.out.print("Enter your choice:");
+							ch = Integer.parseInt(scanner.nextLine());
+							switch (ch) {
+							case 1:
+								System.out.print("Enter Podcast Id:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast name:");
+								media_name = scanner.nextLine();
+								songapi.updateMediaName(mediaid, media_name);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case 2:
+								System.out.print("Enter Podcast Id:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast genre:");
+								genre = scanner.nextLine();
+								songapi.updateMediaGenre(mediaid, genre);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+							case 3:
+								System.out.print("Enter Podcast Id:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast language:");
+								language = scanner.nextLine();
+								songapi.updateMediaLanguage(mediaid, language);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+							case 4:
+								System.out.print("Enter Podcast Id:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast country:");
+								m_country = scanner.nextLine();
+								songapi.updateMediaCountry(mediaid, m_country);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+								
+							case 5:
+								System.out.print("Enter Podcast Id:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast Episode count:");
+								episode_count = Integer.parseInt(scanner.nextLine());
+								podcastapi.updatePodcastEpCount(mediaid, episode_count);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+							case 6:
+								System.out.print("Enter Podcast Id:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast Host ID:");
+								hostid = scanner.nextLine();
+								podcastapi.updatePodcastHostID(mediaid, hostid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+								
+							case 0:
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+	
+							default:
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							}
+						}
+					System.out.print("Press Enter key to continue...");
+					key = scanner.nextLine();
+					break;
+
+					case "P3":
+						System.out.print("Enter Podcast Id:");
+						mediaid = scanner.nextLine();
+						songapi.deleteSong(mediaid);
+						System.out.print("Press Enter key to continue...");
+						key = scanner.nextLine();
+						break;
 					
 					case "AM1":
 						System.out.print("Enter Album ID:");
@@ -696,6 +810,10 @@ public class Main {
 		System.out.println("S1. Enter information for a new song ");
 		System.out.println("S2. Update Information of a song");
 		System.out.println("S3. Delete information of a song");
+		System.out.println("--------------Podcast Information--------------");
+		System.out.println("P1. Enter information for a new podcast ");
+		System.out.println("P2. Update Information of a podcast");
+		System.out.println("P3. Delete information of a podcast");
 		System.out.println("--------------Album Information--------------");
 		System.out.println("AM1. Enter information for a new album");
 		System.out.println("AM2. Update Information of a album");
