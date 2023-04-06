@@ -5,55 +5,55 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class artistapi {
-    // MariaDB Credentials
+	// MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
 	private static final String user = "hsangha";
 	private static final String password = "200473048";
 
 	public static Connection connection = null;
 	public static PreparedStatement s1 = null;
-    public static PreparedStatement s2 = null;
+	public static PreparedStatement s2 = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
-    public static void insertArtist(String creatorsid, String cf_name, String cl_name, String labelname, String a_status, String type, String primary_genre, int monthly_listeners,String a_country ) {
+	public static void insertArtist(String creatorsid, String cf_name, String cl_name, String labelname,
+			String a_status, String type, String primary_genre, int monthly_listeners, String a_country) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-            String s4 = "INSERT INTO Creators VALUES (?,?,?)";
+			String s4 = "INSERT INTO Creators VALUES (?,?,?)";
 			// Assigning values to the prepared statement
-            s1 = connection.prepareStatement(s4);
+			s1 = connection.prepareStatement(s4);
 			s1.setString(1, creatorsid);
 			s1.setString(2, cf_name);
 			s1.setString(3, cl_name);
 
-            String s3= "INSERT INTO Artist VALUES (?,?,?,?,?,?,?)";
+			String s3 = "INSERT INTO Artist VALUES (?,?,?,?,?,?,?)";
 			// Assigning values to the prepared statement
-            s2 = connection.prepareStatement(s3);
+			s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
-            s2.setString(1, creatorsid);
-            s2.setString(2, labelname);
-            s2.setString(3, a_status);
-            s2.setString(4, type);
-            s2.setString(5, primary_genre);
-            s2.setInt(6, monthly_listeners);
-            s2.setString(7, a_country);
+			s2.setString(1, creatorsid);
+			s2.setString(2, labelname);
+			s2.setString(3, a_status);
+			s2.setString(4, type);
+			s2.setString(5, primary_genre);
+			s2.setInt(6, monthly_listeners);
+			s2.setString(7, a_country);
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
-            s2.executeUpdate();
+			s2.executeUpdate();
 			System.out.println("Artist record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			// Close PreparedStatement and Connection Objects.
 			close(s1);
-            close(s2);
+			close(s2);
 			close(connection);
 		}
 	}
-
 
 	/*
 	 * API to update artist first name in creators table.
@@ -67,8 +67,9 @@ public class artistapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update Artist's first name for the given creators_id.
+			String updateSql = "UPDATE Creators SET cf_name = '" + cf_name + "' WHERE creatorsid = '" + creators_id
+					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -95,8 +96,9 @@ public class artistapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Creators SET cl_name = '" + cl_name + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update Artist's last name for the given creators_id.
+			String updateSql = "UPDATE Creators SET cl_name = '" + cl_name + "' WHERE creatorsid = '" + creators_id
+					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -110,14 +112,15 @@ public class artistapi {
 			close(connection);
 		}
 	}
-	
+
 	public static void updateArtistLabelName(String creators_id, String labelname) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE Artist SET labelname = '" + labelname + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update Artist's label name for the given creators_id.
+			String updateSql = "UPDATE Artist SET labelname = '" + labelname + "' WHERE creatorsid = '" + creators_id
+					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -138,7 +141,8 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update artist_status for the given creators id.
-			String updateSql = "UPDATE Artist SET a_status = '" + a_status + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET a_status = '" + a_status + "' WHERE creatorsid = '" + creators_id
+					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -159,7 +163,7 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update type of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET type = '" + type + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET type = '" + type + "' WHERE creatorsid = '" + creators_id + "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -180,7 +184,8 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update primary genre of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET primary_genre = '" + primary_genre + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET primary_genre = '" + primary_genre + "' WHERE creatorsid = '"
+					+ creators_id + "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -201,7 +206,8 @@ public class artistapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update country of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET a_country = '" + a_country + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			String updateSql = "UPDATE Artist SET a_country = '" + a_country + "' WHERE creatorsid = '" + creators_id
+					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -221,8 +227,10 @@ public class artistapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update number of monthly listeners of artist for the given creators id.
-			String updateSql = "UPDATE Artist SET monthly_listeners = '" + monthly_listeners + "' WHERE creatorsid = '"+ creators_id+ "'"; 
+			// update statement to update number of monthly listeners of artist for the
+			// given creators id.
+			String updateSql = "UPDATE Artist SET monthly_listeners = '" + monthly_listeners + "' WHERE creatorsid = '"
+					+ creators_id + "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -242,14 +250,9 @@ public class artistapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// set the PUB_ID field in ORDERS table to -1 for the publication that is being deleted.
-			// String updateOrdersQuery = "UPDATE ARTIST SET PUB_ID = -1 WHERE PUB_ID = " + creators_id;
-			// Create Statement Object.
 			stmt = connection.createStatement();
-			// execute the update query using Statement Object.
-			// stmt.executeUpdate(updateOrdersQuery);
-			// delete statement to delete the publication with given PUB_ID.
-			String deletePubQuery = "DELETE FROM Creators WHERE creatorsid = '" + creators_id+ "'";
+			// delete statement to delete the artist with given creators_id.
+			String deletePubQuery = "DELETE FROM Creators WHERE creatorsid = '" + creators_id + "'";
 			// execute the delete query using the Statement object.
 			stmt.executeUpdate(deletePubQuery);
 			System.out.println("Artist deleted.");
@@ -278,9 +281,9 @@ public class artistapi {
 			try {
 				connection.close();
 			} catch (Throwable whatever) {
-			}	
+			}
 		}
-	}	
+	}
 
 	// method to close ResultSet
 	static void close(ResultSet result) {
@@ -289,10 +292,10 @@ public class artistapi {
 				result.close();
 			} catch (Throwable whatever) {
 			}
-		}		
-	} 
+		}
+	}
 
-	// method to statement		
+	// method to statement
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -302,4 +305,3 @@ public class artistapi {
 		}
 	}
 }
-
