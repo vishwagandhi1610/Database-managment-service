@@ -903,6 +903,39 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
+								
+							case "AS1":
+								System.out.print("Enter Song ID :");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Album ID:");
+								albumid = scanner.nextLine();
+
+								songapi.updateMediaAlbum(mediaid, albumid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "AS2":
+								System.out.print("Enter Artist ID :");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter Album ID:");
+								albumid = scanner.nextLine();
+
+								albumapi.updateAlbumArtistID(creators_id, albumid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "AS3":
+								System.out.print("Enter Artist ID :");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter Record Label Name :");
+								labelname = scanner.nextLine();
+
+								albumapi.updateAlbumArtistID(creators_id, labelname);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
 
 							case "0":
 								System.out.println("Thank you for using the system!");
@@ -964,6 +997,10 @@ public class Main {
 		System.out.println("U3. Delete Information of a user");
 		System.out.println("--------------Record Label Information--------------");
 		System.out.println("RL1. Enter new record label");
+		System.out.println("--------------Assign--------------");
+		System.out.println("AS1. Assign Song to Album");
+		System.out.println("AS2. Assign Artist to Album");
+		System.out.println("AS3. Assign Artist to Record Label");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
