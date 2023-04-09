@@ -137,10 +137,6 @@ public class podcastapi {
 		}
 	}
 
-	/*
-	 * API For updating rest all values are already present in songapi.java
-	 * API For delete Podcast is already present in songapi.java
-	 */
 	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {

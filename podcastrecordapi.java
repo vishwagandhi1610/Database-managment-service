@@ -61,7 +61,7 @@ public class podcastrecordapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
+			// update statement to update rating for the given podcast id.
 			String updateSql = "UPDATE podcast_record SET rating = '" + rating + "' WHERE podcastid = '"+ podcastid+ "' AND pd_date = '"+ pd_date+ "' "; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -82,7 +82,7 @@ public class podcastrecordapi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
+			// update statement to update total_subscribers for the given podcast id.
 			String updateSql = "UPDATE podcast_record SET total_subscribers = '" + total_subscribers + "' WHERE podcastid = '"+ podcastid+ "' AND pd_date = '"+ pd_date+ "' "; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
