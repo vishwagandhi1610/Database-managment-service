@@ -116,6 +116,27 @@ public class podcastapi {
 		}
 	}
 
+	public static void deletePodcast(String mediaid) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// delete statement to delete the Song with given mediaid.
+			String deletePubQuery = "DELETE FROM Media WHERE mediaid = '" + mediaid + "'";
+			// execute the delete query using the Statement object.
+			stmt.executeUpdate(deletePubQuery);
+			System.out.println("Podcast deleted.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
 	/*
 	 * API For updating rest all values are already present in songapi.java
 	 * API For delete Podcast is already present in songapi.java
