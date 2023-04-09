@@ -21,7 +21,7 @@ public class podcastrecordapi {
 	 * 
 	 */
 
-    public static void insertPodcastRecord(String podcastid,String pd_date, int rating,int total_subscribers ) {
+    public static void insertPodcastRecord(String podcastid,String pd_date, float rating,int total_subscribers ) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -32,7 +32,7 @@ public class podcastrecordapi {
             s1 = connection.prepareStatement(s4);
 			s1.setString(1, podcastid);
 			s1.setString(2, pd_date);
-			s1.setInt(3, rating);
+			s1.setFloat(3, rating);
 			s1.setInt(4, total_subscribers);
 
             
@@ -56,7 +56,7 @@ public class podcastrecordapi {
      * @param rating: Podcast Episode  
      * @param total_subscribers: Episode Count 
 	 */
-    public static void updatePodcastRating(String podcastid,String pd_date, int rating) {
+    public static void updatePodcastRating(String podcastid,String pd_date, Float rating) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object

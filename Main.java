@@ -730,7 +730,7 @@ public class Main {
 								System.out.print("Enter Podcast Record Date ");
 								String pd_date = scanner.nextLine();
 								System.out.print("Enter Podcast Rating :");
-								int rating = Integer.parseInt(scanner.nextLine());
+								Float rating = Float.parseFloat(scanner.nextLine());
 								System.out.print("Enter Podcast Record Total Subscribers");
 								int total_subscribers = Integer.parseInt(scanner.nextLine());
 
@@ -754,7 +754,7 @@ public class Main {
 											System.out.print("Enter Podcast Record Date ");
 											pd_date = scanner.nextLine();
 											System.out.print("Enter Podcast Rating :");
-											rating = Integer.parseInt(scanner.nextLine());
+											rating = Float.parseFloat(scanner.nextLine());
 											podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
