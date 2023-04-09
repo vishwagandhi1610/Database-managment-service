@@ -295,6 +295,11 @@ public class Main {
 								int track_no = Integer.parseInt(scanner.nextLine());
 								songapi.insertSong(mediaid, media_name, genre, language, m_country, duration,
 										s_release_date, royalty_rate, royalty_paid, albumid, track_no);
+
+								System.out.print("Enter Lead Artist ID");
+								String art = scanner.nextLine();
+								songapi.insertArtist(mediaid,art);
+
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;

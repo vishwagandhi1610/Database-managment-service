@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.Scanner;
 public class songapi {
 	// MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
@@ -15,7 +16,7 @@ public class songapi {
 	public static PreparedStatement s2 = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
-
+	
 	public static void insertSong(String mediaid, String media_name, String genre, String language, String m_country,
 			int duration, String s_release_date, int royalty_rate, int royalty_paid, String albumid, int track_no) {
 		try {
@@ -340,6 +341,54 @@ public class songapi {
 			close(connection);
 		}
 	}
+
+
+	public static void insertArtist(String songid, String artistid) {
+		try {
+			Scanner scanner = new Scanner(System.in);
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+
+			String s4 = "INSERT INTO composedby VALUES (?,?,'Yes')";
+			// Assigning values to the prepared statement
+			s1 = connection.prepareStatement(s4);
+			s1.setString(1, songid);
+			s1.setString(2, artistid);
+			s1.executeUpdate();
+			System.out.println("Enter the number of guest artist");
+			int numb = Integer.parseInt(scanner.nextLine());
+			String s3 ;
+			String guest;
+			for (int i = 1; i <= numb; i++) { 
+				System.out.print("Enter Song guest artist");
+				guest = scanner.nextLine();
+				s3 = "INSERT INTO composedby VALUES (?,?,'No')"; 
+				s2 = connection.prepareStatement(s3);
+			// Assigning values to the prepared statement
+				s2.setString(1, songid);
+				s2.setString(2, guest);
+				s2.executeUpdate();
+			}
+			scanner.close();
+			
+			// execute insert query using PreparedStatement object.
+			
+			
+			System.out.println("Song artist record has been inserted.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(s1);
+			close(s2);
+			close(connection);
+		}
+	}
+
+
+
+
 
 	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
