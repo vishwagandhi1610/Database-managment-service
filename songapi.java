@@ -237,7 +237,7 @@ public class songapi {
 		}
 	}
 
-	public static void updateMediaAlbum(String mediaid, String albumid) {
+	public static void assignMediaAlbum(String mediaid, String albumid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -249,7 +249,7 @@ public class songapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Song Album ID  updated.");
+			System.out.println("Song Album ID Assigned.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

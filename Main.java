@@ -85,7 +85,7 @@ public class Main {
 											creators_id = scanner.nextLine();
 											System.out.print("Enter labelname for the artist :");
 											labelname = scanner.nextLine();
-											artistapi.updateArtistLabelName(creators_id, labelname);
+											artistapi.assignArtistLabelName(creators_id, labelname);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
@@ -395,7 +395,7 @@ public class Main {
 											mediaid = scanner.nextLine();
 											System.out.print("Enter Song ALbum ID:");
 											albumid = scanner.nextLine();
-											songapi.updateMediaAlbum(mediaid, albumid);
+											songapi.assignMediaAlbum(mediaid, albumid);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
@@ -853,7 +853,7 @@ public class Main {
 											albumid2 = scanner.nextLine();
 											System.out.print("Enter Artist's ID associated to the respective album: ");
 											artistid = scanner.nextLine();
-											albumapi.updateAlbumArtistID(albumid2, artistid);
+											albumapi.assignAlbumArtistID(albumid2, artistid);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
@@ -1029,7 +1029,7 @@ public class Main {
 								System.out.print("Enter Album ID:");
 								albumid = scanner.nextLine();
 
-								songapi.updateMediaAlbum(mediaid, albumid);
+								songapi.assignMediaAlbum(mediaid, albumid);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1040,7 +1040,7 @@ public class Main {
 								System.out.print("Enter Album ID:");
 								albumid = scanner.nextLine();
 
-								albumapi.updateAlbumArtistID(creators_id, albumid);
+								albumapi.assignAlbumArtistID(creators_id, albumid);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1051,7 +1051,7 @@ public class Main {
 								System.out.print("Enter Record Label Name :");
 								labelname = scanner.nextLine();
 
-								albumapi.updateAlbumArtistID(creators_id, labelname);
+								artistapi.assignArtistLabelName(creators_id, labelname);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;

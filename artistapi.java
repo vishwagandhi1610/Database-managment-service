@@ -113,7 +113,7 @@ public class artistapi {
 		}
 	}
 
-	public static void updateArtistLabelName(String creators_id, String labelname) {
+	public static void assignArtistLabelName(String creators_id, String labelname) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -125,7 +125,7 @@ public class artistapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Artist label name name updated.");
+			System.out.println("Artist label name Assigned.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
