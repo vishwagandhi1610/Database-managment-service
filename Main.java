@@ -460,8 +460,8 @@ public class Main {
 								System.out.print("Enter Podcast Record Total Subscribers");
 								int total_subscribers = Integer.parseInt(scanner.nextLine());
 
-								podcastrecordapi.insertPodcastRecordrating(mediaid, pd_date, rating);
-								podcastrecordapi.insertPodcastRecordsubscribers(mediaid, pd_date, total_subscribers);
+								podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating,total_subscribers);
+								// podcastrecordapi.insertPodcastRecordsubscribers(mediaid, pd_date, total_subscribers);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -475,7 +475,7 @@ public class Main {
 									System.out.println("4. Update Podcast country");
 									System.out.println("5. Update Podcast Episode Count");
 									System.out.println("6. Update Podcast Host ID");
-									System.out.println("7. Update the rating or total subscribers for the podcast");
+									System.out.println("7. Update the rating and total subscribers for the podcast");
 									System.out.println("0. Go Back");
 									System.out.print("Enter your choice:");
 									ch = Integer.parseInt(scanner.nextLine());
@@ -538,54 +538,19 @@ public class Main {
 											break;
 
 										case 7:
-										ch = -1;
-										while (ch != 0) {
-											System.out.println("1. Update Podcast Record Rating");
-											System.out.println("2. Update Podcast Record Total Subscribers");
-											System.out.println("0. Go Back");
-											System.out.print("Enter your choice:");
-											ch = Integer.parseInt(scanner.nextLine());
-											switch (ch) {
-												case 1:
-													System.out.print("Enter Podcast Id:");
-													mediaid = scanner.nextLine();
-													System.out.print("Enter Podcast Record Date ");
-													pd_date = scanner.nextLine();
-													System.out.print("Enter Podcast Rating :");
-													rating = Float.parseFloat(scanner.nextLine());
-													podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating);
-													System.out.print("Press Enter key to continue...");
-													key = scanner.nextLine();
-													break;
-		
-												case 2:
-													System.out.print("Enter Podcast Id:");
-													mediaid = scanner.nextLine();
-													System.out.print("Enter Podcast Record Date ");
-													pd_date = scanner.nextLine();
-													System.out.print("Enter Podcast Record Total Subscribers");
-													total_subscribers = Integer.parseInt(scanner.nextLine());
-		
-													podcastrecordapi.updatePodcastSub(mediaid, pd_date, total_subscribers);
-													System.out.print("Press Enter key to continue...");
-													key = scanner.nextLine();
-													break;
-		
-												case 0:
-													System.out.print("Press Enter key to continue...");
-													key = scanner.nextLine();
-													break;
-		
-												default:
-													System.out.print("Press Enter key to continue...");
-													key = scanner.nextLine();
-													break;
-		
-											}
-										}
-										System.out.print("Press Enter key to continue...");
-										key = scanner.nextLine();
-										break;
+	
+											System.out.print("Enter Podcast Id:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Podcast Record Date ");
+											pd_date = scanner.nextLine();
+											System.out.print("Enter Podcast Record Total Subscribers");
+											total_subscribers = Integer.parseInt(scanner.nextLine());
+											System.out.print("Enter Podcast Rating :");
+											rating = Float.parseFloat(scanner.nextLine());
+											podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating, total_subscribers);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
 
 										case 0:
 											System.out.print("Press Enter key to continue...");
