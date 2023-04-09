@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 
 public class podcastapi {
 	// MariaDB Credentials
@@ -43,7 +44,12 @@ public class podcastapi {
 			// Assigning values to the prepared statement
 			s2.setString(1, mediaid);
 			s2.setInt(2, episode_count);
-			s2.setString(3, hostid);
+			if (hostid == "") {
+                s2.setNull(3, Types.NULL);
+            }
+            else{
+                s2.setString(3, hostid);
+            }
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
 			s2.executeUpdate();
