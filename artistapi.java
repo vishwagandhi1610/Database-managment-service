@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.sql.Types;
 public class artistapi {
 	// MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
@@ -35,7 +35,13 @@ public class artistapi {
 			s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
 			s2.setString(1, creatorsid);
-			s2.setString(2, labelname);
+			//s2.setString(2, labelname);
+			if (labelname.length()==0) {
+                s2.setNull(2, Types.NULL);
+            }
+            else{
+                s2.setString(2, labelname);
+            }
 			s2.setString(3, a_status);
 			s2.setString(4, type);
 			s2.setString(5, primary_genre);

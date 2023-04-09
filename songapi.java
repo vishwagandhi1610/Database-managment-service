@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.sql.Types;
 public class songapi {
 	// MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
@@ -41,7 +41,13 @@ public class songapi {
 			s2.setString(3, s_release_date);
 			s2.setInt(4, royalty_rate);
 			s2.setInt(5, royalty_paid);
-			s2.setString(6, albumid);
+			//s2.setString(6, albumid);
+			if (albumid.length()==0) {
+                s2.setNull(6, Types.NULL);
+            }
+            else{
+                s2.setString(6, albumid);
+            }
 			s2.setInt(7, track_no);
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
@@ -293,6 +299,39 @@ public class songapi {
 			// execute the delete query using the Statement object.
 			stmt.executeUpdate(deletePubQuery);
 			System.out.println("Song deleted.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	public static void updatePlaycountSong(String mediaid) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			String abc = "Update Song SET splay_count = 0";
+			// delete statement to delete the Song with given mediaid.
+			stmt.executeUpdate(abc);
+			rs = stmt.executeQuery("select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)=2 AND mediaid LIKE 'M%' group by mediaid");
+			// execute the delete query using the Statement object.
+			//stmt.executeUpdate(deletePubQuery);
+			while (rs.next()) {
+				String media = rs.getString("mediaid");
+				int playcount = rs.getInt("dplay_count");
+				stmt.executeUpdate("Update Song set splay_count = '" + playcount + "'where mediaid = '" + media + "'");
+
+			// delete statement to delete the Song with given mediaid.
+			stmt.executeUpdate(abc);
+				
+			}
+	
+			System.out.println("Song Play count updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
