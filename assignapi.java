@@ -1,5 +1,4 @@
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,69 +26,27 @@ public class assignapi {
 	 * @param mediaid: Podcast Id
 	 */
 
-     public static void assignhosttopodcast(String hostid, String mediaid) {
+     public static void assignhosttoepisode(String mediaid, String hostid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// Query to insert the record into CONTR_CHAP table.
-			String sql = "INSERT INTO CONTR_CHAP (PUB_ID, CONTR_ID, CHAP_NUM) VALUES (?,?,?)";
-			// Create PreparedStatement Object for given insert query.
-			ps1 = connection.prepareStatement(sql);
-			// Set values with user-passed arguments.
-			ps1.setInt(1, pubId);
-			ps1.setInt(2, contrId);
-			ps1.setInt(3, chapNum);
-			ps1.executeUpdate();
-			// Query to select the records from CONTRIBUTORS table for a given CONTR_ID.
-			String queryCheckEmpType = "SELECT CONTR_EMP_TYPE FROM CONTRIBUTORS WHERE CONTR_ID = " + contrId;
+			// update statement to update album the song belongs to for the given mediaid.
+			System.out.print(mediaid);
+			String updateSql = "UPDATE Podcast SET hostid = '" + hostid + "' WHERE mediaid = '" + mediaid + "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs1 = stmt.executeQuery(queryCheckEmpType);
-			while (rs1.next()) {
-				String empType = rs1.getString("CONTR_EMP_TYPE");
-				if (empType.equals("Visiting")) {
-					String query = "SELECT CHAP_CREATION_DATE FROM CHAPTERS CH " + "INNER JOIN CONTR_CHAP CC "
-							+ "ON CH.CHAP_NUM = CC.CHAP_NUM AND CH.PUB_ID = CC.PUB_ID "
-							+ "INNER JOIN CONTRIBUTORS CT ON CT.CONTR_ID = CC.CONTR_ID "
-							+ "WHERE CT.CONTR_EMP_TYPE = \"Visiting\" AND CC.CONTR_ID = ? AND CC.CHAP_NUM = ? AND CC.PUB_ID = ? ";
-					// Create PreparedStatement Object for given insert query.
-					ps2 = connection.prepareStatement(query);
-					// Set values with user-passed arguments.
-					ps2.setInt(1, contrId);
-					ps2.setInt(2, chapNum);
-					ps2.setInt(3, pubId);
-					rs2 = ps2.executeQuery();
-					while (rs2.next()) {
-						Date date = rs2.getDate("CHAP_CREATION_DATE");
-						if (date != null) {
-							String salaryInsert = "INSERT INTO SALARY (SAL_AMT, SAL_DATE, CONTR_ID) VALUES (?,?,?)";
-							// Create PreparedStatement Object for given insert query.
-							ps3 = connection.prepareStatement(salaryInsert);
-							// Set values with user-passed arguments.
-							ps3.setDouble(1, 1000);
-							ps3.setDate(2, date);
-							ps3.setInt(3, contrId);
-							ps3.executeUpdate();
-						}
-					}
-				}
-			}
-			System.out.println("Contributor Assigned to Chapter.");
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("podcast host Assigned.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement, ResultSet and Connection Objects.
-			close(rs1);
-			close(rs2);
-			close(ps1);
-			close(ps2);
-			close(ps3);
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
 			close(connection);
 		}
-
 	}
-
 
      // method to close Connection.
 	static void close(Connection connection) {

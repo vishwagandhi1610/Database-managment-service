@@ -44,7 +44,7 @@ public class podcastapi {
 			// Assigning values to the prepared statement
 			s2.setString(1, mediaid);
 			s2.setInt(2, episode_count);
-			if (hostid == "") {
+			if (hostid.length()==0) {
                 s2.setNull(3, Types.NULL);
             }
             else{

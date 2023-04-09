@@ -1056,6 +1056,16 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "PS1":
+								System.out.print("Enter Podcast ID :");
+								creatorsid = scanner.nextLine();
+								System.out.print("Enter podcast host id :");
+								hostid = scanner.nextLine();
+								assignapi.assignhosttoepisode(creatorsid, hostid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "0":
 								System.out.println("Thank you for using the system!");
 								break;
@@ -1124,6 +1134,7 @@ public class Main {
 		System.out.println("AS1. Assign Song to Album");
 		System.out.println("AS2. Assign Artist to Album");
 		System.out.println("AS3. Assign Artist to Record Label");
+		System.out.println("PS1. Assign podcast host to podcast");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
