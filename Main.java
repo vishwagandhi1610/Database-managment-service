@@ -460,7 +460,8 @@ public class Main {
 								System.out.print("Enter Podcast Record Total Subscribers");
 								int total_subscribers = Integer.parseInt(scanner.nextLine());
 
-								podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating, total_subscribers);
+								podcastrecordapi.insertPodcastRecordrating(mediaid, pd_date, rating);
+								podcastrecordapi.insertPodcastRecordsubscribers(mediaid, pd_date, total_subscribers);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
