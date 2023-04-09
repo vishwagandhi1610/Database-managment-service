@@ -549,11 +549,130 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "PE1":
+								System.out.print("Enter Podcast Id for which the episode needs to be entered:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast Episode number:");
+								int episodeno = Integer.parseInt(scanner.nextLine());
+								System.out.print("Enter Podcast episode title:");
+								String title = scanner.nextLine();
+								System.out.print("Enter Podcast episode duration:");
+								float p_duration = Float.parseFloat(scanner.nextLine());
+								System.out.print("Enter podcast episode release Date (YYYY/MM/DD):");
+								String p_release_date = scanner.nextLine();
+								System.out.print("Enter Podcast Episode flat fee per released episode:");
+								int flat_fee = Integer.parseInt(scanner.nextLine());
+								System.out.print("Enter Podcast Episode ad count:");
+								int ad_count = Integer.parseInt(scanner.nextLine());
+								podcastEpisodeapi.insertPodcastEpisode(mediaid, episodeno, title, p_duration, p_release_date, flat_fee,
+								ad_count);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "PE2":
+								ch = -1;
+								while (ch != 0) {
+									System.out.println("1. Update Podcast Episode title:");
+									System.out.println("2. Update Podcast Episode duration:");
+									System.out.println("3. Update Podcast Episode release date:");
+									System.out.println("4. Update Podcast Episode flat fee:");
+									System.out.println("5. Update Podcast  Episode ad count:");
+									System.out.println("0. Go Back");
+									System.out.print("Enter your choice:");
+									ch = Integer.parseInt(scanner.nextLine());
+									switch (ch) {
+										case 1:
+											System.out.print("Enter Podcast Id for which the episode needs to be updated:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Podcast Episode number:");
+											episodeno = Integer.parseInt(scanner.nextLine());
+											System.out.print("Enter Podcast Episode title:");
+											title = scanner.nextLine();
+											podcastEpisodeapi.updatePodcastEpisodeTitle(mediaid, episodeno, title);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 2:
+											System.out.print("Enter Podcast Id for which the episode needs to be updated:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Podcast Episode number:");
+											episodeno = Integer.parseInt(scanner.nextLine());
+											System.out.print("Enter Podcast Episode duration:");
+											p_duration = Float.parseFloat(scanner.nextLine());
+											podcastEpisodeapi.updatePodcastEpisodeDuration(mediaid, episodeno, p_duration);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 3:
+											System.out.print("Enter Podcast Id for which the episode needs to be updated:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Podcast Episode number:");
+											episodeno = Integer.parseInt(scanner.nextLine());
+											System.out.print("Enter Podcast episode release date:");
+											p_release_date = scanner.nextLine();
+											podcastEpisodeapi.updatePodcastEpisodeReleasedate(mediaid, episodeno, p_release_date);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+											
+										case 4:
+											System.out.print("Enter Podcast Id for which the episode needs to be updated:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Podcast Episode number:");
+											episodeno = Integer.parseInt(scanner.nextLine());
+											System.out.print("Enter Podcast Episode flat fee:");
+											flat_fee = Integer.parseInt(scanner.nextLine());
+											podcastEpisodeapi.updatePodcastEpisodeFlatfee(mediaid, episodeno, flat_fee);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 5:
+											System.out.print("Enter Podcast Id for which the episode needs to be updated:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Podcast Episode number:");
+											episodeno = Integer.parseInt(scanner.nextLine());
+											System.out.print("Enter Podcast Episode ad count:");
+											ad_count = Integer.parseInt(scanner.nextLine());
+											podcastEpisodeapi.updatePodcastEpisodeAdcount(mediaid, episodeno, ad_count);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 0:
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										default:
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+									}
+								}
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "PE3":
+								System.out.print("Enter Podcast Id for which the episode needs to be deleted:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Podcast Episode number:");
+								episodeno = Integer.parseInt(scanner.nextLine());
+								podcastEpisodeapi.deletePodcastEpisode(mediaid,episodeno);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "PEL1":
 								System.out.print("Enter Podcast Id:");
 								mediaid = scanner.nextLine();
 								System.out.print("Enter Podcast Episode number");
-								int episodeno = Integer.parseInt(scanner.nextLine());
+								episodeno = Integer.parseInt(scanner.nextLine());
 								System.out.print("Enter Podcast Episode Listening Date :");
 								String pel_date = scanner.nextLine();
 								System.out.print("Enter Podcast Episode listening_count");
@@ -981,6 +1100,10 @@ public class Main {
 		System.out.println("P1. Enter information for a new podcast ");
 		System.out.println("P2. Update Information of a podcast");
 		System.out.println("P3. Delete information of a podcast");
+		System.out.println("--------------Podcast Episode Information--------------");
+		System.out.println("PE1. Enter information for a new podcast episode ");
+		System.out.println("PE2. Update Information of a podcast episode");
+		System.out.println("PE3. Delete information of a podcast episode");
 		System.out.println("--------------Podcast Episode Listening Information--------------");
 		System.out.println("PEL1. Enter information for a new podcast episode listening ");
 		System.out.println("PEL2. Update Information of a podcast episode listening");
