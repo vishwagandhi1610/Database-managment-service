@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+
 public class podcastEpisode_listeningapi {
     // MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
@@ -20,7 +21,7 @@ public class podcastEpisode_listeningapi {
 	 * 
 	 */
 
-    public static void insertPodcastEpL(String podcastid,int episodeno,String pel_date,int listening_count ) {
+    public static void insertPodcastEpL(String episodeid,String pel_date,int listening_count ) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -29,14 +30,14 @@ public class podcastEpisode_listeningapi {
             String s4 = "INSERT INTO podcastEpisode_listening VALUES (?,?,?,?)";
 			// Assigning values to the prepared statement
             s1 = connection.prepareStatement(s4);
-			s1.setString(1, podcastid);
-			s1.setInt(2, episodeno);
-			s1.setString(3, pel_date);
-			s1.setInt(4, listening_count);
-
-            
+			if (pel_date.length()>0){
+				s1.setString(1, episodeid);
+				s1.setString(2, pel_date);
+				s1.setInt(3, listening_count);
+		
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
+			}
 			System.out.println("Podcast Episode Listening record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,17 +60,27 @@ public class podcastEpisode_listeningapi {
 	 * 
 	 * Output : Message
 	 */
-    public static void updatePodcastEpCount(String podcastid,int episodeno, String pel_date,int listening_count) {
+    public static void updatePodcastEpCount(String episodeid, String pel_date,int listening_count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
+			int rowCount = -1;
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update PUB_TITLE for the given publication id.
-			String updateSql = "UPDATE podcastEpisode_listening SET listening_count = '" + listening_count + "' WHERE podcastid = '"+ podcastid+ "' AND episodeno = '"+ episodeno+ "'AND pel_date = '"+ pel_date+ "' "; 
+			String getSql = "SELECT COUNT(*) FROM podcastEpisode_listening WHERE episodeid = '" + episodeid +  "' AND pel_date = '"+ pel_date+ "' "+  "' "; 
+			// update statement to update podcast listening count for the given podcast id and episode no.
+			String updateSql = "UPDATE podcastEpisode_listening SET listening_count = '" + listening_count + "' WHERE episodeid = '" + episodeid +  "' AND pel_date = '"+ pel_date+ "' "+  "' "; 
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			// execute update statement using Statement object.
-			stmt.execute(updateSql);
+			rs = stmt.executeQuery(getSql);
+			rs.next();
+			rowCount = rs.getInt(1);
+			if (rowCount > 0) {
+				// execute update statement using Statement object.
+				stmt.execute(updateSql);
+			  } else {
+				//insert new record with another timestamp.
+				podcastEpisode_listeningapi.insertPodcastEpL(episodeid, pel_date, listening_count);
+			  }
 			System.out.println("Podcast Episode listening count  updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,6 +88,7 @@ public class podcastEpisode_listeningapi {
 			// Close PreparedStatement and Connection Objects.
 			close(stmt);
 			close(connection);
+			close(rs);
 		}
 	}
 
