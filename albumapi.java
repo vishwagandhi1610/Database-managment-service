@@ -160,7 +160,7 @@ public class albumapi {
      * 
      * @param artistid: Artist's ID associated to the respective album
 	 */
-	public static void assignAlbumArtistID(String albumid, String artistid) {
+	public static void assignAlbumArtistID(String artistid, String albumid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
