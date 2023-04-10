@@ -603,7 +603,7 @@ public class Main {
 								System.out.print("Do you want to enter records or listening? (Yes/No):");
 								String flag = scanner.nextLine();
 
-								if (flag == 'Yes'){
+								if (flag == "Yes"){
 
 									System.out.print("Enter Podcast Episode Date on which the listening counts needs to be updated :");
 									String pel_date = scanner.nextLine();
@@ -683,12 +683,10 @@ public class Main {
 											System.out.print("Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode Listening Date :");
-											pel_date = scanner.nextLine();
-											if (pel_date.length() > 0){
+											String pel_date = scanner.nextLine();
 											System.out.print("Enter Podcast Episode Listening Count:");
-											listening_count = Integer.parseInt(scanner.nextLine());
+											int listening_count = Integer.parseInt(scanner.nextLine());
 											podcastEpisode_listeningapi.updatePodcastEpCount(episodeid ,pel_date, listening_count);
-											}
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
