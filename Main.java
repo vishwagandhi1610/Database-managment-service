@@ -1064,10 +1064,11 @@ public class Main {
 								break;
 
 							case "RL1":
+								System.out.print("Enter Label ID:");
+								String label_id = scanner.nextLine();
 								System.out.print("Enter new Record Label name:");
 								labelname = scanner.nextLine();
-
-								recordLabelapi.insertLabelName(labelname);
+								recordLabelapi.insertLabelName(label_id, labelname);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1169,9 +1170,12 @@ public class Main {
 		System.out.println("PE1. Enter information for a new podcast episode ");
 		System.out.println("PE2. Update Information of a podcast episode");
 		System.out.println("PE3. Delete information of a podcast episode");
-		// System.out.println("--------------Podcast Episode Listening Information--------------");
-		// System.out.println("PEL1. Enter information for a new podcast episode listening ");
-		// System.out.println("PEL2. Update Information of a podcast episode listening");
+		// System.out.println("--------------Podcast Episode Listening
+		// Information--------------");
+		// System.out.println("PEL1. Enter information for a new podcast episode
+		// listening ");
+		// System.out.println("PEL2. Update Information of a podcast episode
+		// listening");
 		// System.out.println("--------------Podcast Record--------------");
 		// System.out.println("PR1. Enter information for a new podcast record ");
 		// System.out.println("PR2. Update Information of a podcast episode listening");
