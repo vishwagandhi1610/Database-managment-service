@@ -30,17 +30,13 @@ public class podcastEpisode_listeningapi {
             String s4 = "INSERT INTO podcastEpisode_listening VALUES (?,?,?,?)";
 			// Assigning values to the prepared statement
             s1 = connection.prepareStatement(s4);
-			if (pel_date.length()>0){
-				s1.setString(1, episodeid);
-				s1.setString(2, pel_date);
-				s1.setInt(3, listening_count);
+			
+			s1.setString(1, episodeid);
+			s1.setString(2, pel_date);
+			s1.setInt(3, listening_count);
 		
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
-			}
-			else{
-				return;
-			}
 			System.out.println("Podcast Episode Listening record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
