@@ -597,13 +597,21 @@ public class Main {
 								System.out.print("Enter Podcast Episode ad count:");
 								int ad_count = Integer.parseInt(scanner.nextLine());
 
-								System.out.print("Enter Podcast Episode Date on which the listening counts needs to be updated :");
-								String pel_date = scanner.nextLine();
-								System.out.print("Enter Podcast Episode listening count on that date:");
-								int listening_count = Integer.parseInt(scanner.nextLine());
 								podcastEpisodeapi.insertPodcastEpisode(mediaid, episodeid, title, p_duration, p_release_date, flat_fee,
 								ad_count);
-								podcastEpisode_listeningapi.insertPodcastEpL(episodeid , pel_date,listening_count);
+
+								System.out.print("Do you want to enter records or listening? (Yes/No):");
+								String flag = scanner.nextLine();
+
+								if (flag == 'Yes'){
+
+									System.out.print("Enter Podcast Episode Date on which the listening counts needs to be updated :");
+									String pel_date = scanner.nextLine();
+									System.out.print("Enter Podcast Episode listening count on that date:");
+									int listening_count = Integer.parseInt(scanner.nextLine());
+									podcastEpisode_listeningapi.insertPodcastEpL(episodeid , pel_date,listening_count);
+
+								}
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -676,10 +684,11 @@ public class Main {
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode Listening Date :");
 											pel_date = scanner.nextLine();
-
+											if (pel_date.length() > 0){
 											System.out.print("Enter Podcast Episode Listening Count:");
 											listening_count = Integer.parseInt(scanner.nextLine());
 											podcastEpisode_listeningapi.updatePodcastEpCount(episodeid ,pel_date, listening_count);
+											}
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
