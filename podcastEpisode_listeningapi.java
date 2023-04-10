@@ -38,6 +38,9 @@ public class podcastEpisode_listeningapi {
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
 			}
+			else{
+				return;
+			}
 			System.out.println("Podcast Episode Listening record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
