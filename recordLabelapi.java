@@ -17,15 +17,16 @@ public class recordLabelapi {
 
     // API to enter & update Record Label details in recordLabel table.
 
-    public static void insertLabelName(String labelname) {
+    public static void insertLabelName(String label_id, String labelname) {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             // Get connection object
             connection = DriverManager.getConnection(jdbcURL, user, password);
-            String s4 = "INSERT INTO recordLabel VALUES (?)";
+            String s4 = "INSERT INTO recordLabel VALUES (?,?)";
             // Assigning values to the prepared statement
             s1 = connection.prepareStatement(s4);
-            s1.setString(1, labelname);
+            s1.setString(1, label_id);
+            s1.setString(2, labelname);
             // execute insert query using PreparedStatement object.
             s1.executeUpdate();
             System.out.println("Record Labelname has been inserted.");
