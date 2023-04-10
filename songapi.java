@@ -309,7 +309,7 @@ public class songapi {
 		}
 	}
 
-	public static void updatePlaycountSong(String mediaid) {
+	public static void updatePlaycountSong() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -323,13 +323,10 @@ public class songapi {
 			// execute the delete query using the Statement object.
 			//stmt.executeUpdate(deletePubQuery);
 			while (rs.next()) {
-				String media = rs.getString("mediaid");
+				String mediaid = rs.getString("mediaid");
 				int playcount = rs.getInt("dplay_count");
-				stmt.executeUpdate("Update Song set splay_count = '" + playcount + "'where mediaid = '" + media + "'");
-
-			// delete statement to delete the Song with given mediaid.
-			stmt.executeUpdate(abc);
-				
+				System.out.println(mediaid + "  " + playcount);
+				stmt.executeUpdate("Update Song set splay_count = '" + playcount + "'where mediaid = '" + mediaid + "'");
 			}
 	
 			System.out.println("Song Play count updated.");

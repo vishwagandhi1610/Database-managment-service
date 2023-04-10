@@ -1097,6 +1097,12 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
+								
+							case "UP1":
+								songapi.updatePlaycountSong();
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
 
 							case "0":
 								System.out.println("Thank you for using the system!");
@@ -1167,6 +1173,8 @@ public class Main {
 		System.out.println("AS2. Assign Artist to Album");
 		System.out.println("AS3. Assign Artist to Record Label");
 		System.out.println("PS1. Assign podcast host to podcast");
+		System.out.println("--------------Update--------------");
+		System.out.println("UP1. Update Play Count");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
