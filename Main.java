@@ -612,9 +612,11 @@ public class Main {
 									podcastEpisode_listeningapi.insertPodcastEpL(episodeid , pel_date,listening_count);
 
 								}
+								else{
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
+								}
 
 							case "PE2":
 								ch = -1;
