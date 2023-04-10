@@ -603,7 +603,7 @@ public class Main {
 								System.out.print("Do you want to enter records or listening? (Yes/No):");
 								String flag = scanner.nextLine();
 
-								if (flag == "Yes"){
+								if (flag.equals("Yes")){
 
 									System.out.print("Enter Podcast Episode Date on which the listening counts needs to be updated :");
 									String pel_date = scanner.nextLine();
