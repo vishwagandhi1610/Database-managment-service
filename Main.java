@@ -286,7 +286,7 @@ public class Main {
 								System.out.print("Enter Song release date");
 								String s_release_date = scanner.nextLine();
 								System.out.print("Enter Song royalty_rate");
-								int royalty_rate = Integer.parseInt(scanner.nextLine());
+								float royalty_rate = Float.parseFloat(scanner.nextLine());
 								System.out.print("Enter Song royalty_paid");
 								int royalty_paid = Integer.parseInt(scanner.nextLine());
 								System.out.print("Enter Song Album ID");
@@ -381,7 +381,7 @@ public class Main {
 											System.out.print("Enter Song Id:");
 											mediaid = scanner.nextLine();
 											System.out.print("Enter Song royalty rate:");
-											royalty_rate = Integer.parseInt(scanner.nextLine());
+											royalty_rate = Float.parseFloat(scanner.nextLine());
 											songapi.updateMediaRate(mediaid, royalty_rate);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
