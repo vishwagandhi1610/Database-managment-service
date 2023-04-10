@@ -27,7 +27,7 @@ public class podcastEpisode_listeningapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-            String s4 = "INSERT INTO podcastEpisode_listening VALUES (?,?,?,?)";
+            String s4 = "INSERT INTO podcastEpisode_listening VALUES (?,?,?)";
 			// Assigning values to the prepared statement
             s1 = connection.prepareStatement(s4);
 			
