@@ -18,7 +18,7 @@ public class songapi {
 	public static ResultSet rs = null;
 	
 	public static void insertSong(String mediaid, String media_name, String genre, String language, String m_country,
-			int duration, String s_release_date, int royalty_rate, int royalty_paid, String albumid, int track_no) {
+			int duration, String s_release_date, float royalty_rate, int royalty_paid, String albumid, int track_no) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -40,7 +40,7 @@ public class songapi {
 			s2.setString(1, mediaid);
 			s2.setInt(2, duration);
 			s2.setString(3, s_release_date);
-			s2.setInt(4, royalty_rate);
+			s2.setFloat(4, royalty_rate);
 			s2.setInt(5, royalty_paid);
 			//s2.setString(6, albumid);
 			if (albumid.length()==0) {
@@ -197,7 +197,7 @@ public class songapi {
 		}
 	}
 
-	public static void updateMediaRate(String mediaid, int royalty_rate) {
+	public static void updateMediaRate(String mediaid, Float royalty_rate) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -370,8 +370,6 @@ public class songapi {
 			scanner.close();
 			
 			// execute insert query using PreparedStatement object.
-			
-			
 			System.out.println("Song artist record has been inserted.");
 		} catch (Exception e) {
 			e.printStackTrace();
