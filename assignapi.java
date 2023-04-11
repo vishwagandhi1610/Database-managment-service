@@ -26,7 +26,7 @@ public class assignapi {
 	 * @param mediaid: Podcast Id
 	 */
 
-     public static void assignhosttoepisode(String mediaid, String hostid) {
+	public static void assignhosttoepisode(String mediaid, String hostid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -48,15 +48,15 @@ public class assignapi {
 		}
 	}
 
-
-	public static void assignhosttoepisode(String mediaid, String episodeid) {
+	public static void assignepisodetopodcast(String mediaid, String episodeid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update album the song belongs to for the given mediaid.
 			// System.out.print(mediaid);
-			String updateSql = "UPDATE podcastEpisode SET podcastid = '" + mediaid + "' WHERE episodeid = '" + episodeid + "'";
+			String updateSql = "UPDATE podcastEpisode SET podcastid = '" + mediaid + "' WHERE episodeid = '" + episodeid
+					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -71,7 +71,7 @@ public class assignapi {
 		}
 	}
 
-     // method to close Connection.
+	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
