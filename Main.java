@@ -1132,6 +1132,14 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "F1":
+								System.out.print("Enter Podcast ID: ");
+								mediaid = scanner.nextLine();
+								findapi.findpodcastepisode(mediaid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "0":
 								System.out.println("Thank you for using the system!");
 								break;
@@ -1205,7 +1213,8 @@ public class Main {
 		System.out.println("R1. Monthly Play count given Artist");
 		System.out.println("R2. Monthly Play count given Song");
 		System.out.println("R3. Monthly Play count given Album");
-		System.out.println("----------------------------------------");
+		System.out.println("--------------Find Information--------------");
+		System.out.println("F1. Find podcast episodes given podcast");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
 		System.out.print("Enter your choice:");
