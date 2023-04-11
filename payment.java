@@ -94,6 +94,7 @@ public class payment {
 		} finally {
 			// Close PreparedStatement and Connection Objects.
 			close(stmt);
+			close(rs);
 			close(connection);
 		}
 	}
@@ -120,6 +121,33 @@ public class payment {
 		} finally {
 			// Close PreparedStatement and Connection Objects.
 			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
+
+	public static void paytohost(String hostid, String podcastid, int pay_date) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery("select sum(flat_fee+bonus) from podcastEpisode where podcastid = '" + podcastid + "'");
+			am = rs.getInt();
+			String s4 = "INSERT INTO hostedby VALUES (?,?,?)";
+			s1 = connection.prepareStatement(s4);
+			s1.setString(1, hostid);
+			s1.setInt(2, pay_date);
+			s1.setInt(3, am);
+			s1.executeUpdate();
+			System.out.println(" Payment for host added");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
 			close(connection);
 		}
 	}
