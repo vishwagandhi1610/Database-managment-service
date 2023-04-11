@@ -1116,6 +1116,18 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "PY2":
+								System.out.print("Enter podcast host ID: ");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast ID for which the payment needs to be done: ");
+								podcastid = scanner.nextLine();
+								System.out.print("Enter payment date: ");
+								int pay_date = Integer.parseInt(scanner.nextLine());
+								payment.paytohost(creators_id,podcastid,pay_date);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "R1":
 								System.out.print("Enter Artist ID: ");
 								creators_id = scanner.nextLine();
@@ -1224,6 +1236,7 @@ public class Main {
 		System.out.println("UP3. Enter/Update listening count for podcast episode");
 		System.out.println("--------------Payment--------------");
 		System.out.println("PY1. Song Payment ");
+		System.out.println("PY2. Podcast Host Payment")
 		System.out.println("--------------Report--------------");
 		System.out.println("R1. Monthly Play count given Artist");
 		System.out.println("R2. Monthly Play count given Song");
