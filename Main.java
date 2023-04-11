@@ -1122,6 +1122,63 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "PY1":
+							payment.generatePayment();
+								ch = -1;
+								while (ch != 0) {
+									System.out.println("1. Song Royalty ");
+									System.out.println("2. Payment to label");
+									System.out.println("3. Artist Payment ");
+									System.out.println("0. Go Back");
+									System.out.print("Enter your choice:");
+									ch = Integer.parseInt(scanner.nextLine());
+									switch (ch) {
+										case 1:
+											System.out.print("Enter Song ID: ");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Month: ");
+											int month = Integer.parseInt(scanner.nextLine());
+											payment.songRoyalty(mediaid, month);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 2:
+											System.out.print("Enter Label ID: ");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter Month: ");
+											month = Integer.parseInt(scanner.nextLine());
+											payment.labelPay(mediaid, month);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 3:
+											System.out.print("Enter Artist ID: ");
+											creators_id = scanner.nextLine();
+											System.out.print("Enter Month: ");
+											month = Integer.parseInt(scanner.nextLine());
+											payment.artistPay(creators_id, month);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 0:
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										default:
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+									}
+
+								}
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "0":
 								System.out.println("Thank you for using the system!");
 								break;
@@ -1196,6 +1253,8 @@ public class Main {
 		System.out.println("PS1. Assign podcast host to podcast");
 		System.out.println("--------------Update--------------");
 		System.out.println("UP1. Update Play Count");
+		System.out.println("--------------Payment--------------");
+		System.out.println("PY1. Song Payment ");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
