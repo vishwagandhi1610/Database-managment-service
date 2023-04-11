@@ -368,7 +368,7 @@ public class songapi {
 				s2.setString(2, guest);
 				s2.executeUpdate();
 			}
-			// scanner.close();
+			scanner.close();
 
 			// execute insert query using PreparedStatement object.
 			System.out.println("Song artist record has been inserted.");
