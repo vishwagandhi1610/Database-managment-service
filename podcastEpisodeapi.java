@@ -17,7 +17,7 @@ public class podcastEpisodeapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
-    /*
+	/*
 	 * API to insert podcast episode in Podcast episode table.
 	 * 
 	 * @param podcastid: Podcast id in which podcast episode is released
@@ -29,14 +29,15 @@ public class podcastEpisodeapi {
 	 * @param p_duration: Podcast episode duration
 	 * 
 	 * @param p_release_date: Podcast episode release date
-     * 	
+	 * 
 	 * @param flat_fee: Flat fee per released episode
-     * 
-     * @param ad_count : Advertisment count
+	 * 
+	 * @param ad_count : Advertisment count
 	 */
 
-     public static void insertPodcastEpisode(String podcastid, String episodeid,String title,float p_duration,String p_release_date, int flat_fee,
-     int ad_count) {
+	public static void insertPodcastEpisode(String podcastid, String episodeid, String title, float p_duration,
+			String p_release_date, int flat_fee,
+			int ad_count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -46,22 +47,20 @@ public class podcastEpisodeapi {
 			// Assigning values to the prepared statement
 			s1 = connection.prepareStatement(s4);
 
+			if (podcastid.length() == 0) {
+				s1.setNull(1, Types.NULL);
+			} else {
+				s1.setString(1, podcastid);
+			}
 
-			if (podcastid.length()==0) {
-                S1.setNull(1, Types.NULL);
-            }
-            else{
-                s1.setString(1, podcastid);
-            }
-			
 			s1.setString(2, episodeid);
 			s1.setString(3, title);
 			s1.setFloat(4, p_duration);
 			s1.setString(5, p_release_date);
-            s1.setInt(6, flat_fee);
-            s1.setInt(7, ad_count);
-            int temp = ad_count * 2;
-            s1.setInt(8,temp);
+			s1.setInt(6, flat_fee);
+			s1.setInt(7, ad_count);
+			int temp = ad_count * 2;
+			s1.setInt(8, temp);
 
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
@@ -81,7 +80,7 @@ public class podcastEpisodeapi {
 	 * 
 	 * @param episodeid: episode Id
 	 * 
-	
+	 * 
 	 * 
 	 * @param title: Podcast Episode title
 	 */
@@ -91,7 +90,8 @@ public class podcastEpisodeapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update title for the given podcast episode id.
-			String updateSql = "UPDATE podcastEpisode SET title = '" + title + "' WHERE episodeid = '"+ episodeid+ "' "; 
+			String updateSql = "UPDATE podcastEpisode SET title = '" + title + "' WHERE episodeid = '" + episodeid
+					+ "' ";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -115,13 +115,14 @@ public class podcastEpisodeapi {
 	 * 
 	 * @param p_duration: Podcast Episode duration
 	 */
-	public static void updatePodcastEpisodeDuration(String episodeid ,  float p_duration) {
+	public static void updatePodcastEpisodeDuration(String episodeid, float p_duration) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update title for the given podcast episode id.
-			String updateSql = "UPDATE podcastEpisode SET p_duration = '" + p_duration + "' WHERE episodeid = '"+ episodeid+ "' "; 
+			String updateSql = "UPDATE podcastEpisode SET p_duration = '" + p_duration + "' WHERE episodeid = '"
+					+ episodeid + "' ";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -151,7 +152,8 @@ public class podcastEpisodeapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update title for the given podcast episode id.
-			String updateSql = "UPDATE podcastEpisode SET p_release_date = '" + p_release_date + "' WHERE episodeid = '"+ episodeid+ "' "; 
+			String updateSql = "UPDATE podcastEpisode SET p_release_date = '" + p_release_date + "' WHERE episodeid = '"
+					+ episodeid + "' ";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -165,7 +167,8 @@ public class podcastEpisodeapi {
 			close(connection);
 		}
 	}
-		/*
+
+	/*
 	 * API to update podcast episode ad count in podcastEpisode table.
 	 * 
 	 * @param podcastid: Podcast Id
@@ -174,16 +177,19 @@ public class podcastEpisodeapi {
 	 * 
 	 * @param ad_count: Podcast Episode advertisment count
 	 */
-	public static void updatePodcastEpisodeAdcount(String episodeid,  int ad_count) {
+	public static void updatePodcastEpisodeAdcount(String episodeid, int ad_count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			int temp1 = ad_count * 2;
-			// update statement to update title for the given podcast id and podcast episode no.
-			String updateSql = "UPDATE podcastEpisode SET ad_count = '" + ad_count + "' WHERE episodeid = '"+ episodeid+ "' "; 
+			// update statement to update title for the given podcast id and podcast episode
+			// no.
+			String updateSql = "UPDATE podcastEpisode SET ad_count = '" + ad_count + "' WHERE episodeid = '" + episodeid
+					+ "' ";
 			// Create Statement Object.
-			String updateSql2 = "UPDATE podcastEpisode SET bonus = '" + temp1 + "' WHERE episodeid = '"+ episodeid+ "' ";
+			String updateSql2 = "UPDATE podcastEpisode SET bonus = '" + temp1 + "' WHERE episodeid = '" + episodeid
+					+ "' ";
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
@@ -198,7 +204,7 @@ public class podcastEpisodeapi {
 		}
 	}
 
-			/*
+	/*
 	 * API to update podcast episode flat fee in podcastEpisode table.
 	 * 
 	 * @param podcastid: Podcast Id
@@ -213,7 +219,8 @@ public class podcastEpisodeapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update title for the given podcast episode id.
-			String updateSql = "UPDATE podcastEpisode SET flat_fee = '" + flat_fee  + "' WHERE episodeid = '"+ episodeid+ "' "; 
+			String updateSql = "UPDATE podcastEpisode SET flat_fee = '" + flat_fee + "' WHERE episodeid = '" + episodeid
+					+ "' ";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -241,7 +248,7 @@ public class podcastEpisodeapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-			String deleteSql = "DELETE FROM podcastEpisode WHERE episodeid = '" + episodeid +  "' ";
+			String deleteSql = "DELETE FROM podcastEpisode WHERE episodeid = '" + episodeid + "' ";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			stmt.executeUpdate(deleteSql);
@@ -255,7 +262,7 @@ public class podcastEpisodeapi {
 		}
 	}
 
-    static void close(PreparedStatement statement) {
+	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
 				statement.close();
