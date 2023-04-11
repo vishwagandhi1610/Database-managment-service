@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 
 public class podcastEpisodeapi {
 	// MariaDB Credentials
@@ -44,7 +45,15 @@ public class podcastEpisodeapi {
 			String s4 = "INSERT INTO podcastEpisode VALUES (?,?,?,?,?,?,?,?)";
 			// Assigning values to the prepared statement
 			s1 = connection.prepareStatement(s4);
-			s1.setString(1, podcastid);
+
+
+			if (podcastid.length()==0) {
+                S1.setNull(1, Types.NULL);
+            }
+            else{
+                s1.setString(1, podcastid);
+            }
+			
 			s1.setString(2, episodeid);
 			s1.setString(3, title);
 			s1.setFloat(4, p_duration);
