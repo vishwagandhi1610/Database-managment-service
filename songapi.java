@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.Scanner;
+
 public class songapi {
 	// MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
@@ -16,8 +17,7 @@ public class songapi {
 	public static PreparedStatement s2 = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
-	
-	
+
 	public static void insertSong(String mediaid, String media_name, String genre, String language, String m_country,
 			int duration, String s_release_date, float royalty_rate, int royalty_paid, String albumid, int track_no) {
 		try {
@@ -43,13 +43,12 @@ public class songapi {
 			s2.setString(3, s_release_date);
 			s2.setFloat(4, royalty_rate);
 			s2.setInt(5, royalty_paid);
-			//s2.setString(6, albumid);
-			if (albumid.length()==0) {
-                s2.setNull(6, Types.NULL);
-            }
-            else{
-                s2.setString(6, albumid);
-            }
+			// s2.setString(6, albumid);
+			if (albumid.length() == 0) {
+				s2.setNull(6, Types.NULL);
+			} else {
+				s2.setString(6, albumid);
+			}
 			s2.setInt(7, track_no);
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
@@ -205,7 +204,7 @@ public class songapi {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update royalty rate of a song for the given mediaid.
 			System.out.print(mediaid);
-			String updateSql = "UPDATE Song SET royalty_rate = '" + royalty_rate + "' WHERE mediaid = '" + mediaid
+			String updateSql = "UPDATE Song SET royalty_rate_USD = '" + royalty_rate + "' WHERE mediaid = '" + mediaid
 					+ "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
@@ -320,16 +319,18 @@ public class songapi {
 			String abc = "Update Song SET splay_count = 0";
 			// delete statement to delete the Song with given mediaid.
 			stmt.executeUpdate(abc);
-			rs = stmt.executeQuery("select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)=2 AND mediaid LIKE 'M%' group by mediaid");
+			rs = stmt.executeQuery(
+					"select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)=2 AND mediaid LIKE 'M%' group by mediaid");
 			// execute the delete query using the Statement object.
-			//stmt.executeUpdate(deletePubQuery);
+			// stmt.executeUpdate(deletePubQuery);
 			while (rs.next()) {
 				String mediaid = rs.getString("mediaid");
 				int playcount = rs.getInt("dplay_count");
 				System.out.println(mediaid + "  " + playcount);
-				stmt.executeUpdate("Update Song set splay_count = '" + playcount + "'where mediaid = '" + mediaid + "'");
+				stmt.executeUpdate(
+						"Update Song set splay_count = '" + playcount + "'where mediaid = '" + mediaid + "'");
 			}
-	
+
 			System.out.println("Song Play count updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -339,7 +340,6 @@ public class songapi {
 			close(connection);
 		}
 	}
-
 
 	public static void insertArtist(String songid, String artistid) {
 		try {
@@ -356,20 +356,20 @@ public class songapi {
 			s1.executeUpdate();
 			System.out.println("Enter the number of guest artist");
 			int numb = Integer.parseInt(scanner.nextLine());
-			String s3 ;
+			String s3;
 			String guest;
-			for (int i = 1; i <= numb; i++) { 
+			for (int i = 1; i <= numb; i++) {
 				System.out.print("Enter Song guest artist");
 				guest = scanner.nextLine();
-				s3 = "INSERT INTO composedby VALUES (?,?,'No')"; 
+				s3 = "INSERT INTO composedby VALUES (?,?,'No')";
 				s2 = connection.prepareStatement(s3);
-			// Assigning values to the prepared statement
+				// Assigning values to the prepared statement
 				s2.setString(1, songid);
 				s2.setString(2, guest);
 				s2.executeUpdate();
 			}
-			//scanner.close();
-			
+			// scanner.close();
+
 			// execute insert query using PreparedStatement object.
 			System.out.println("Song artist record has been inserted.");
 		} catch (Exception e) {
@@ -381,10 +381,6 @@ public class songapi {
 			close(connection);
 		}
 	}
-
-
-
-
 
 	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
