@@ -17,6 +17,7 @@ public class songapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 	
+	
 	public static void insertSong(String mediaid, String media_name, String genre, String language, String m_country,
 			int duration, String s_release_date, float royalty_rate, int royalty_paid, String albumid, int track_no) {
 		try {
@@ -367,7 +368,7 @@ public class songapi {
 				s2.setString(2, guest);
 				s2.executeUpdate();
 			}
-			scanner.close();
+			//scanner.close();
 			
 			// execute insert query using PreparedStatement object.
 			System.out.println("Song artist record has been inserted.");
