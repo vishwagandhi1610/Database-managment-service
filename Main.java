@@ -1032,8 +1032,22 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-
+							
 							case "UP2":
+								System.out.print("Enter User ID for which the play count needs to be added/updated:");
+								userid = scanner.nextLine();
+								System.out.print("Enter Media ID for which the play count needs to be added/updated:");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter the play date:");
+								String uplay_date = scanner.nextLine();
+								System.out.print("Enter the play count which is needed to be added/updated:");
+								int dplay_count = Integer.parseInt(scanner.nextLine());
+								listenstoapi.updateListenRecord(userid, mediaid, uplay_date, dplay_count);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "UP3":
 								System.out.print("Enter episode Id for which the listening count needs to be updated:");
 								episodeid = scanner.nextLine();
 								System.out.print("Enter Podcast Episode Listening Date :");
@@ -1206,7 +1220,8 @@ public class Main {
 		System.out.println("PS2. Assign podcast episode to podcast");
 		System.out.println("--------------Update--------------");
 		System.out.println("UP1. Update Play Count");
-		System.out.println("UP2. Enter/Update listening count for podcast episode");
+		System.out.println("UP2. Enter/Update play count for songs");
+		System.out.println("UP3. Enter/Update listening count for podcast episode");
 		System.out.println("--------------Payment--------------");
 		System.out.println("PY1. Song Payment ");
 		System.out.println("--------------Report--------------");
