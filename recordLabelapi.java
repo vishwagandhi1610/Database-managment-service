@@ -25,8 +25,8 @@ public class recordLabelapi {
             String s4 = "INSERT INTO recordLabel VALUES (?,?)";
             // Assigning values to the prepared statement
             s1 = connection.prepareStatement(s4);
-            s1.setString(1, label_id);
-            s1.setString(2, labelname);
+            s1.setString(1, labelname);
+            s1.setString(2, label_id);
             // execute insert query using PreparedStatement object.
             s1.executeUpdate();
             System.out.println("Record Labelname has been inserted.");
