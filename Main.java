@@ -173,9 +173,9 @@ public class Main {
 								cl_name = scanner.nextLine();
 								System.out.print("Enter Podcast Host email:");
 								String email = scanner.nextLine();
-								System.out.print("Enter Podcast Host city");
+								System.out.print("Enter Podcast Host city:");
 								String city = scanner.nextLine();
-								System.out.print("Enter Podcast Host phone");
+								System.out.print("Enter Podcast Host phone:");
 								int phone = Integer.parseInt(scanner.nextLine());
 								podcasthostapi.insertPodcastHost(creatorsid, cf_name, cl_name, email, phone, city);
 								System.out.print("Press Enter key to continue...");
@@ -275,30 +275,39 @@ public class Main {
 								mediaid = scanner.nextLine();
 								System.out.print("Enter Song Name:");
 								String media_name = scanner.nextLine();
-								System.out.print("Enter Song genre");
+								System.out.print("Enter Song genre:");
 								String genre = scanner.nextLine();
 								System.out.print("Enter Song language:");
 								String language = scanner.nextLine();
-								System.out.print("Enter Song country");
+								System.out.print("Enter Song country:");
 								String m_country = scanner.nextLine();
-								System.out.print("Enter Song duration");
+								System.out.print("Enter Song duration:");
 								int duration = Integer.parseInt(scanner.nextLine());
-								System.out.print("Enter Song release date");
+								System.out.print("Enter Song release date:");
 								String s_release_date = scanner.nextLine();
-								System.out.print("Enter Song royalty_rate");
+								System.out.print("Enter Song royalty_rate:");
 								float royalty_rate = Float.parseFloat(scanner.nextLine());
-								System.out.print("Enter Song royalty_paid");
-								int royalty_paid = Integer.parseInt(scanner.nextLine());
-								System.out.print("Enter Song Album ID");
+								System.out.print("Did the song earn royalties? (Yes/No): ");
+								String input = scanner.nextLine();
+								int royalty_paid;
+								if (input.equalsIgnoreCase("yes")) {
+									royalty_paid = 1;
+								} else if (input.equalsIgnoreCase("no")) {
+									royalty_paid = 0;
+								} else {
+									System.out.println("Invalid input. Assuming no royalties earned.");
+									royalty_paid = 0;
+								}
+								System.out.print("Enter Song Album ID:");
 								String albumid = scanner.nextLine();
-								System.out.print("Enter Song Track number");
+								System.out.print("Enter Song Track number:");
 								int track_no = Integer.parseInt(scanner.nextLine());
 								songapi.insertSong(mediaid, media_name, genre, language, m_country, duration,
 										s_release_date, royalty_rate, royalty_paid, albumid, track_no);
 
-								System.out.print("Enter Lead Artist ID");
+								System.out.print("Enter Lead Artist ID:");
 								String art = scanner.nextLine();
-								songapi.insertArtist(mediaid,art);
+								songapi.insertArtist(mediaid, art);
 
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
@@ -465,8 +474,9 @@ public class Main {
 								System.out.print("Enter Podcast Record Total Subscribers");
 								int total_subscribers = Integer.parseInt(scanner.nextLine());
 
-								podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating,total_subscribers);
-								// podcastrecordapi.insertPodcastRecordsubscribers(mediaid, pd_date, total_subscribers);
+								podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating, total_subscribers);
+								// podcastrecordapi.insertPodcastRecordsubscribers(mediaid, pd_date,
+								// total_subscribers);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -543,7 +553,7 @@ public class Main {
 											break;
 
 										case 7:
-	
+
 											System.out.print("Enter Podcast Id:");
 											mediaid = scanner.nextLine();
 											System.out.print("Enter Podcast Record Date ");
@@ -552,7 +562,8 @@ public class Main {
 											total_subscribers = Integer.parseInt(scanner.nextLine());
 											System.out.print("Enter Podcast Rating :");
 											rating = Float.parseFloat(scanner.nextLine());
-											podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating, total_subscribers);
+											podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating,
+													total_subscribers);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
@@ -597,25 +608,26 @@ public class Main {
 								System.out.print("Enter Podcast Episode ad count:");
 								int ad_count = Integer.parseInt(scanner.nextLine());
 
-								podcastEpisodeapi.insertPodcastEpisode(mediaid, episodeid, title, p_duration, p_release_date, flat_fee,
-								ad_count);
+								podcastEpisodeapi.insertPodcastEpisode(mediaid, episodeid, title, p_duration,
+										p_release_date, flat_fee,
+										ad_count);
 
 								System.out.print("Do you want to enter records or listening? (Yes/No):");
 								String flag = scanner.nextLine();
 
-								if (flag.equals("Yes")){
+								if (flag.equals("Yes")) {
 
-									System.out.print("Enter Podcast Episode Date on which the listening counts needs to be updated :");
+									System.out.print(
+											"Enter Podcast Episode Date on which the listening counts needs to be updated :");
 									String pel_date = scanner.nextLine();
 									System.out.print("Enter Podcast Episode listening count on that date:");
 									int listening_count = Integer.parseInt(scanner.nextLine());
-									podcastEpisode_listeningapi.insertPodcastEpL(episodeid , pel_date,listening_count);
+									podcastEpisode_listeningapi.insertPodcastEpL(episodeid, pel_date, listening_count);
 
-								}
-								else{
-								System.out.print("Press Enter key to continue...");
-								key = scanner.nextLine();
-								break;
+								} else {
+									System.out.print("Press Enter key to continue...");
+									key = scanner.nextLine();
+									break;
 								}
 
 							case "PE2":
@@ -632,7 +644,8 @@ public class Main {
 									ch = Integer.parseInt(scanner.nextLine());
 									switch (ch) {
 										case 1:
-											System.out.print("Enter episode Id for which the episode needs to be updated:");
+											System.out.print(
+													"Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode title:");
 											title = scanner.nextLine();
@@ -642,7 +655,8 @@ public class Main {
 											break;
 
 										case 2:
-											System.out.print("Enter episode Id for which the episode needs to be updated:");
+											System.out.print(
+													"Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode duration:");
 											p_duration = Float.parseFloat(scanner.nextLine());
@@ -652,17 +666,20 @@ public class Main {
 											break;
 
 										case 3:
-											System.out.print("Enter episode Id for which the episode needs to be updated:");
+											System.out.print(
+													"Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast episode release date:");
 											p_release_date = scanner.nextLine();
-											podcastEpisodeapi.updatePodcastEpisodeReleasedate(episodeid, p_release_date);
+											podcastEpisodeapi.updatePodcastEpisodeReleasedate(episodeid,
+													p_release_date);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
-											
+
 										case 4:
-											System.out.print("Enter episode Id for which the episode needs to be updated:");
+											System.out.print(
+													"Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode flat fee:");
 											flat_fee = Integer.parseInt(scanner.nextLine());
@@ -672,23 +689,26 @@ public class Main {
 											break;
 
 										case 5:
-											System.out.print("Enter episode Id for which the episode needs to be updated:");
+											System.out.print(
+													"Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode ad count:");
 											ad_count = Integer.parseInt(scanner.nextLine());
-											podcastEpisodeapi.updatePodcastEpisodeAdcount(episodeid,  ad_count);
+											podcastEpisodeapi.updatePodcastEpisodeAdcount(episodeid, ad_count);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
 
 										case 6:
-											System.out.print("Enter episode Id for which the episode needs to be updated:");
+											System.out.print(
+													"Enter episode Id for which the episode needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode Listening Date :");
 											String pel_date = scanner.nextLine();
 											System.out.print("Enter Podcast Episode Listening Count:");
 											int listening_count = Integer.parseInt(scanner.nextLine());
-											podcastEpisode_listeningapi.updatePodcastEpCount(episodeid ,pel_date, listening_count);
+											podcastEpisode_listeningapi.updatePodcastEpCount(episodeid, pel_date,
+													listening_count);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
@@ -718,125 +738,126 @@ public class Main {
 								break;
 
 							// case "PEL1":
-							// 	System.out.print("Enter Podcast Id:");
-							// 	mediaid = scanner.nextLine();
-							// 	System.out.print("Enter Podcast Episode number");
-							// 	episodeno = Integer.parseInt(scanner.nextLine());
-							// 	System.out.print("Enter Podcast Episode Listening Date :");
-							// 	String pel_date = scanner.nextLine();
-							// 	System.out.print("Enter Podcast Episode listening_count");
-							// 	int listening_count = Integer.parseInt(scanner.nextLine());
+							// System.out.print("Enter Podcast Id:");
+							// mediaid = scanner.nextLine();
+							// System.out.print("Enter Podcast Episode number");
+							// episodeno = Integer.parseInt(scanner.nextLine());
+							// System.out.print("Enter Podcast Episode Listening Date :");
+							// String pel_date = scanner.nextLine();
+							// System.out.print("Enter Podcast Episode listening_count");
+							// int listening_count = Integer.parseInt(scanner.nextLine());
 
-							// 	podcastEpisode_listeningapi.insertPodcastEpL(mediaid, episodeno, pel_date,
-							// 			listening_count);
-							// 	System.out.print("Press Enter key to continue...");
-							// 	key = scanner.nextLine();
-							// 	break;
+							// podcastEpisode_listeningapi.insertPodcastEpL(mediaid, episodeno, pel_date,
+							// listening_count);
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
 							// case "PEL2":
-							// 	ch = -1;
-							// 	while (ch != 0) {
-							// 		System.out.println("1. Update Podcast Episode Listening Count");
-							// 		System.out.println("0. Go Back");
-							// 		System.out.print("Enter your choice:");
-							// 		ch = Integer.parseInt(scanner.nextLine());
-							// 		switch (ch) {
-							// 			case 1:
-							// 				System.out.print("Enter Podcast Id:");
-							// 				mediaid = scanner.nextLine();
-							// 				System.out.print("Enter Podcast Episode number");
-							// 				episodeno = Integer.parseInt(scanner.nextLine());
-							// 				System.out.print("Enter Podcast Episode Listening Date :");
-							// 				pel_date = scanner.nextLine();
+							// ch = -1;
+							// while (ch != 0) {
+							// System.out.println("1. Update Podcast Episode Listening Count");
+							// System.out.println("0. Go Back");
+							// System.out.print("Enter your choice:");
+							// ch = Integer.parseInt(scanner.nextLine());
+							// switch (ch) {
+							// case 1:
+							// System.out.print("Enter Podcast Id:");
+							// mediaid = scanner.nextLine();
+							// System.out.print("Enter Podcast Episode number");
+							// episodeno = Integer.parseInt(scanner.nextLine());
+							// System.out.print("Enter Podcast Episode Listening Date :");
+							// pel_date = scanner.nextLine();
 
-							// 				System.out.print("Enter Podcast Episode Listening Count:");
-							// 				listening_count = Integer.parseInt(scanner.nextLine());
-							// 				podcastEpisode_listeningapi.updatePodcastEpCount(mediaid, episodeno,
-							// 						pel_date, listening_count);
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// System.out.print("Enter Podcast Episode Listening Count:");
+							// listening_count = Integer.parseInt(scanner.nextLine());
+							// podcastEpisode_listeningapi.updatePodcastEpCount(mediaid, episodeno,
+							// pel_date, listening_count);
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 			case 0:
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// case 0:
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 			default:
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// default:
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 		}
-							// 	}
-							// 	System.out.print("Press Enter key to continue...");
-							// 	key = scanner.nextLine();
-							// 	break;
+							// }
+							// }
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
 							// case "PR1":
-							// 	System.out.print("Enter Podcast Id:");
-							// 	mediaid = scanner.nextLine();
-							// 	System.out.print("Enter Podcast Record Date ");
-							// 	String pd_date = scanner.nextLine();
-							// 	System.out.print("Enter Podcast Rating :");
-							// 	Float rating = Float.parseFloat(scanner.nextLine());
-							// 	System.out.print("Enter Podcast Record Total Subscribers");
-							// 	int total_subscribers = Integer.parseInt(scanner.nextLine());
+							// System.out.print("Enter Podcast Id:");
+							// mediaid = scanner.nextLine();
+							// System.out.print("Enter Podcast Record Date ");
+							// String pd_date = scanner.nextLine();
+							// System.out.print("Enter Podcast Rating :");
+							// Float rating = Float.parseFloat(scanner.nextLine());
+							// System.out.print("Enter Podcast Record Total Subscribers");
+							// int total_subscribers = Integer.parseInt(scanner.nextLine());
 
-							// 	podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating, total_subscribers);
-							// 	System.out.print("Press Enter key to continue...");
-							// 	key = scanner.nextLine();
-							// 	break;
+							// podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating,
+							// total_subscribers);
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
 							// case "PR2":
-							// 	ch = -1;
-							// 	while (ch != 0) {
-							// 		System.out.println("1. Update Podcast Record Rating");
-							// 		System.out.println("2. Update Podcast Record Total Subscribers");
-							// 		System.out.println("0. Go Back");
-							// 		System.out.print("Enter your choice:");
-							// 		ch = Integer.parseInt(scanner.nextLine());
-							// 		switch (ch) {
-							// 			case 1:
-							// 				System.out.print("Enter Podcast Id:");
-							// 				mediaid = scanner.nextLine();
-							// 				System.out.print("Enter Podcast Record Date ");
-							// 				pd_date = scanner.nextLine();
-							// 				System.out.print("Enter Podcast Rating :");
-							// 				rating = Float.parseFloat(scanner.nextLine());
-							// 				podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating);
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// ch = -1;
+							// while (ch != 0) {
+							// System.out.println("1. Update Podcast Record Rating");
+							// System.out.println("2. Update Podcast Record Total Subscribers");
+							// System.out.println("0. Go Back");
+							// System.out.print("Enter your choice:");
+							// ch = Integer.parseInt(scanner.nextLine());
+							// switch (ch) {
+							// case 1:
+							// System.out.print("Enter Podcast Id:");
+							// mediaid = scanner.nextLine();
+							// System.out.print("Enter Podcast Record Date ");
+							// pd_date = scanner.nextLine();
+							// System.out.print("Enter Podcast Rating :");
+							// rating = Float.parseFloat(scanner.nextLine());
+							// podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating);
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 			case 2:
-							// 				System.out.print("Enter Podcast Id:");
-							// 				mediaid = scanner.nextLine();
-							// 				System.out.print("Enter Podcast Record Date ");
-							// 				pd_date = scanner.nextLine();
-							// 				System.out.print("Enter Podcast Record Total Subscribers");
-							// 				total_subscribers = Integer.parseInt(scanner.nextLine());
+							// case 2:
+							// System.out.print("Enter Podcast Id:");
+							// mediaid = scanner.nextLine();
+							// System.out.print("Enter Podcast Record Date ");
+							// pd_date = scanner.nextLine();
+							// System.out.print("Enter Podcast Record Total Subscribers");
+							// total_subscribers = Integer.parseInt(scanner.nextLine());
 
-							// 				podcastrecordapi.updatePodcastSub(mediaid, pd_date, total_subscribers);
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// podcastrecordapi.updatePodcastSub(mediaid, pd_date, total_subscribers);
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 			case 0:
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// case 0:
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 			default:
-							// 				System.out.print("Press Enter key to continue...");
-							// 				key = scanner.nextLine();
-							// 				break;
+							// default:
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
-							// 		}
-							// 	}
-							// 	System.out.print("Press Enter key to continue...");
-							// 	key = scanner.nextLine();
-							// 	break;
+							// }
+							// }
+							// System.out.print("Press Enter key to continue...");
+							// key = scanner.nextLine();
+							// break;
 
 							case "AM1":
 								System.out.print("Enter Album ID:");
@@ -1072,7 +1093,7 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-								
+
 							case "AS1":
 								System.out.print("Enter Song ID :");
 								mediaid = scanner.nextLine();
@@ -1115,7 +1136,7 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-								
+
 							case "UP1":
 								songapi.updatePlaycountSong();
 								System.out.print("Press Enter key to continue...");
@@ -1123,7 +1144,7 @@ public class Main {
 								break;
 
 							case "PY1":
-							payment.generatePayment();
+								payment.generatePayment();
 								ch = -1;
 								while (ch != 0) {
 									System.out.println("1. Song Royalty ");
@@ -1184,27 +1205,27 @@ public class Main {
 								creators_id = scanner.nextLine();
 								System.out.print("Enter Month: ");
 								int month = Integer.parseInt(scanner.nextLine());
-								report.artistMcount(creators_id,month);
+								report.artistMcount(creators_id, month);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
-								break;	
-							
+								break;
+
 							case "R2":
 								System.out.print("Enter Song ID: ");
 								mediaid = scanner.nextLine();
 								System.out.print("Enter Month: ");
 								month = Integer.parseInt(scanner.nextLine());
-								report.songMcount(mediaid,month);
+								report.songMcount(mediaid, month);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-							
+
 							case "R3":
 								System.out.print("Enter Album ID: ");
 								albumid = scanner.nextLine();
 								System.out.print("Enter Month: ");
 								month = Integer.parseInt(scanner.nextLine());
-								report.albumMcount(albumid,month);
+								report.albumMcount(albumid, month);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
