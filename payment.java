@@ -27,7 +27,7 @@ public class payment {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// update statement to update artist_status for the given creators id.
-			String updateSql = "insert into paymentSong(songid,artistid,labelname,label_payment,artist_payment,spay_date,Main_label)select abc.mediaid,creatorsid,labelname,sum(abc.total_amount) as label_pay , sum(abc.total_amount*0.7/def.counta) as artist_pay,'2023-04-01',abc.lead as Main_label from (select creatorsid,cf_name, mediaid,labelname, royalty_rate*splay_count AS total_amount, lead from Media natural join Song join composedby on mediaid = songid join Artist on artistid=creatorsid natural join Creators where royalty_paid=0) as abc join (select mediaid,count(artistid) as counta, lead from Song join composedby on mediaid=songid group by mediaid) as def on abc.mediaid = def.mediaid group by creatorsid,mediaid;";
+			String updateSql = "insert into paymentSong(songid,artistid,labelname,label_payment,artist_payment,spay_date,Main_label)select abc.mediaid,creatorsid,labelname,sum(abc.total_amount) as label_pay , sum(abc.total_amount*0.7/def.counta) as artist_pay,'2023-04-01',abc.lead as Main_label from (select creatorsid,cf_name, mediaid,labelname, royalty_rate_USD*splay_count AS total_amount, lead from Media natural join Song join composedby on mediaid = songid join Artist on artistid=creatorsid natural join Creators where royalty_paid=0) as abc join (select mediaid,count(artistid) as counta, lead from Song join composedby on mediaid=songid group by mediaid) as def on abc.mediaid = def.mediaid group by creatorsid,mediaid;";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
@@ -49,7 +49,7 @@ public class payment {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
             stmt = connection.createStatement();
-			rs = stmt.executeQuery("select songid, label_payment as royalty_generated from paymentSong where songid='" + songid + "' AND month(spay_date)= '" + spay_date + "'");
+			rs = stmt.executeQuery("select songid, label_payment as royalty_generated from paymentSong where songid='" + songid + "' AND month(spay_date)= '" + spay_date + "' AND Main_label='Yes'");
 			// execute the delete query using the Statement object.
 			//stmt.executeUpdate(deletePubQuery);
 			while (rs.next()) {
