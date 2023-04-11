@@ -1179,6 +1179,36 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "R1":
+								System.out.print("Enter Artist ID: ");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter Month: ");
+								int month = Integer.parseInt(scanner.nextLine());
+								report.artistMcount(creators_id,month);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;	
+							
+							case "R2":
+								System.out.print("Enter Song ID: ");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Month: ");
+								month = Integer.parseInt(scanner.nextLine());
+								report.songMcount(mediaid,month);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+							
+							case "R3":
+								System.out.print("Enter Album ID: ");
+								albumid = scanner.nextLine();
+								System.out.print("Enter Month: ");
+								month = Integer.parseInt(scanner.nextLine());
+								report.albumMcount(albumid,month);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "0":
 								System.out.println("Thank you for using the system!");
 								break;
@@ -1255,6 +1285,10 @@ public class Main {
 		System.out.println("UP1. Update Play Count");
 		System.out.println("--------------Payment--------------");
 		System.out.println("PY1. Song Payment ");
+		System.out.println("--------------Report--------------");
+		System.out.println("R1. Monthly Play count given Artist");
+		System.out.println("R2. Monthly Play count given Song");
+		System.out.println("R3. Monthly Play count given Album");
 		System.out.println("----------------------------------------");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
