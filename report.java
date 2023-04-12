@@ -224,6 +224,30 @@ public class report {
 		}
 	}
 
+	public static void totalRevenueYear(int year) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+            stmt = connection.createStatement();
+			rs = stmt.executeQuery("select sum(label_payment) as revenue from paymentSong where year(spay_date)='" + year + "' AND Main_label='Yes'");
+			while (rs.next()) {
+				
+				Float revenue = rs.getFloat("revenue");
+				System.out.println(revenue);
+			}
+            //System.out.println("Total Play count for Album  "+ artistid+ " :");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
+
 
 
 

@@ -1180,6 +1180,14 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
+							
+							case "R7":
+								System.out.print("Enter Year: ");
+								int year = Integer.parseInt(scanner.nextLine());
+								report.totalRevenueYear(year);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
 
 							case "F2":
 								System.out.print("Enter Artist ID: ");
@@ -1283,6 +1291,7 @@ public class Main {
 		System.out.println("R4. Total Payment made to Record Label over a time period ");
 		System.out.println("R5. Total Payment made to Artist over a time period");
 		System.out.println("R6. Total Revenue of Streaming service for a given month");
+		System.out.println("R7. Total Revenue of Streaming service for a given year");
 		System.out.println("--------------Find Information--------------");
 		System.out.println("F1. Find podcast episodes given podcast");
 		System.out.println("F2. Find song given Artist");
