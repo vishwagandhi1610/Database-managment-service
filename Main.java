@@ -1028,7 +1028,9 @@ public class Main {
 								break;
 
 							case "UP1":
-								songapi.updatePlaycountSong();
+								System.out.print("Enter Month :");
+								int month = Integer.parseInt(scanner.nextLine());
+								songapi.updatePlaycountSong(month);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1072,7 +1074,7 @@ public class Main {
 										case 1:
 											System.out.print("Enter Song ID: ");
 											mediaid = scanner.nextLine();
-											System.out.print("Enter Month: ");
+											System.out.print("Enter Date: ");
 											String day = scanner.nextLine();
 											payment.songRoyalty(mediaid, day);
 											System.out.print("Press Enter key to continue...");
@@ -1121,7 +1123,7 @@ public class Main {
 								System.out.print("Enter Artist ID: ");
 								creators_id = scanner.nextLine();
 								System.out.print("Enter Month: ");
-								int month = Integer.parseInt(scanner.nextLine());
+								month = Integer.parseInt(scanner.nextLine());
 								report.artistMcount(creators_id, month);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();

@@ -54,7 +54,7 @@ public class payment {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			
+			//System.out.println(spay_date);
 			String updateSql = "insert into paymentSong(songid,artistid,labelname,label_payment,artist_payment,spay_date,Main_label)select abc.mediaid,creatorsid,labelname,sum(abc.total_amount) as label_pay , sum(abc.total_amount*0.7/def.counta) as artist_pay,'" + spay_date + "',abc.lead as Main_label from (select creatorsid,cf_name, mediaid,labelname, royalty_rate_USD*splay_count AS total_amount, lead from Media natural join Song join composedby on mediaid = songid join Artist on artistid=creatorsid natural join Creators where royalty_paid=0 AND mediaid='"+ songid + "') as abc join (select mediaid,count(artistid) as counta, lead from Song join composedby on mediaid=songid group by mediaid) as def on abc.mediaid = def.mediaid group by creatorsid,mediaid";
 			stmt.execute(updateSql);
 

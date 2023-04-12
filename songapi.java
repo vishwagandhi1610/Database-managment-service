@@ -336,7 +336,7 @@ public class songapi {
 		}
 	}
 
-	public static void updatePlaycountSong() {
+	public static void updatePlaycountSong(int month) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -347,7 +347,7 @@ public class songapi {
 			// delete statement to delete the Song with given mediaid.
 			stmt.executeUpdate(abc);
 			rs = stmt.executeQuery(
-					"select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)=2 AND mediaid LIKE 'M%' group by mediaid");
+					"select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)='" + month + "' group by mediaid");
 			// execute the delete query using the Statement object.
 			// stmt.executeUpdate(deletePubQuery);
 			while (rs.next()) {
