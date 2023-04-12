@@ -52,7 +52,6 @@ public class findapi {
             // Close PreparedStatement and Connection Objects.
             close(stmt);
             close(rs1);
-            // close(connection);
         }
     }
 

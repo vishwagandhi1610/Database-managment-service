@@ -130,6 +130,31 @@ public class report {
 		}
 	}
 
+
+	public static void totalPayHost(String hostid, String spay_start, String spay_end ) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+            stmt = connection.createStatement();
+			rs = stmt.executeQuery("select artistid,sum(artist_payment) as paid from hostedby where hostid='" + hostid + "' AND pay_date BETWEEN CAST('" + spay_start + "' AS DATE) AND CAST('" + spay_end + "' AS DATE)");
+			while (rs.next()) {
+				String mediaid = rs.getString("hostid");
+				float amount = rs.getInt("paid");
+				System.out.println(mediaid + " : " + amount);
+			}
+            //System.out.println("Total Play count for Album  "+ artistid+ " :");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
+
 	public static void totalPayLabel(String label_id, String spay_start, String spay_end ) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");

@@ -1189,6 +1189,42 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "R8":
+								System.out.print("Enter Podcast ID: ");
+								mediaid = scanner.nextLine();
+								findapi.findpodcastepisode(mediaid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "R9":
+								System.out.print("Enter Artist ID: ");
+								creators_id = scanner.nextLine();
+								report.songArtist(creators_id);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "R10":
+								System.out.print("Enter Album ID: ");
+								albumid = scanner.nextLine();
+								report.songAlbum(albumid);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "R11":
+								System.out.print("Enter podcast host ID: ");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter Start Date: ");
+								spay_start = scanner.nextLine();
+								System.out.print("Enter End Date: ");
+								spay_end= scanner.nextLine();
+								report.totalPayHost(creators_id, spay_start, spay_end);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "F2":
 								System.out.print("Enter Artist ID: ");
 								creators_id = scanner.nextLine();
@@ -1292,6 +1328,10 @@ public class Main {
 		System.out.println("R5. Total Payment made to Artist over a time period");
 		System.out.println("R6. Total Revenue of Streaming service for a given month");
 		System.out.println("R7. Total Revenue of Streaming service for a given year");
+		System.out.println("R8. Report podcast episode given podcast");
+		System.out.println("R9. Report all songs given Artist");
+		System.out.println("R10. Report all songs given Album");
+		System.out.println("R11. Total Payment made to Podcast host over a time period ");
 		System.out.println("--------------Find Information--------------");
 		System.out.println("F1. Find podcast episodes given podcast");
 		System.out.println("F2. Find song given Artist");
