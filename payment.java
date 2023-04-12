@@ -15,7 +15,7 @@ public class payment {
 	public static PreparedStatement s1 = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
-
+	public static ResultSet rs1 = null;
 	/*
 	 * API to enter Podcast Episode Listening details in podcastEpisode_listening
 	 * table.
@@ -129,13 +129,18 @@ public class payment {
 	public static void paytohost(String episodeid, String podcastid, String pay_date) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
+			int am = 0;
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select hostid,sum(flat_fee+bonus) from podcastEpisode where podcastid = '" + podcastid + "'" +  "' AND episodeid = '"+ episodeid);
-			String temp = rs.getString(1);
-			int am = rs.getInt(1);
+			rs = stmt.executeQuery("select sum(flat_fee+bonus) as total from podcastEpisode where podcastid = '" + podcastid +  "' AND episodeid = '" + episodeid + "'");
+
+			am = rs.getInt("total");
+			
+			// System.out.println(am);
+			rs1 = stmt.executeQuery("select hostid from Podcast where mediaid = '" + podcastid + "'");
+			String temp = rs1.getString(1);
 			String s4 = "INSERT INTO hostedby VALUES (?,?,?)";
 			s1 = connection.prepareStatement(s4);
 			s1.setString(1, temp);
@@ -149,6 +154,7 @@ public class payment {
 			// Close PreparedStatement and Connection Objects.
 			close(stmt);
 			close(rs);
+			close(rs1);
 			close(connection);
 		}
 	}
