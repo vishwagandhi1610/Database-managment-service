@@ -126,19 +126,20 @@ public class payment {
 		}
 	}
 
-	public static void paytohost(String hostid, String podcastid, int pay_date) {
+	public static void paytohost(String episodeid, String podcastid, String pay_date) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select sum(flat_fee+bonus) from podcastEpisode where podcastid = '" + podcastid + "'");
+			rs = stmt.executeQuery("select hostid,sum(flat_fee+bonus) from podcastEpisode where podcastid = '" + podcastid + "'" +  "' AND episodeid = '"+ episodeid);
+			String temp = rs.getString(1);
 			int am = rs.getInt(1);
 			String s4 = "INSERT INTO hostedby VALUES (?,?,?)";
 			s1 = connection.prepareStatement(s4);
-			s1.setString(1, hostid);
-			s1.setInt(2, pay_date);
+			s1.setString(1, temp);
+			s1.setString(2, pay_date);
 			s1.setInt(3, am);
 			s1.executeUpdate();
 			System.out.println(" Payment for host added");

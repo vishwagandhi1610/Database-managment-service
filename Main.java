@@ -1117,13 +1117,13 @@ public class Main {
 								break;
 
 							case "PY2":
-								System.out.print("Enter podcast host ID: ");
-								creators_id = scanner.nextLine();
+								System.out.print("Enter podcast episode ID for which the payment needs to be done: ");
+								episodeid = scanner.nextLine();
 								System.out.print("Enter podcast ID for which the payment needs to be done: ");
 								String podcastid = scanner.nextLine();
 								System.out.print("Enter payment date: ");
-								int pay_date = Integer.parseInt(scanner.nextLine());
-								payment.paytohost(creators_id,podcastid,pay_date);
+								String pay_date = scanner.nextLine();
+								payment.paytohost(episodeid,podcastid,pay_date);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
