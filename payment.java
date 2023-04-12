@@ -134,7 +134,7 @@ public class payment {
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery("select sum(flat_fee+bonus) from podcastEpisode where podcastid = '" + podcastid + "'");
-			am = rs.getInt();
+			int am = rs.getInt(1);
 			String s4 = "INSERT INTO hostedby VALUES (?,?,?)";
 			s1 = connection.prepareStatement(s4);
 			s1.setString(1, hostid);
