@@ -130,17 +130,22 @@ public class payment {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			int am = 0;
+			String temp="";
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery("select sum(flat_fee+bonus) as total from podcastEpisode where podcastid = '" + podcastid +  "' AND episodeid = '" + episodeid + "'");
-
-			am = rs.getInt("total");
+			while (rs.next()) {
+				am = rs.getInt("total");
+			}
+			
 			
 			// System.out.println(am);
 			rs1 = stmt.executeQuery("select hostid from Podcast where mediaid = '" + podcastid + "'");
-			String temp = rs1.getString(1);
+			while (rs1.next()) {
+				temp = rs1.getString(1);
+			}
 			String s4 = "INSERT INTO hostedby VALUES (?,?,?)";
 			s1 = connection.prepareStatement(s4);
 			s1.setString(1, temp);
