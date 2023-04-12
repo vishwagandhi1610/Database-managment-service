@@ -106,6 +106,29 @@ public class report {
 		}
 	}
 
+	public static void totalPayArtist(String artistid, String spay_start, String spay_end ) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+            stmt = connection.createStatement();
+			rs = stmt.executeQuery("select artistid,sum(artist_payment) as pay from paymentSong where artistid='" + artistid + "' AND spay_date BETWEEN CAST('" + spay_start + "' AS DATE) AND CAST('" + spay_end + "' AS DATE)");
+			while (rs.next()) {
+				String mediaid = rs.getString("artistid");
+				int amount = rs.getInt("pay");
+				System.out.println(mediaid + " : " + amount);
+			}
+            //System.out.println("Total Play count for Album  "+ artistid+ " :");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
 
 
 
