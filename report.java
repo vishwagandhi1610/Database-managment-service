@@ -116,7 +116,7 @@ public class report {
 			rs = stmt.executeQuery("select artistid,sum(artist_payment) as pay from paymentSong where artistid='" + artistid + "' AND spay_date BETWEEN CAST('" + spay_start + "' AS DATE) AND CAST('" + spay_end + "' AS DATE)");
 			while (rs.next()) {
 				String mediaid = rs.getString("artistid");
-				int amount = rs.getInt("pay");
+				float amount = rs.getFloat("pay");
 				System.out.println(mediaid + " : " + amount);
 			}
             //System.out.println("Total Play count for Album  "+ artistid+ " :");
@@ -129,6 +129,77 @@ public class report {
 			close(connection);
 		}
 	}
+
+	public static void totalPayLabel(String label_id, String spay_start, String spay_end ) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+            stmt = connection.createStatement();
+			rs = stmt.executeQuery("select paymentSong.labelname,sum(label_payment)*0.3 as Label_royalty,label_id from paymentSong join recordLabel on paymentSong.labelname=recordLabel.labelname where Main_label='Yes' AND spay_date BETWEEN CAST('" + spay_start + "' AS DATE) AND CAST('" + spay_end + "' AS DATE) AND label_id='" + label_id + "'");
+			while (rs.next()) {
+				String mediaid = rs.getString("labelname");
+				float amount = rs.getFloat("Label_royalty");
+				System.out.println(mediaid + " : " + amount);
+			}
+            //System.out.println("Total Play count for Album  "+ artistid+ " :");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
+
+	public static void songArtist(String artistid) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+            stmt = connection.createStatement();
+			rs = stmt.executeQuery("select songid from composedby where artistid='" + artistid + "'");
+			while (rs.next()) {
+				String mediaid = rs.getString("songid");
+				System.out.println(mediaid);
+			}
+            //System.out.println("Total Play count for Album  "+ artistid+ " :");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
+
+	public static void songAlbum(String albumid) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+            stmt = connection.createStatement();
+			rs = stmt.executeQuery("select mediaid,albumid from Song where albumid='" + albumid + "'");
+			while (rs.next()) {
+				String mediaid = rs.getString("mediaid");
+				System.out.println(mediaid);
+			}
+            //System.out.println("Total Play count for Album  "+ artistid+ " :");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(rs);
+			close(connection);
+		}
+	}
+
 
 
 

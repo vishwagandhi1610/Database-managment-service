@@ -1060,12 +1060,11 @@ public class Main {
 								break;
 
 							case "PY1":
-								payment.generatePayment();
+								
 								ch = -1;
 								while (ch != 0) {
 									System.out.println("1. Song Royalty ");
-									System.out.println("2. Payment to label");
-									System.out.println("3. Artist Payment ");
+									System.out.println("3. Generate Payment for all Song ");
 									System.out.println("0. Go Back");
 									System.out.print("Enter your choice:");
 									ch = Integer.parseInt(scanner.nextLine());
@@ -1074,30 +1073,20 @@ public class Main {
 											System.out.print("Enter Song ID: ");
 											mediaid = scanner.nextLine();
 											System.out.print("Enter Month: ");
-											int month = Integer.parseInt(scanner.nextLine());
-											payment.songRoyalty(mediaid, month);
+											String day = scanner.nextLine();
+											payment.songRoyalty(mediaid, day);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
+
 
 										case 2:
-											System.out.print("Enter Label ID: ");
-											mediaid = scanner.nextLine();
-											System.out.print("Enter Month: ");
-											month = Integer.parseInt(scanner.nextLine());
-											payment.labelPay(mediaid, month);
+											System.out.print("Enter Date for the payment to be made: ");
+											day= scanner.nextLine();
+											payment.generatePaymentAll(day);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
-											break;
-
-										case 3:
-											System.out.print("Enter Artist ID: ");
-											creators_id = scanner.nextLine();
-											System.out.print("Enter Month: ");
-											month = Integer.parseInt(scanner.nextLine());
-											payment.artistPay(creators_id, month);
-											System.out.print("Press Enter key to continue...");
-											key = scanner.nextLine();
+											
 											break;
 
 										case 0:
@@ -1154,6 +1143,46 @@ public class Main {
 								System.out.print("Enter Month: ");
 								month = Integer.parseInt(scanner.nextLine());
 								report.albumMcount(albumid, month);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "R4":
+								System.out.print("Enter Label ID: ");
+								mediaid = scanner.nextLine();
+								System.out.print("Enter Start Date: ");
+								String spay_start = scanner.nextLine();
+								System.out.print("Enter End Date: ");
+								String spay_end= scanner.nextLine();
+								report.totalPayLabel(mediaid, spay_start, spay_end);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "R5":
+								System.out.print("Enter Artist ID: ");
+								creators_id = scanner.nextLine();
+								System.out.print("Enter Start Date: ");
+								spay_start = scanner.nextLine();
+								System.out.print("Enter End Date: ");
+								spay_end= scanner.nextLine();
+								report.totalPayArtist(creators_id, spay_start, spay_end);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "F2":
+								System.out.print("Enter Artist ID: ");
+								creators_id = scanner.nextLine();
+								report.songArtist(creators_id);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
+							case "F3":
+								System.out.print("Enter Album ID: ");
+								albumid = scanner.nextLine();
+								report.songAlbum(albumid);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1241,8 +1270,12 @@ public class Main {
 		System.out.println("R1. Monthly Play count given Artist");
 		System.out.println("R2. Monthly Play count given Song");
 		System.out.println("R3. Monthly Play count given Album");
+		System.out.println("R4. Total Payment made to Record Label over a time period ");
+		System.out.println("R5. Total Payment made to Artist over a time period");
 		System.out.println("--------------Find Information--------------");
 		System.out.println("F1. Find podcast episodes given podcast");
+		System.out.println("F2. Find song given Artist");
+		System.out.println("F3. Find song given Album");
 		System.out.println("0. Go Back");
 		System.out.println("----------------------------------------");
 		System.out.print("Enter your choice:");

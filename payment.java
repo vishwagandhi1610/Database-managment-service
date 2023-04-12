@@ -22,7 +22,7 @@ public class payment {
 	 * 
 	 */
 
-	public static void generatePayment() {
+	public static void generatePaymentAll(String Date) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -33,7 +33,11 @@ public class payment {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			// System.out.println("Artist Status updated.");
+
+			String updateRoyalty = "UPDATE Song SET royalty_paid = 1 ";
+			// Create Statement Object.
+			// execute update statement using Statement object.
+			stmt.execute(updateRoyalty);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -43,15 +47,21 @@ public class payment {
 		}
 	}
 
-	public static void songRoyalty(String songid, int spay_date) {
+	public static void songRoyalty(String songid, String spay_date) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select songid, label_payment as royalty_generated from paymentSong where songid='"
-					+ songid + "' AND month(spay_date)= '" + spay_date + "' AND Main_label='Yes'");
+			
+			String updateSql = "insert into paymentSong(songid,artistid,labelname,label_payment,artist_payment,spay_date,Main_label)select abc.mediaid,creatorsid,labelname,sum(abc.total_amount) as label_pay , sum(abc.total_amount*0.7/def.counta) as artist_pay,'" + spay_date + "',abc.lead as Main_label from (select creatorsid,cf_name, mediaid,labelname, royalty_rate_USD*splay_count AS total_amount, lead from Media natural join Song join composedby on mediaid = songid join Artist on artistid=creatorsid natural join Creators where royalty_paid=0 AND mediaid='"+ songid + "') as abc join (select mediaid,count(artistid) as counta, lead from Song join composedby on mediaid=songid group by mediaid) as def on abc.mediaid = def.mediaid group by creatorsid,mediaid";
+			stmt.execute(updateSql);
+
+			String updateRoyalty = "UPDATE Song SET royalty_paid = 1 where mediaid='"+ songid + "'";
+			stmt.execute(updateRoyalty);
+
+			rs = stmt.executeQuery("select songid, label_payment as royalty_generated from paymentSong where songid='"+ songid + "' AND spay_date= '" + spay_date + "' AND Main_label='Yes'");
 			// execute the delete query using the Statement object.
 			// stmt.executeUpdate(deletePubQuery);
 			while (rs.next()) {
@@ -98,7 +108,6 @@ public class payment {
 			close(connection);
 		}
 	}
-
 	public static void artistPay(String artistid, int spay_date) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
