@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Types;
+import java.sql.SQLException;
 
 public class podcastapi {
 	// MariaDB Credentials
@@ -29,6 +30,9 @@ public class podcastapi {
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
+			// set Auto-Commit to false for transaction handling.
+			connection.setAutoCommit(false);
+
 			String s4 = "INSERT INTO Media VALUES (?,?,?,?,?)";
 			// Assigning values to the prepared statement
 			s1 = connection.prepareStatement(s4);
@@ -37,6 +41,9 @@ public class podcastapi {
 			s1.setString(3, genre);
 			s1.setString(4, language);
 			s1.setString(5, m_country);
+
+			// execute insert query using PreparedStatement object.
+			s1.executeUpdate();
 
 			String s3 = "INSERT INTO Podcast VALUES (?,?,?)";
 			// Assigning values to the prepared statement
@@ -51,12 +58,33 @@ public class podcastapi {
                 s2.setString(3, hostid);
             }
 			// execute insert query using PreparedStatement object.
-			s1.executeUpdate();
+
 			s2.executeUpdate();
+			
 			System.out.println("Podcast record has been inserted.");
+
+			// Over successful execution of all operations of this task, commit the transaction.
+			connection.commit();
+
 		} catch (Exception e) {
+			try {
+				// If an exception has occurred, roll back the transaction.
+				connection.rollback();
+				System.out.println("pocast hola");
+			} catch (SQLException e1) {
+				try {
+					// set AutoCommit to True at the end of transaction.
+					connection.setAutoCommit(true);
+					System.out.println("pocast hola 2");
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
-		} finally {
+		} 
+		
+		finally {
 			// Close PreparedStatement and Connection Objects.
 			close(s1);
 			close(s2);
