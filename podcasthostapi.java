@@ -16,6 +16,23 @@ public class podcasthostapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
+	/*
+	 * API to insert podcast host in Podcast host table.
+	 * 
+	 * @param creatorsid: Podcast host id 
+	 * 
+	 * @param cf_name: Podcast host first name
+	 * 
+	 * @param cl_name: Podcast host last name
+	 * 
+	 * @param email: Podcast host email
+	 * 
+	 * @param phone: Podcast host phone.
+	 * 
+	 * @param city: Podcast host city
+	 * 
+	 */
+
 	public static void insertPodcastHost(String creatorsid, String cf_name, String cl_name, String email, int phone,
 			String city) {
 		try {
@@ -52,6 +69,14 @@ public class podcasthostapi {
 		}
 	}
 
+		/*
+	 * API to update podcast host first name in Podcasthost table.
+	 * 
+	 * @param creators_id: podcast host Id
+	 * 
+	 * @param cf_name: podcast host first name
+	 */
+
 	public static void updatePodcastHostFirstName(String creators_id, String cf_name) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -75,6 +100,13 @@ public class podcasthostapi {
 		}
 	}
 
+	/*
+	 * API to update podcast host last name in podcastHost table.
+	 * 
+	 * @param creators_id: podcast host Id
+	 * 
+	 * @param cl_name: podcast host last name
+	 */
 	public static void updatePodcastHostLastName(String creators_id, String cl_name) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -98,6 +130,14 @@ public class podcasthostapi {
 		}
 	}
 
+		/*
+	 * API to update podcast host email in podcastHost table.
+	 * 
+	 * @param creators_id: podcast host Id
+	 * 
+	 * @param email: podcast host email
+	 */
+
 	public static void updatePodcastHostEmail(String creators_id, String email) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -120,6 +160,14 @@ public class podcasthostapi {
 		}
 	}
 
+		/*
+	 * API to update podcast host city in podcastHost table.
+	 * 
+	 * @param creators_id: podcast host Id
+	 * 
+	 * @param city: podcast host city
+	 */
+
 	public static void updatePodcastHostCity(String creators_id, String city) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -140,6 +188,14 @@ public class podcasthostapi {
 			close(connection);
 		}
 	}
+
+		/*
+	 * API to update podcast host phone in podcastHost table.
+	 * 
+	 * @param creators_id: podcast host Id
+	 * 
+	 * @param phone: podcast host phone
+	 */
 
 	public static void updatePodcastHostPhone(String creators_id, int phone) {
 		try {
@@ -163,6 +219,12 @@ public class podcasthostapi {
 		}
 	}
 
+		/*
+	 * API to delete podcast host in podcastHost table.
+	 * 
+	 * @param creators_id: Podcast Host Id
+	 * 
+	 */
 	public static void deletePodcastHost(String creators_id) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
