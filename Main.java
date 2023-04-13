@@ -464,21 +464,19 @@ public class Main {
 								int episode_count = Integer.parseInt(scanner.nextLine());
 								System.out.print("Enter Podcast Host ID:");
 								String hostid = scanner.nextLine();
+								System.out.print("Enter Sponsor:");
+								String sponsor = scanner.nextLine();
 
 								podcastapi.insertPodcast(mediaid, media_name, genre, language, m_country, episode_count,
-										hostid);
-								// System.out.print("Enter Podcast Id:");
-								// mediaid = scanner.nextLine();
+										hostid,sponsor);
+
 								System.out.print("Enter timestamp for the rating and total subscribers (YYYY-MM-DD):");
 								String pd_date = scanner.nextLine();
 								System.out.print("Enter Podcast Rating :");
 								Float rating = Float.parseFloat(scanner.nextLine());
 								System.out.print("Enter Podcast Record Total Subscribers:");
 								int total_subscribers = Integer.parseInt(scanner.nextLine());
-
 								podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating, total_subscribers);
-								// podcastrecordapi.insertPodcastRecordsubscribers(mediaid, pd_date,
-								// total_subscribers);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -486,13 +484,14 @@ public class Main {
 							case "P2":
 								ch = -1;
 								while (ch != 0) {
-									System.out.println("1. Update Podcast name");
-									System.out.println("2. Update Podcast genre");
-									System.out.println("3. Update Podcast language");
-									System.out.println("4. Update Podcast country");
-									System.out.println("5. Update Podcast Episode Count");
-									System.out.println("6. Update Podcast Host ID");
+									System.out.println("1. Update Podcast name:");
+									System.out.println("2. Update Podcast genre:");
+									System.out.println("3. Update Podcast language:");
+									System.out.println("4. Update Podcast country:");
+									System.out.println("5. Update Podcast Episode Count:");
+									System.out.println("6. Update Podcast Host ID:");
 									System.out.println("7. Update the rating and total subscribers for the podcast");
+									System.out.println("8. Update Sponsor:");
 									System.out.println("0. Go Back");
 									System.out.print("Enter your choice:");
 									ch = Integer.parseInt(scanner.nextLine());
@@ -566,6 +565,16 @@ public class Main {
 											rating = Float.parseFloat(scanner.nextLine());
 											podcastrecordapi.updatePodcastRating(mediaid, pd_date, rating,
 													total_subscribers);
+											System.out.print("Press Enter key to continue...");
+											key = scanner.nextLine();
+											break;
+
+										case 8:
+											System.out.print("Enter Podcast Id:");
+											mediaid = scanner.nextLine();
+											System.out.print("Enter sponsor:");
+											sponsor = scanner.nextLine();
+											podcastapi.updatePodcastSponsor(mediaid, sponsor);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;

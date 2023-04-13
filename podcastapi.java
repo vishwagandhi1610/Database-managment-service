@@ -24,7 +24,7 @@ public class podcastapi {
 	 */
 
 	public static void insertPodcast(String mediaid, String media_name, String genre, String language, String m_country,
-			int episode_count, String hostid) {
+			int episode_count, String hostid, String sponsor) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
@@ -45,7 +45,7 @@ public class podcastapi {
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
 
-			String s3 = "INSERT INTO Podcast VALUES (?,?,?)";
+			String s3 = "INSERT INTO Podcast VALUES (?,?,?,?)";
 			// Assigning values to the prepared statement
 			s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
@@ -58,7 +58,7 @@ public class podcastapi {
                 s2.setString(3, hostid);
             }
 			// execute insert query using PreparedStatement object.
-
+			s2.setString(4, sponsor);
 			s2.executeUpdate();
 			
 			System.out.println("Podcast record has been inserted.");
@@ -70,12 +70,10 @@ public class podcastapi {
 			try {
 				// If an exception has occurred, roll back the transaction.
 				connection.rollback();
-				System.out.println("pocast hola");
 			} catch (SQLException e1) {
 				try {
 					// set AutoCommit to True at the end of transaction.
 					connection.setAutoCommit(true);
-					System.out.println("pocast hola 2");
 				} catch (SQLException e2) {
 					e2.printStackTrace();
 				}
@@ -130,6 +128,28 @@ public class podcastapi {
 			// update statement to update podcast host id for the given mediaid.
 			System.out.print(mediaid);
 			String updateSql = "UPDATE Podcast SET hostid = '" + hostid + "' WHERE mediaid = '" + mediaid + "'";
+			// Create Statement Object.
+			stmt = connection.createStatement();
+			// execute update statement using Statement object.
+			stmt.execute(updateSql);
+			System.out.println("Podcast Host ID updated.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+
+	public static void updatePodcastSponsor(String mediaid, String sponsor) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// update statement to update podcast host id for the given mediaid.
+			System.out.print(mediaid);
+			String updateSql = "UPDATE Podcast SET sponsor = '" + sponsor + "' WHERE mediaid = '" + mediaid + "'";
 			// Create Statement Object.
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
