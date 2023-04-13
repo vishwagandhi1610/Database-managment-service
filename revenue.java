@@ -46,27 +46,27 @@ public class revenue {
 			// Create Statement Object.
             stmt = connection.createStatement();
 			rs1 = stmt.executeQuery("select sum(label_payment) as revenue from paymentSong where month(spay_date)='" + month + "' AND Main_label='Yes'");
-			float sp =0 ;
+			float sp = 0f ;
             while (rs1.next()) {
-				Float srevenue = 0f ;
-				srevenue = rs.getFloat("revenue");
+				Float srevenue = 0f  ;
+				srevenue = rs1.getFloat("revenue");
                 sp = sp + srevenue;
 				System.out.println("Song royalties : "+srevenue);
 			}
 
             rs2 = stmt.executeQuery("select sum(host_amount) as revenue from hostedby where month(pay_date)='" + month + "' ");
             while (rs2.next()) {
-                Float prevenue = 0f;
-				prevenue = rs.getFloat("revenue");
-                sp = sp + prevenue;
+                int prevenue = 0;
+				prevenue = rs2.getInt("revenue");
+                sp = sp + (float)prevenue;
 				System.out.println("Payment to Host : " + prevenue);
 			}
 
-            rs3 = stmt.executeQuery("select count(*) * 10 as revenue from hostedby where month(ups_date)='" + month + "'  ");
+            rs3 = stmt.executeQuery("select count(uid) * sub_fee as revenue from user_payment join user on user_payment.userid= user.userid where month(ups_date)='" + month + "'  ");
             while (rs3.next()) {
                 Float urevenue = 0f ;
-				urevenue = rs.getFloat("revenue");
-                sp = urevenue - sp;
+				urevenue = rs3.getFloat("revenue");
+                sp = urevenue + sp;
 				System.out.println("User Payemnet: " + urevenue);
 			}
 
