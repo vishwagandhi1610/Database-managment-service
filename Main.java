@@ -690,7 +690,7 @@ public class Main {
 
 										case 4:
 											System.out.print(
-													"Enter episode Id for which the episode needs to be updated:");
+													"Enter episode Id for which the flat fee needs to be updated:");
 											episodeid = scanner.nextLine();
 											System.out.print("Enter Podcast Episode flat fee:");
 											flat_fee = Integer.parseInt(scanner.nextLine());
