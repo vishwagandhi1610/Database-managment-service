@@ -6,9 +6,12 @@ The system will enable operations such as information processing, metadata and r
 
 This project will involve making assumptions and resolving potential inconsistencies while deciding what information to include in the database. The system will be designed to manage payments made to artists, record labels, and podcast hosts based on a royalty rate and total play count. Monthly payments to subscribers will also be tracked.
 
+
+
 ## Team Members
 
+* Vishwa Gandhi - vgandhi
 * Dhruv Patel - dpatel49
 * Harshil Sanghavi - hsangha
 * Mitul Patel - mpatel27
-* Vishwa Gandhi - vgandhi
+
