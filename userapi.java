@@ -35,39 +35,33 @@ public class userapi {
      * 
      * @param subFee: User's subscription fee
 	 */
-    public static void insertUser(String userid, String joinDate, String endDate, String ufName, String ulName, String uEmail, String uStatus, int subFee) {
+    public static void insertUser(String userid, String joinDate, String ufName, String ulName, String uEmail, String uStatus, int subFee) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-            String s3 = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?)";
+            String s3 = "INSERT INTO user VALUES (?,?,?,?,?,?,?)";
 			// Assigning values to the prepared statement
             s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
             s2.setString(1, userid);
             s2.setString(2, joinDate);
-            if (endDate == "") {
-                s2.setNull(3, Types.NULL);
+            s2.setString(3, ufName);
+            s2.setString(4, ulName);
+            if (uEmail == "") {
+                s2.setNull(5, Types.NULL);
             }
             else{
-                s2.setString(3, endDate);
+                s2.setString(5, uEmail);
             }
-            s2.setString(4, ufName);
-            s2.setString(5, ulName);
-            if (uEmail == "") {
+            if (uStatus == "") {
                 s2.setNull(6, Types.NULL);
             }
             else{
-                s2.setString(6, uEmail);
+                s2.setString(6, uStatus);
             }
-            if (uStatus == "") {
-                s2.setNull(7, Types.NULL);
-            }
-            else{
-                s2.setString(7, uStatus);
-            }
-            s2.setInt(8, subFee);
+            s2.setInt(7, subFee);
 			
             // execute insert query using PreparedStatement object.
             s2.executeUpdate();
@@ -168,34 +162,6 @@ public class userapi {
 		}
 	}
 
-    /*
-	 * API to update user end date in users table.
-	 * 
-	 * @param userid: User's ID
-	 * 
-	 * @param endDate: User's end date
-	 */
-	public static void updateUserEndDate(String userid, String endDate) {
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
-			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// update statement to update end_date for the given userid.
-			String updateSql = "UPDATE user SET end_date = '" + endDate + "' WHERE userid = '"+ userid + "'"; 
-			// Create Statement Object.
-			stmt = connection.createStatement();
-			// execute update statement using Statement object.
-			stmt.execute(updateSql);
-			System.out.println("User's end date updated.");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// Close PreparedStatement and Connection Objects.
-			close(stmt);
-			close(connection);
-		}
-	}
-
 	/*
 	 * API to update user email id in users table.
 	 * 
@@ -225,7 +191,7 @@ public class userapi {
 	}
 
 	/*
-	 * API to update user email id in users table.
+	 * API to update user status in users table.
 	 * 
 	 * @param userid: User's ID
 	 * 
@@ -253,7 +219,7 @@ public class userapi {
 	}
 
     /*
-	 * API to update user email id in users table.
+	 * API to update User's subscription fee in users table.
 	 * 
 	 * @param userid: User's ID
 	 * 
