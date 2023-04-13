@@ -1121,9 +1121,13 @@ public class Main {
 							case "PY3":
 								System.out.print("Enter USER ID which subscibes to the media streaming service: ");
 								userid = scanner.nextLine();
+								System.out.print("Enter USER payment id: ");
+								String userpayid = scanner.nextLine();
 								System.out.print("Enter payment date: ");
 								pay_date = scanner.nextLine();
-								payment.paytoUser(userid, pay_date);
+								System.out.print("Enter Subscription fee: ");
+								Float sub_fee = Float.parseFloat(scanner.nextLine());
+								payment.paytoUser(userid, userpayid, pay_date, sub_fee);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;

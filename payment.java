@@ -169,6 +169,39 @@ public class payment {
 			close(stmt);
 			close(rs);
 			close(rs1);
+			close(s1);
+			close(connection);
+		}
+	}
+
+	public static void paytoUser(String userid, String uid, String ups_date, float sub_fee) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			String tem = "Active";
+			// Get connection object
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Create Statement Object.
+			String s3 = "INSERT INTO user_payment VALUES (?,?,?)";
+			s1 = connection.prepareStatement(s3);
+			s1.setString(1, uid);
+            s1.setString(2, userid);
+			s1.setString(3, ups_date);
+
+			s1.executeUpdate();
+
+			String updateSql = "UPDATE user SET u_status = '" + tem + "' WHERE userid = '"+ userid + "'"; 
+			String updateSql1 = "UPDATE user SET sub_fee = '" + sub_fee + "' WHERE userid = '"+ userid + "'"; 
+			stmt = connection.createStatement();
+			stmt.execute(updateSql);
+			stmt.execute(updateSql1);
+			System.out.println("User's payment updated.");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close PreparedStatement and Connection Objects.
+			close(stmt);
+			close(s1);
 			close(connection);
 		}
 	}
