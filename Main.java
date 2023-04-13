@@ -810,7 +810,7 @@ public class Main {
 											albumid2 = scanner.nextLine();
 											System.out.print("Enter Artist's ID associated to the respective album: ");
 											artistid = scanner.nextLine();
-											albumapi.assignAlbumArtistID(albumid2, artistid);
+											albumapi.assignAlbumArtistID(artistid, albumid2);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
 											break;
