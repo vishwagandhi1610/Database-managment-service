@@ -219,7 +219,7 @@ public class report {
 			while (rs.next()) {
 				String mediaid = rs.getString("songid");
 				String media_name = rs.getString("media_name");
-				System.out.println(mediaid);
+				System.out.println(mediaid + ":" + media_name);
 			}
 			// System.out.println("Total Play count for Album "+ artistid+ " :");
 		} catch (Exception e) {
@@ -243,7 +243,7 @@ public class report {
 			while (rs.next()) {
 				String mediaid = rs.getString("mediaid");
 				String media_name = rs.getString("media_name");
-				System.out.println(mediaid);
+				System.out.println(mediaid + ":" + media_name);
 			}
 			// System.out.println("Total Play count for Album "+ artistid+ " :");
 		} catch (Exception e) {
