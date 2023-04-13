@@ -1060,7 +1060,7 @@ public class Main {
 								ch = -1;
 								while (ch != 0) {
 									System.out.println("1. Song Royalty ");
-									System.out.println("3. Generate Payment for all Song ");
+									System.out.println("2. Generate Payment for all Song ");
 									System.out.println("0. Go Back");
 									System.out.print("Enter your choice:");
 									ch = Integer.parseInt(scanner.nextLine());
