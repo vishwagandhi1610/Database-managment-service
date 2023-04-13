@@ -11,3 +11,4 @@ This project will involve making assumptions and resolving potential inconsisten
 - Harshil Sanghavi - hsangha
 - Mitul Patel - mpatel27
 - Dhruv Patel - dpatel49
+- Vishwa Gandhi
