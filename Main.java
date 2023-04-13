@@ -279,13 +279,13 @@ public class Main {
 								String genre = scanner.nextLine();
 								System.out.print("Enter Song language:");
 								String language = scanner.nextLine();
-								System.out.print("Enter Song country");
+								System.out.print("Enter Song country:");
 								String m_country = scanner.nextLine();
 								System.out.print("Enter Song duration");
 								int duration = Integer.parseInt(scanner.nextLine());
-								System.out.print("Enter Song release date");
+								System.out.print("Enter Song release date:");
 								String s_release_date = scanner.nextLine();
-								System.out.print("Enter Song royalty_rate");
+								System.out.print("Enter Song royalty_rate:");
 								float royalty_rate = Float.parseFloat(scanner.nextLine());
 								System.out.print("Did the song earn royalties? (Yes/No): ");
 								String input = scanner.nextLine();
@@ -454,26 +454,26 @@ public class Main {
 								mediaid = scanner.nextLine();
 								System.out.print("Enter Podcast Name:");
 								media_name = scanner.nextLine();
-								System.out.print("Enter Podcast genre");
+								System.out.print("Enter Podcast genre:");
 								genre = scanner.nextLine();
 								System.out.print("Enter Podcast language:");
 								language = scanner.nextLine();
-								System.out.print("Enter Podcast country");
+								System.out.print("Enter Podcast country:");
 								m_country = scanner.nextLine();
-								System.out.print("Enter Podcast Episode count");
+								System.out.print("Enter Podcast Episode count:");
 								int episode_count = Integer.parseInt(scanner.nextLine());
-								System.out.print("Enter Podcast Host ID ");
+								System.out.print("Enter Podcast Host ID:");
 								String hostid = scanner.nextLine();
 
 								podcastapi.insertPodcast(mediaid, media_name, genre, language, m_country, episode_count,
 										hostid);
 								// System.out.print("Enter Podcast Id:");
 								// mediaid = scanner.nextLine();
-								System.out.print("Enter timestamp for the rating and total subscribers (YYYY-MM-DD)");
+								System.out.print("Enter timestamp for the rating and total subscribers (YYYY-MM-DD):");
 								String pd_date = scanner.nextLine();
 								System.out.print("Enter Podcast Rating :");
 								Float rating = Float.parseFloat(scanner.nextLine());
-								System.out.print("Enter Podcast Record Total Subscribers");
+								System.out.print("Enter Podcast Record Total Subscribers:");
 								int total_subscribers = Integer.parseInt(scanner.nextLine());
 
 								podcastrecordapi.insertPodcastRecord(mediaid, pd_date, rating, total_subscribers);
@@ -558,9 +558,9 @@ public class Main {
 
 											System.out.print("Enter Podcast Id:");
 											mediaid = scanner.nextLine();
-											System.out.print("Enter Podcast Record Date ");
+											System.out.print("Enter Podcast Record Date: ");
 											pd_date = scanner.nextLine();
-											System.out.print("Enter Podcast Record Total Subscribers");
+											System.out.print("Enter Podcast Record Total Subscribers:");
 											total_subscribers = Integer.parseInt(scanner.nextLine());
 											System.out.print("Enter Podcast Rating :");
 											rating = Float.parseFloat(scanner.nextLine());
@@ -635,11 +635,11 @@ public class Main {
 							case "PE2":
 								ch = -1;
 								while (ch != 0) {
-									System.out.println("1. Update Podcast Episode title:");
-									System.out.println("2. Update Podcast Episode duration:");
-									System.out.println("3. Update Podcast Episode release date:");
-									System.out.println("4. Update Podcast Episode flat fee:");
-									System.out.println("5. Update Podcast  Episode ad count:");
+									System.out.println("1. Update Podcast Episode title");
+									System.out.println("2. Update Podcast Episode duration");
+									System.out.println("3. Update Podcast Episode release date");
+									System.out.println("4. Update Podcast Episode flat fee");
+									System.out.println("5. Update Podcast  Episode ad count");
 									System.out.println("6. Update listening count for the podcast episode");
 									System.out.println("0. Go Back");
 									System.out.print("Enter your choice:");
@@ -1034,7 +1034,7 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-							
+
 							case "UP2":
 								System.out.print("Enter User ID for which the play count needs to be added/updated:");
 								userid = scanner.nextLine();
@@ -1062,7 +1062,7 @@ public class Main {
 								break;
 
 							case "PY1":
-								
+
 								ch = -1;
 								while (ch != 0) {
 									System.out.println("1. Song Royalty ");
@@ -1081,14 +1081,13 @@ public class Main {
 											key = scanner.nextLine();
 											break;
 
-
 										case 2:
 											System.out.print("Enter Date for the payment to be made: ");
-											day= scanner.nextLine();
+											day = scanner.nextLine();
 											payment.generatePaymentAll(day);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
-											
+
 											break;
 
 										case 0:
@@ -1114,7 +1113,7 @@ public class Main {
 								String podcastid = scanner.nextLine();
 								System.out.print("Enter payment date: ");
 								String pay_date = scanner.nextLine();
-								payment.paytohost(episodeid,podcastid,pay_date);
+								payment.paytohost(episodeid, podcastid, pay_date);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1155,7 +1154,7 @@ public class Main {
 								System.out.print("Enter Start Date: ");
 								String spay_start = scanner.nextLine();
 								System.out.print("Enter End Date: ");
-								String spay_end= scanner.nextLine();
+								String spay_end = scanner.nextLine();
 								report.totalPayLabel(mediaid, spay_start, spay_end);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
@@ -1167,7 +1166,7 @@ public class Main {
 								System.out.print("Enter Start Date: ");
 								spay_start = scanner.nextLine();
 								System.out.print("Enter End Date: ");
-								spay_end= scanner.nextLine();
+								spay_end = scanner.nextLine();
 								report.totalPayArtist(creators_id, spay_start, spay_end);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
@@ -1180,7 +1179,7 @@ public class Main {
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
-							
+
 							case "R7":
 								System.out.print("Enter Year: ");
 								int year = Integer.parseInt(scanner.nextLine());
@@ -1219,7 +1218,7 @@ public class Main {
 								System.out.print("Enter Start Date: ");
 								spay_start = scanner.nextLine();
 								System.out.print("Enter End Date: ");
-								spay_end= scanner.nextLine();
+								spay_end = scanner.nextLine();
 								report.totalPayHost(creators_id, spay_start, spay_end);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
