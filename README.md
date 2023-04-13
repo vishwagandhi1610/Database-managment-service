@@ -8,7 +8,8 @@ This project will involve making assumptions and resolving potential inconsisten
 
 ## Team Members
 
+
+- Vishwa Gandhi - vgandhi
 - Harshil Sanghavi - hsangha
 - Mitul Patel - mpatel27
 - Dhruv Patel - dpatel49
-- Vishwa Gandhi
