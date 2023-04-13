@@ -1118,6 +1118,16 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+							case "PY3":
+								System.out.print("Enter USER ID which subscibes to the media streaming service: ");
+								userid = scanner.nextLine();
+								System.out.print("Enter payment date: ");
+								pay_date = scanner.nextLine();
+								payment.paytoUser(userid, pay_date);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "R1":
 								System.out.print("Enter Artist ID: ");
 								creators_id = scanner.nextLine();
@@ -1317,20 +1327,21 @@ public class Main {
 		System.out.println("UP2. Enter/Update play count for songs");
 		System.out.println("UP3. Enter/Update listening count for podcast episode");
 		System.out.println("--------------Payment--------------");
-		System.out.println("PY1. Song Payment ");
-		System.out.println("PY2. Podcast Host Payment");
+		System.out.println("PY1. Song Payment: ");
+		System.out.println("PY2. Podcast Host Payment: ");
+		System.out.println("PY3. Payment from the subscribers: ");
 		System.out.println("--------------Report--------------");
-		System.out.println("R1. Monthly Play count given Artist");
-		System.out.println("R2. Monthly Play count given Song");
-		System.out.println("R3. Monthly Play count given Album");
-		System.out.println("R4. Total Payment made to Record Label over a time period ");
-		System.out.println("R5. Total Payment made to Artist over a time period");
-		System.out.println("R6. Total Revenue of Streaming service for a given month");
-		System.out.println("R7. Total Revenue of Streaming service for a given year");
-		System.out.println("R8. Report podcast episode given podcast");
-		System.out.println("R9. Report all songs given Artist");
-		System.out.println("R10. Report all songs given Album");
-		System.out.println("R11. Total Payment made to Podcast host over a time period ");
+		System.out.println("R1. Monthly Play count given Artist: ");
+		System.out.println("R2. Monthly Play count given Song: ");
+		System.out.println("R3. Monthly Play count given Album: ");
+		System.out.println("R4. Total Payment made to Record Label over a time period: ");
+		System.out.println("R5. Total Payment made to Artist over a time period: ");
+		System.out.println("R6. Total Revenue of Streaming service for a given month: ");
+		System.out.println("R7. Total Revenue of Streaming service for a given year: ");
+		System.out.println("R8. Report podcast episode given podcast: ");
+		System.out.println("R9. Report all songs given Artist: ");
+		System.out.println("R10. Report all songs given Album: ");
+		System.out.println("R11. Total Payment made to Podcast host over a time period: ");
 		System.out.println("--------------Find Information--------------");
 		System.out.println("F1. Find podcast episodes given podcast");
 		System.out.println("F2. Find song given Artist");
