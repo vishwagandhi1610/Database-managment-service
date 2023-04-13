@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.sql.Types;
 public class podcasthostapi {
 	// MariaDB Credentials
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/hsangha";
@@ -52,9 +52,19 @@ public class podcasthostapi {
 			s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
 			s2.setString(1, creatorsid);
-			s2.setString(2, email);
+			//s2.setString(2, email);
+			if (email.length() == 0) {
+				s2.setNull(2, Types.NULL);
+			} else {
+				s2.setString(2, email);
+			}
 			s2.setInt(3, phone);
-			s2.setString(4, city);
+			//s2.setString(4, city);
+			if (city.length() == 0) {
+				s2.setNull(4, Types.NULL);
+			} else {
+				s2.setString(4, city);
+			}
 			// execute insert query using PreparedStatement object.
 			s1.executeUpdate();
 			s2.executeUpdate();
