@@ -215,9 +215,10 @@ public class report {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select songid from composedby where artistid='" + artistid + "'");
+			rs = stmt.executeQuery("select songid, media_name from Media natural join Song join composedby on songid=mediaid where artistid='" + artistid + "'");
 			while (rs.next()) {
 				String mediaid = rs.getString("songid");
+				String media_name = rs.getString("media_name");
 				System.out.println(mediaid);
 			}
 			// System.out.println("Total Play count for Album "+ artistid+ " :");
@@ -238,9 +239,10 @@ public class report {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select mediaid,albumid from Song where albumid='" + albumid + "'");
+			rs = stmt.executeQuery("select mediaid, media_name from Media natural join Song natural join Album where albumid='" + albumid + "'");
 			while (rs.next()) {
 				String mediaid = rs.getString("mediaid");
+				String media_name = rs.getString("media_name");
 				System.out.println(mediaid);
 			}
 			// System.out.println("Total Play count for Album "+ artistid+ " :");
