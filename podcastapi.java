@@ -154,7 +154,7 @@ public class podcastapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("Podcast Host ID updated.");
+			System.out.println("sponsor updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
