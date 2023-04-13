@@ -138,7 +138,7 @@ public class report {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
             stmt = connection.createStatement();
-			rs = stmt.executeQuery("select artistid,sum(artist_payment) as paid from hostedby where hostid='" + hostid + "' AND pay_date BETWEEN CAST('" + spay_start + "' AS DATE) AND CAST('" + spay_end + "' AS DATE)");
+			rs = stmt.executeQuery("select hostid,sum(host_amount) as paid from hostedby where hostid='" + hostid + "' AND pay_date BETWEEN CAST('" + spay_start + "' AS DATE) AND CAST('" + spay_end + "' AS DATE)");
 			while (rs.next()) {
 				String mediaid = rs.getString("hostid");
 				float amount = rs.getInt("paid");
