@@ -57,14 +57,15 @@ public class songapi {
 				s2.setString(6, albumid);
 			}
 			s2.setInt(7, track_no);
-			
+
 			// execute insert query using PreparedStatement object.
-			
+
 			s2.executeUpdate();
-			
+
 			System.out.println("Song record has been inserted.");
 
-			// Over successful execution of all operations of this task, commit the transaction.
+			// Over successful execution of all operations of this task, commit the
+			// transaction.
 			connection.commit();
 
 		} catch (Exception e) {
@@ -81,8 +82,8 @@ public class songapi {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
-		} 
-		
+		}
+
 		finally {
 			// Close PreparedStatement and Connection Objects.
 			close(s1);
@@ -91,6 +92,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update media name in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param media_name: Song name
+	 */
 	public static void updateMediaName(String mediaid, String media_name) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -113,6 +121,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update genre in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param genre: Genre of Song
+	 */
 	public static void updateMediaGenre(String mediaid, String genre) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -135,6 +150,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update language of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param language: Language of song
+	 */
 	public static void updateMediaLanguage(String mediaid, String language) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -157,6 +179,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update country of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param m_country: Country of song
+	 */
 	public static void updateMediaCountry(String mediaid, String m_country) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -179,6 +208,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update duration of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param duration: Duration of song
+	 */
 	public static void updateMediaDuration(String mediaid, int duration) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -201,6 +237,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update release date of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param s_release_date: Release date of song
+	 */
 	public static void updateMediaDate(String mediaid, String s_release_date) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -224,6 +267,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update royalty rate of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param royalty_rate: Royalty rate of song
+	 */
 	public static void updateMediaRate(String mediaid, Float royalty_rate) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -247,6 +297,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update royalty paid status of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param royalty_paid: Royalty paid for a song
+	 */
 	public static void updateMediaPaid(String mediaid, int royalty_paid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -271,6 +328,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to assign album of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param albumid: Album ID
+	 */
 	public static void assignMediaAlbum(String mediaid, String albumid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -293,6 +357,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update track number of the song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param track_no: Track number of song
+	 */
 	public static void updateMediaTrack(String mediaid, int track_no) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -315,6 +386,11 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to Delete song in song table.
+	 * 
+	 * @param mediaid: Media ID
+	 */
 	public static void deleteSong(String mediaid) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -336,6 +412,9 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to update play count of the song in song table.
+	 */
 	public static void updatePlaycountSong(int month) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -347,7 +426,8 @@ public class songapi {
 			// delete statement to delete the Song with given mediaid.
 			stmt.executeUpdate(abc);
 			rs = stmt.executeQuery(
-					"select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)='" + month + "' group by mediaid");
+					"select mediaid,sum(dplay_count)as dplay_count from listensto where month(uplay_date)='" + month
+							+ "' group by mediaid");
 			// execute the delete query using the Statement object.
 			// stmt.executeUpdate(deletePubQuery);
 			while (rs.next()) {
@@ -369,6 +449,13 @@ public class songapi {
 		}
 	}
 
+	/*
+	 * API to insert artist of the song in song table.
+	 * 
+	 * @param songid: Song ID
+	 * 
+	 * @param artistid: Artist ID
+	 */
 	public static void insertArtist(String songid, String artistid) {
 		try {
 			Scanner scanner = new Scanner(System.in);
