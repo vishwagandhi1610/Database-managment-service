@@ -21,6 +21,23 @@ public class podcastapi {
 	/*
 	 * API to enter Podcast details in Media and Podcast table.
 	 * 
+	 * @param mediaid: Podcast id 
+	 * 
+	 * @param media_name: Podcast name
+	 * 
+	 * @param genre: Podcast genre
+	 * 
+	 * @param language: Podcast language
+	 * 
+	 * @param m_country: Podcast Country
+	 * 
+	 * @param episode_count: Podcast 
+	 * 
+	 * @param hostid: Podcast host that hosts the podcasts
+	 * 
+	 * @param sponsor: Podcast sponsor which is single valued attribute
+	 * 
+	 * 
 	 */
 
 	public static void insertPodcast(String mediaid, String media_name, String genre, String language, String m_country,
@@ -119,6 +136,13 @@ public class podcastapi {
 			close(connection);
 		}
 	}
+	/*
+	* API to update Podcast host in Podcast table.
+	* 
+	* @param mediaid: Media ID
+	* 
+	* @param hostid: Podcast host ID
+	*/
 
 	public static void updatePodcastHostID(String mediaid, String hostid) {
 		try {
@@ -142,6 +166,15 @@ public class podcastapi {
 		}
 	}
 
+	/*
+	* API to update sponsor in Podcast table.
+	* 
+	* @param mediaid: Media ID
+	* 
+	* @param sponsor: sponsor for the podcast
+	*/
+	
+
 	public static void updatePodcastSponsor(String mediaid, String sponsor) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -163,6 +196,13 @@ public class podcastapi {
 			close(connection);
 		}
 	}
+
+	/*
+	* API to delete mediaid in Podcast table.
+	* 
+	* @param mediaid: Media ID
+	* 
+	*/
 
 	public static void deletePodcast(String mediaid) {
 		try {
