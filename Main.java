@@ -844,8 +844,6 @@ public class Main {
 								String userid = scanner.nextLine();
 								System.out.print("Enter User's Join Date:");
 								String joinDate = scanner.nextLine();
-								System.out.print("Enter User's End Date:");
-								String endDate = scanner.nextLine();
 								System.out.print("Enter User's First name:");
 								String ufName = scanner.nextLine();
 								System.out.print("Enter User's Last name:");
@@ -858,7 +856,7 @@ public class Main {
 								System.out.print("Enter User's Subscription Fee:");
 								int subFee = Integer.parseInt(scanner.nextLine());
 
-								userapi.insertUser(userid, joinDate, endDate, ufName, ulName, uEmail, uStatus, subFee);
+								userapi.insertUser(userid, joinDate, ufName, ulName, uEmail, uStatus, subFee);
 
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
@@ -870,10 +868,9 @@ public class Main {
 									System.out.println("1. Update user's first name");
 									System.out.println("2. Update user's last name");
 									System.out.println("3. Update user's join date");
-									System.out.println("4. Update user's end date");
-									System.out.println("5. Update user's email id");
-									System.out.println("6. Update user's status (active/inactive)");
-									System.out.println("7. Update user's subscription fee");
+									System.out.println("4. Update user's email id");
+									System.out.println("5. Update user's status (active/inactive)");
+									System.out.println("6. Update user's subscription fee");
 									System.out.println("0. Go Back");
 									System.out.print("Enter your choice:");
 									ch = Integer.parseInt(scanner.nextLine());
@@ -910,16 +907,6 @@ public class Main {
 										case 4:
 											System.out.print("Enter User's ID: ");
 											userid = scanner.nextLine();
-											System.out.print("Enter User's end date: ");
-											endDate = scanner.nextLine();
-											userapi.updateUserEndDate(userid, endDate);
-											System.out.print("Press Enter key to continue...");
-											key = scanner.nextLine();
-											break;
-
-										case 5:
-											System.out.print("Enter User's ID: ");
-											userid = scanner.nextLine();
 											System.out.print("Enter User's email id: ");
 											uEmail = scanner.nextLine();
 											userapi.updateUserEmail(userid, uEmail);
@@ -927,7 +914,7 @@ public class Main {
 											key = scanner.nextLine();
 											break;
 
-										case 6:
+										case 5:
 											System.out.print("Enter User's ID: ");
 											userid = scanner.nextLine();
 											System.out.print("Enter User's status (active/inactive): ");
@@ -937,7 +924,7 @@ public class Main {
 											key = scanner.nextLine();
 											break;
 
-										case 7:
+										case 6:
 											System.out.print("Enter User's ID: ");
 											userid = scanner.nextLine();
 											System.out.print("Enter User's subscription fee: ");

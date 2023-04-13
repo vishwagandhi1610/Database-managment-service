@@ -45,27 +45,29 @@ public class revenue {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
             stmt = connection.createStatement();
-			rs1 = stmt.executeQuery("select sum(label_payment) as revenue from paymentSong where month(spay_date)='" + month + "' AND year(pay_date)='" + year + "' AND Main_label='Yes'");
+			rs1 = stmt.executeQuery("select sum(label_payment) as revenue from paymentSong where month(spay_date)='" + month + "' AND Main_label='Yes'");
 			float sp =0 ;
             while (rs1.next()) {
-				
-				Float srevenue = rs.getFloat("revenue");
+				Float srevenue = 0f ;
+				srevenue = rs.getFloat("revenue");
                 sp = sp + srevenue;
-				System.out.println(srevenue);
+				System.out.println("Song royalties : "+srevenue);
 			}
 
-            rs2 = stmt.executeQuery("select sum(host_amount) as revenue from hostedby where month(pay_date)='" + month + "' AND year(pay_date)='" + year + "' AND Main_label='Yes'");
+            rs2 = stmt.executeQuery("select sum(host_amount) as revenue from hostedby where month(pay_date)='" + month + "' ");
             while (rs2.next()) {
-				Float prevenue = rs.getFloat("revenue");
+                Float prevenue = 0f;
+				prevenue = rs.getFloat("revenue");
                 sp = sp + prevenue;
-				System.out.println(prevenue);
+				System.out.println("Payment to Host : " + prevenue);
 			}
 
-            rs3 = stmt.executeQuery("select count(*) * 10 as revenue from hostedby where month(ups_date)='" + month + "' AND year(ups_date)='" + year + "' AND Main_label='Yes'");
-            while (rs2.next()) {
-				Float urevenue = rs.getFloat("revenue");
-                sp = sp + urevenue;
-				System.out.println(urevenue);
+            rs3 = stmt.executeQuery("select count(*) * 10 as revenue from hostedby where month(ups_date)='" + month + "'  ");
+            while (rs3.next()) {
+                Float urevenue = 0f ;
+				urevenue = rs.getFloat("revenue");
+                sp = urevenue - sp;
+				System.out.println("User Payemnet: " + urevenue);
 			}
 
             String s3;
@@ -76,13 +78,15 @@ public class revenue {
 				s2.setInt(2, year);
                 s2.setFloat(3, sp);
 				s2.executeUpdate();
-            System.out.println("Total Revenue of Streaming Service  for '"+ month + "' : '"+ sp + "'");
+            System.out.println("Total Revenue of Streaming Service  for "+ month + " : "+ sp + " ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			// Close PreparedStatement and Connection Objects.
 			close(stmt);
-			close(rs);
+			close(rs1);
+            close(rs2);
+            close(rs3);
 			close(connection);
             close(s2);
 		}
