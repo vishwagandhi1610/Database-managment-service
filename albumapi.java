@@ -17,7 +17,7 @@ public class albumapi {
 	public static ResultSet rs = null;
 
     /*
-	 * API to insert user record in users table.
+	 * API to insert album.
 	 * 
 	 * @param albumid: Album's ID
 	 * 
@@ -71,7 +71,7 @@ public class albumapi {
 
 
 	/*
-	 * API to insert user record in users table.
+	 * API to update album name.
 	 * 
 	 * @param albumid: Album's ID
 	 * 
@@ -99,7 +99,7 @@ public class albumapi {
 	}
 
 	/*
-	 * API to insert user record in users table.
+	 * API to update album release year.
 	 * 
 	 * @param albumid: Album's ID
      * 
@@ -127,7 +127,7 @@ public class albumapi {
 	}
 
     /*
-	 * API to insert user record in users table.
+	 * API to update album edition.
 	 * 
 	 * @param albumid: Album's ID
      * 
@@ -155,7 +155,7 @@ public class albumapi {
 	}
 
     /*
-	 * API to insert user record in users table.
+	 * API to update artist to album.
 	 * 
 	 * @param albumid: Album's ID
      * 
