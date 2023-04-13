@@ -1139,6 +1139,17 @@ public class Main {
 								key = scanner.nextLine();
 								break;
 
+
+							case "PY4":
+								System.out.print("Enter Month: ");
+								month = Integer.parseInt(scanner.nextLine());
+								System.out.print("Enter Year: ");
+								int year = Integer.parseInt(scanner.nextLine());
+								revenue.totalRevenueYear(month, year);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+
 							case "R1":
 								System.out.print("Enter Artist ID: ");
 								creators_id = scanner.nextLine();
@@ -1203,7 +1214,7 @@ public class Main {
 
 							case "R7":
 								System.out.print("Enter Year: ");
-								int year = Integer.parseInt(scanner.nextLine());
+								year = Integer.parseInt(scanner.nextLine());
 								report.totalRevenueYear(year);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
@@ -1241,6 +1252,16 @@ public class Main {
 								System.out.print("Enter End Date: ");
 								spay_end = scanner.nextLine();
 								report.totalPayHost(creators_id, spay_start, spay_end);
+								System.out.print("Press Enter key to continue...");
+								key = scanner.nextLine();
+								break;
+							
+							case "R12":
+								System.out.print("Enter Month: ");
+								month = Integer.parseInt(scanner.nextLine());
+								System.out.print("Enter Year: ");
+								year = Integer.parseInt(scanner.nextLine());
+								revenue.FindtotalRevenue(month, year);
 								System.out.print("Press Enter key to continue...");
 								key = scanner.nextLine();
 								break;
@@ -1341,6 +1362,7 @@ public class Main {
 		System.out.println("PY1. Song Payment: ");
 		System.out.println("PY2. Podcast Host Payment: ");
 		System.out.println("PY3. Payment from the subscribers: ");
+		System.out.println("PY4. Total Revenue: ");
 		System.out.println("--------------Report--------------");
 		System.out.println("R1. Monthly Play count given Artist: ");
 		System.out.println("R2. Monthly Play count given Song: ");
@@ -1353,6 +1375,7 @@ public class Main {
 		System.out.println("R9. Report all songs given Artist: ");
 		System.out.println("R10. Report all songs given Album: ");
 		System.out.println("R11. Total Payment made to Podcast host over a time period: ");
+		System.out.println("R12. Total Revenue for a given month and year: ");
 		System.out.println("--------------Find Information--------------");
 		System.out.println("F1. Find podcast episodes given podcast");
 		System.out.println("F2. Find song given Artist");
