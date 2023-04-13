@@ -65,6 +65,7 @@ public class albumapi {
 			// Close PreparedStatement and Connection Objects.
             close(s2);
 			close(connection);
+			close(stmt);
 		}
 	}
 

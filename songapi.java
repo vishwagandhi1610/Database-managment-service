@@ -364,6 +364,7 @@ public class songapi {
 		} finally {
 			// Close PreparedStatement and Connection Objects.
 			close(stmt);
+			close(rs);
 			close(connection);
 		}
 	}
