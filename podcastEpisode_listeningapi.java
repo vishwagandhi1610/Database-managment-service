@@ -19,6 +19,12 @@ public class podcastEpisode_listeningapi {
 	 * API to enter Podcast Episode Listening details in podcastEpisode_listening
 	 * table.
 	 * 
+	 * @param episodeid: Podcast episode id
+	 * 
+	 * @param pel_date: Podcast listening date
+	 * 
+	 * @param listening_count: Podcast episode listening_count
+	 * 
 	 */
 
 	public static void insertPodcastEpL(String episodeid, String pel_date, int listening_count) {
