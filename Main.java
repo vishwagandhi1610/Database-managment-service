@@ -298,8 +298,6 @@ public class Main {
 									System.out.println("Invalid input. Assuming no royalties earned.");
 									royalty_paid = 0;
 								}
-								// System.out.print("Enter Song royalty_paid");
-								// int royalty_paid = Integer.parseInt(scanner.nextLine());
 								System.out.print("Enter Song Album ID");
 								String albumid = scanner.nextLine();
 								System.out.print("Enter Song Track number");
