@@ -38,7 +38,7 @@ public class assignapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("podcast host Assigned.");
+			System.out.println("Host Assgined to Episode");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -61,7 +61,7 @@ public class assignapi {
 			stmt = connection.createStatement();
 			// execute update statement using Statement object.
 			stmt.execute(updateSql);
-			System.out.println("podcast host Assigned.");
+			System.out.println("Episode assigned to Podcast.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

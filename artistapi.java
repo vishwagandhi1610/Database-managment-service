@@ -16,6 +16,30 @@ public class artistapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
+
+		/*
+	 * API to insert artist in Artist table.
+	 * 
+	 * @param creatorsid: Artist id 
+	 * 
+	 * @param cf_name: Artist first name
+	 * 
+	 * @param cl_name: Artist last name
+	 * 
+	 * @param labelname: label name connected with the artist
+	 * 
+	 * @param a_status: Artist status.
+	 * 
+	 * @param type: Artist type
+	 * 
+	 * @param primary_genre: Artist primary genre
+	 * 
+	 * @param monthly_listeners: monthly listeners for the art5ist
+	 * 
+	 * @param a_country: country where artist belongs.
+	 * 
+	 */
+
 	public static void insertArtist(String creatorsid, String cf_name, String cl_name, String labelname,
 			String a_status, String type, String primary_genre, int monthly_listeners, String a_country) {
 		try {
@@ -31,11 +55,10 @@ public class artistapi {
 			s1.setString(3, cl_name);
 
 			String s3 = "INSERT INTO Artist VALUES (?,?,?,?,?,?,?)";
-			// Assigning values to the prepared statement
 			s2 = connection.prepareStatement(s3);
 			// Assigning values to the prepared statement
 			s2.setString(1, creatorsid);
-			//s2.setString(2, labelname);
+			
 			if (labelname.length()==0) {
                 s2.setNull(2, Types.NULL);
             }
@@ -119,6 +142,14 @@ public class artistapi {
 		}
 	}
 
+	/*
+	 * API to update artist label name in Artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param labelnamed: label name
+	 */
+
 	public static void assignArtistLabelName(String creators_id, String labelname) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -141,6 +172,13 @@ public class artistapi {
 		}
 	}
 
+	/*
+	 * API to update artist status in artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param a_status: Artist status
+	 */
 	public static void updateArtistStatus(String creators_id, String a_status) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -163,6 +201,13 @@ public class artistapi {
 		}
 	}
 
+	/*
+	 * API to update artist type in artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param type: Artist type
+	 */
 	public static void updateArtistType(String creators_id, String type) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -183,6 +228,14 @@ public class artistapi {
 			close(connection);
 		}
 	}
+
+		/*
+	 * API to update artist primary genre in artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param primary_genre: Artist primary genre
+	 */
 
 	public static void updateArtistPrimaryGenre(String creators_id, String primary_genre) {
 		try {
@@ -206,6 +259,14 @@ public class artistapi {
 		}
 	}
 
+		/*
+	 * API to update artist country in artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param a_country: Artist country 
+	 */
+
 	public static void updateArtistCountry(String creators_id, String a_country) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -227,6 +288,14 @@ public class artistapi {
 			close(connection);
 		}
 	}
+
+	/*
+	 * API to update artist monthly listeners in artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 * @param monthly_listeners: Artist monthly listeners
+	 */
 
 	public static void updateArtistMonthlyListeners(String creators_id, int monthly_listeners) {
 		try {
@@ -250,6 +319,13 @@ public class artistapi {
 			close(connection);
 		}
 	}
+
+		/*
+	 * API to delete artist  in artist table.
+	 * 
+	 * @param creators_id: Artist Id
+	 * 
+	 */
 
 	public static void deleteArtist(String creators_id) {
 		try {
