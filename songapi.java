@@ -19,6 +19,31 @@ public class songapi {
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
 
+	/*
+	 * API to insert song details in the Song table.
+	 * 
+	 * @param mediaid: Media ID
+	 * 
+	 * @param media_name: Song name
+	 * 
+	 * @param genre: Genre of the song
+	 * 
+	 * @param language: Language of the song
+	 * 
+	 * @param m_country: Country of the song
+	 * 
+	 * @param duration: Duration of the song
+	 * 
+	 * @param s_release_date: Release date of the song
+	 * 
+	 * @param royalty_rate: Royalty rate of the song
+	 * 
+	 * @param royalty_paid: Royalty Paid status of a song
+	 * 
+	 * @param albumid: Album of the song
+	 * 
+	 * @param track_no: Track number of the song
+	 */
 	public static void insertSong(String mediaid, String media_name, String genre, String language, String m_country,
 			int duration, String s_release_date, float royalty_rate, int royalty_paid, String albumid, int track_no) {
 		try {
