@@ -399,7 +399,15 @@ public class Main {
 											System.out.print("Enter Song Id:");
 											mediaid = scanner.nextLine();
 											System.out.print("Enter Song royalty_paid:");
-											royalty_paid = Integer.parseInt(scanner.nextLine());
+											input = scanner.nextLine();
+											if (input.equalsIgnoreCase("yes")) {
+												royalty_paid = 1;
+											} else if (input.equalsIgnoreCase("no")) {
+												royalty_paid = 0;
+											} else {
+												System.out.println("Invalid input. Assuming no royalties earned.");
+												royalty_paid = 0;
+											}
 											songapi.updateMediaPaid(mediaid, royalty_paid);
 											System.out.print("Press Enter key to continue...");
 											key = scanner.nextLine();
