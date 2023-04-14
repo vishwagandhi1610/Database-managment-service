@@ -266,8 +266,7 @@ public class report {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select sum(label_payment) as revenue from paymentSong where month(spay_date)='"
-					+ month + "' AND Main_label='Yes'");
+			rs = stmt.executeQuery("select balance as revenue from totalRevenue where month='"+ month + "' ");
 			while (rs.next()) {
 
 				Float revenue = rs.getFloat("revenue");
@@ -294,8 +293,7 @@ public class report {
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			// Create Statement Object.
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("select sum(label_payment) as revenue from paymentSong where year(spay_date)='"
-					+ year + "' AND Main_label='Yes'");
+			rs = stmt.executeQuery("select sum(balance) as revenue from totalRevenue where year='"+ year + "' ");
 			while (rs.next()) {
 
 				Float revenue = rs.getFloat("revenue");
